@@ -4,29 +4,12 @@ import SectionHeading from '@/shared/components/section-heading'
 import { Button } from '@/shared/components/ui/button'
 import { ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
-import React, { useRef } from 'react'
-import dynamic from 'next/dynamic'
-import { Skeleton } from '@/shared/components/ui/skeleton'
+import React from 'react'
 import { PAGE_ROUTES } from '@/shared/constants/page-routes'
-
-const MissionSwiper = dynamic(() => import('./missions-swiper'), {
-    ssr: false,
-    loading() {
-        return (
-            <div className='grid grid-cols-4 gap-5'>
-                <Skeleton className='aspect-video my-2 p-7' />
-                <Skeleton className='aspect-video my-2 p-7' />
-                <Skeleton className='aspect-video my-2 p-7' />
-                <Skeleton className='aspect-video my-2 p-7' />
-            </div>
-        )
-    },
-})
+import { missions } from '@/shared/constants/mission'
+import MissionCard from '@/shared/components/mission-card'
 
 function Missions() {
-    const nextButtonRef = useRef<HTMLButtonElement>(null);
-    const prevButtonRef = useRef<HTMLButtonElement>(null);
-
     return (
         <div className='container flex flex-col gap-5 relative'>
             <div className='flex w-full justify-center'>
@@ -37,17 +20,23 @@ function Missions() {
                     wrapperClassName='items-center'
                 />
             </div>
-            <MissionSwiper 
-                nextButtonRef={nextButtonRef} 
-                prevButtonRef={prevButtonRef} 
-            />
+            <div className='grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+                {Array.from({ length: 8 }).map((_, index) => (
+                    <MissionCard
+                        key={missions[index].title}
+                        image={missions[index].image}
+                        title={missions[index].title}
+                        upcoming={missions[index].upcoming}
+                    />
+                ))}
+            </div>
             <div className='grid grid-cols-4 grid-rows-1 pt-0'>
-                <Button 
+                <Button
                     variant='outline'
                     asChild
                     className='col-span-full row-span-full w-[130px] self-center justify-self-center text-muted-foreground hover:text-foreground group'
                 >
-                    <Link 
+                    <Link
                         href={PAGE_ROUTES.MISSIONS}
                     >
                         View More

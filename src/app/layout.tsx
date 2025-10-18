@@ -70,7 +70,7 @@ export default function RootLayout({
     return (
         <html lang="en" data-scroll-behavior="smooth">
             <body
-                className={`${inter.variable} ${merriweatherSans.variable} ${nunitoSans.variable} ${roboto.variable} ${montserrat.variable} ${poppins.variable} ${notoSans.variable} antialiased`}
+                className={`${inter.variable} ${merriweatherSans.variable} ${nunitoSans.variable} ${roboto.variable} ${montserrat.variable} ${poppins.variable} ${notoSans.variable} antialiased relative`}
             >
                 <Navbar />
                 {children}

@@ -42,6 +42,10 @@ const buttonVariants = cva(
 
                 "outline-destructive": "border border-destructive/80 text-destructive bg-background-light hover:bg-destructive/10 hover:text-destructive",
 
+                "outline-success": "border border-success/80 text-success bg-background-light hover:bg-success/10 hover:text-success",
+
+                "outline-warning": "border border-warning/80 text-warning bg-background-light hover:bg-warning/10 hover:text-warning",
+
                 "bootstrap-primary": "bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20",
 
                 "bootstrap-destructive": "bg-destructive/10 border border-destructive/20 text-destructive hover:bg-destructive/20",

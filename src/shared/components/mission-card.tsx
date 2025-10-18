@@ -14,7 +14,7 @@ function MissionCard(props: MissionCardProps) {
     return (
         <Link
             href="#"
-            className="flex flex-col items-center my-2 justify-center w-full gap-3 p-7 rounded-md group transition-all duration-700 border border-background border-t border-t-highlight bg-gradient-hover shadow-sm hover:shadow-md h-[-webkit-fill-available] aspect-video relative"
+            className="flex flex-col items-center justify-center w-full gap-3 p-7 rounded-md group transition-all duration-700 border border-background border-t border-t-highlight bg-gradient-hover shadow-sm hover:shadow-lg h-[-webkit-fill-available] aspect-video relative"
         >
             {upcoming && (
                 <Badge
@@ -30,10 +30,10 @@ function MissionCard(props: MissionCardProps) {
                 <Image
                     src={image}
                     alt={title}
-                    className="opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all ease-out duration-700 w-full h-full object-contain"
+                    className="opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all ease-out duration-700 w-full h-full object-contain"
                 />
             </div>
-            <h3 className='text-center font-medium text-foreground/85 group-hover:text-foreground tracking-wide text-lg transition-colors duration-700'>{title}</h3>
+            <h3 className='text-center font-medium text-foreground/70 group-hover:text-foreground tracking-wide text-lg transition-colors duration-700'>{title}</h3>
         </Link>
     )
 }

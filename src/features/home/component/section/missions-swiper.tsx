@@ -12,22 +12,22 @@ function MissionSwiper(props: {
     const [isBeginning, setIsBeginning] = React.useState(true);
     const [isEnd, setIsEnd] = React.useState(false);
 
-    const renderMask = () => {
-        const DEFAULT_LEFT_OPACITY = 15
-        const DEFAULT_RIGHT_OPACITY = 85
-        let rightOpacity = DEFAULT_RIGHT_OPACITY
-        let leftOpacity = DEFAULT_LEFT_OPACITY
+    // const renderMask = () => {
+    //     const DEFAULT_LEFT_OPACITY = 15
+    //     const DEFAULT_RIGHT_OPACITY = 85
+    //     let rightOpacity = DEFAULT_RIGHT_OPACITY
+    //     let leftOpacity = DEFAULT_LEFT_OPACITY
         
-        if(isBeginning && !isEnd) {
-            leftOpacity = 0
-            rightOpacity = DEFAULT_RIGHT_OPACITY
-        } else if(!isBeginning && isEnd) {
-            rightOpacity = 100
-            leftOpacity = DEFAULT_LEFT_OPACITY
-        }
+    //     if(isBeginning && !isEnd) {
+    //         leftOpacity = 0
+    //         rightOpacity = DEFAULT_RIGHT_OPACITY
+    //     } else if(!isBeginning && isEnd) {
+    //         rightOpacity = 100
+    //         leftOpacity = DEFAULT_LEFT_OPACITY
+    //     }
 
-        return `linear-gradient(to right, transparent 0%, black ${leftOpacity}%, black ${rightOpacity}%, transparent 100%)`;
-    }
+    //     return `linear-gradient(to right, transparent 0%, black ${leftOpacity}%, black ${rightOpacity}%, transparent 100%)`;
+    // }
 
     return (
         <div 

@@ -1,10 +1,8 @@
 import MissionCard from '@/shared/components/mission-card'
 import SectionHeading from '@/shared/components/section-heading'
-import { Button } from '@/shared/components/ui/button'
 import { home } from '@/shared/constants/images'
 import { missions } from '@/shared/constants/mission'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 
 function MissionsPage() {

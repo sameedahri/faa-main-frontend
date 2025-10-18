@@ -15,7 +15,7 @@ function Logo({ imageProps }: LogoProps) {
             priority
             {...imageProps}
             className={cn(
-                'w-18',
+                'w-16',
                 imageProps?.className,
             )}
         />
