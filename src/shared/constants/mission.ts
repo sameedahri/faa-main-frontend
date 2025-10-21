@@ -36,9 +36,9 @@ export const missions = [
         upcoming: false,
     },
     {
-        image: IT,
-        title: "IT & Tech",
-        upcoming: false,
+        image: Accounting,
+        title: "Accounting & Tax",
+        upcoming: true,
     },
     {
         image: Visa,
@@ -61,14 +61,14 @@ export const missions = [
         upcoming: false,
     },
     {
-        image: Maintenance,
-        title: "Maintenance & Repair",
+        image: AI,
+        title: "AI Agents",
         upcoming: true,
     },
     {
-        image: Accounting,
-        title: "Accounting & Tax",
-        upcoming: true,
+        image: IT,
+        title: "IT & Tech",
+        upcoming: false,
     },
     {
         image: Logistics,
@@ -131,8 +131,8 @@ export const missions = [
         upcoming: true,
     },
     {
-        image: AI,
-        title: "AI Agents",
+        image: Maintenance,
+        title: "Maintenance & Repair",
         upcoming: true,
     },
     {
@@ -145,4 +145,9 @@ export const missions = [
         title: "Personal Services",
         upcoming: true,
     },
+    {
+        image: Creative,
+        title: "Consultancy Services",
+        upcoming: true,
+    }
 ] as const;

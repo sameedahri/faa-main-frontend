@@ -82,6 +82,8 @@
 
   /* Borders */
   --border-highlight: var(--border-highlight);
+
+  /* Animation */
 }
 
 :root {

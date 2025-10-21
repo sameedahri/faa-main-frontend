@@ -8,7 +8,8 @@ import Image from "next/image";
 export default async function Home(props: PageProps<"/">) {
     return (
         <div className="flex flex-col gap-10">
-            <div className="relative min-h-[650px] overflow-hidden grid">
+            {/* Hero Section */}
+            <div className="relative min-h-[750px] overflow-hidden grid">
                 <Image
                     src={home.heroImage}
                     alt="Hero"
@@ -17,6 +18,8 @@ export default async function Home(props: PageProps<"/">) {
                     priority
                     placeholder="blur"
                 />
+                {/* Fade gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white -z-[5]"></div>
                 <div className="container">
                     <div className="grid h-full relative w-full place-content-center">
                         <h1 className="text-3xl text-center font-bold backdrop-blur-md bg-white/85  rounded-md px-6 py-4 text-primary md:text-4xl">Find. Connect. Succeed.</h1>

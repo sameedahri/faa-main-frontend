@@ -115,20 +115,20 @@ function AgencyInfoCard(props: AgenciesInfoCardProps) {
 
                 <div className='grid grid-cols-2 gap-3'>
                     <Button
-                        variant={"soft-success"}
+                        variant={"soft-muted"}
                         size={"sm"}
-                        className='h-9'
+                        className='h-9 shadow-sm hover:shadow-md'
                     >
-                        <Phone />
-                        Contact Now
+                        <UserRoundPen />
+                        View Profile
                     </Button>
                     <Button
                         variant={"soft-primary"}
                         size={"sm"}
-                        className='h-9'
+                        className='h-9 text-primary hover:bg-primary/10 shadow-sm group hover:shadow-md'
                     >
-                        <UserRoundPen />
-                        View Profile
+                        <Phone />
+                        Contact Now
                     </Button>
                 </div>
             </div>

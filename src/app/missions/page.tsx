@@ -28,7 +28,7 @@ function MissionsPage() {
                         title="Choose Your Mission"
                     />
                 </div>
-                <div className='grid grid-cols-4 gap-5'>
+                <div className='grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4'>
                     {missions.map((mission) => (
                         <MissionCard
                             key={mission.title}

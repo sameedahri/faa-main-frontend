@@ -4,6 +4,7 @@ import { Badge } from '@/shared/components/ui/badge'
 import { Button } from '@/shared/components/ui/button'
 import { MapPin, Phone, UserRoundPen } from 'lucide-react'
 import { Separator } from '@/shared/components/ui/separator'
+import Link from 'next/link'
 
 function ServiceInfoCard() {
     return (
@@ -21,9 +22,12 @@ function ServiceInfoCard() {
             </div>
             <div className='pt-2 flex flex-col gap-4'>
                 <div className='flex flex-col gap-1'>
-                    <h2 className='text-lg font-semibold leading-tight'>
+                    <Link 
+                        href={"#"}
+                        className='text-lg font-semibold leading-tight hover:text-primary'
+                    >
                         Consultation and needs assessment
-                    </h2>
+                    </Link>
                     <p className='text-muted-foreground text-sm'>
                         Tailored investment advice to help you find high-yield properties and build a strong real estate portfolio.
                     </p>
@@ -44,22 +48,20 @@ function ServiceInfoCard() {
 
                 <Separator className='my-1' />
 
-                <div className='grid grid-cols-2 gap-3'>
-                    <Button
-                        variant={"soft-success"}
+                <div className='grid grid-cols-1 gap-3'>
+                    {/* <Button
+                        variant={"soft-muted"}
                         size={"sm"}
                         className='h-9'
                     >
-                        <Phone />
-                        Contact Now
-                    </Button>
+                        Details
+                    </Button> */}
                     <Button
                         variant={"soft-primary"}
                         size={"sm"}
                         className='h-9'
                     >
-                        <UserRoundPen />
-                        View Profile
+                        Contact
                     </Button>
                 </div>
             </div>

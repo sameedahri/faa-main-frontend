@@ -6,6 +6,7 @@ import { IdCard, Languages, MapPin, Phone, Star, UserRoundPen } from 'lucide-rea
 import { Button } from '@/ui/button'
 import { Separator } from '@/ui/separator'
 import { BaseCarouselCard } from '@/features/home/component/section/featured-base-carousel'
+import Link from 'next/link'
 
 function AgentInfoCard() {
     return (
@@ -20,7 +21,12 @@ function AgentInfoCard() {
             </div>
             <div className='pt-3 flex flex-col gap-3'>
                 <div>
-                    <h2 className='text-lg font-semibold'>Ahmad Ali Farsi</h2>
+                    <Link 
+                        href={"#"} 
+                        className='text-lg font-semibold hover:text-primary transition-colors duration-300'
+                    >
+                        Ahmad Ali Farsi
+                    </Link>
                     <p className='text-muted-foreground text-sm'>
                         Deals in rent and property
                     </p>
@@ -29,13 +35,15 @@ function AgentInfoCard() {
                 <div className="flex gap-2">
                     <Badge
                         variant={"muted"}
-                        className='rounded-[4px] shadow-sm bg-transparent h-6'
+                        className='shadow-s bg-transparent h-6 border-border rounded-full'
+                        type={"outline"}
                     >
                         Estate Agent
                     </Badge>
                     <Badge
                         variant={"muted"}
-                        className='rounded-[4px] shadow-sm bg-transparent h-6'
+                        type={"outline"}
+                        className='shadow-s border-border bg-transparent h-6 rounded-full'
                     >
                         Legal Services
                     </Badge>
@@ -86,20 +94,20 @@ function AgentInfoCard() {
 
                 <div className='grid grid-cols-2 gap-3'>
                     <Button
-                        variant={"soft-success"}
+                        variant={"soft-muted"}
                         size={"sm"}
-                        className='h-9'
+                        className='h-9 w-full shadow-sm hover:shadow-md'
                     >
-                        <Phone />
-                        Contact Now
+                        <UserRoundPen />
+                        View Profile
                     </Button>
                     <Button
                         variant={"soft-primary"}
                         size={"sm"}
-                        className='h-9'
+                        className='h-9 text-primary hover:bg-primary/10 shadow-sm hover:shadow-md'
                     >
-                        <UserRoundPen />
-                        View Profile
+                        <Phone />
+                        Contact Now
                     </Button>
                 </div>
             </div>
