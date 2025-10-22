@@ -35,14 +35,14 @@ function AgencyInfoCard(props: AgenciesInfoCardProps) {
                     <div className='flex gap-2'>
                         <Badge 
                             variant={"success"}
-                            type={"outline"}
+                            type={"bootstrap"}
                             size={"sm"}
                         >
                             Verified
                         </Badge>
                         <Badge 
                             variant={"pro"}
-                            type={"outline"}
+                            type={"bootstrap"}
                             size={"sm"}
                         >
                             Pro
@@ -50,7 +50,7 @@ function AgencyInfoCard(props: AgenciesInfoCardProps) {
                     </div>
                 </div>
             </div>
-            <div className='pt-3 flex flex-col gap-3'>
+            <div className='flex flex-col gap-3 pt-5'>
                 <p className='text-muted-foreground text-sm'>
                     {props.description}
                 </p>
@@ -58,13 +58,15 @@ function AgencyInfoCard(props: AgenciesInfoCardProps) {
                 <div className="flex gap-2">
                     <Badge
                         variant={"muted"}
-                        className='rounded-[4px] shadow-sm bg-transparent h-6'
+                        type={"outline"}
+                        className='rounded-full bg-transparent h-6 border-border'
                     >
                         Estate Agent
                     </Badge>
                     <Badge
                         variant={"muted"}
-                        className='rounded-[4px] shadow-sm bg-transparent h-6'
+                        type={"outline"}
+                        className='rounded-full bg-transparent h-6 border-border'
                     >
                         Legal Services
                     </Badge>
@@ -74,7 +76,7 @@ function AgencyInfoCard(props: AgenciesInfoCardProps) {
                     <div className='flex justify-between pt-1'>
                         <div className='flex items-center gap-1 text-xs text-foreground'>
                             <IdCard
-                                stroke={"var(--primary)"}
+                                // stroke={"var(--primary)"}
                                 strokeWidth={1}
                                 className='w-5'
                             />
@@ -94,7 +96,7 @@ function AgencyInfoCard(props: AgenciesInfoCardProps) {
                     <div className='flex justify-between'>
                         <div className='flex items-center gap-1 text-xs text-foreground'>
                             <MapPin
-                                stroke={"var(--destructive)"}
+                                // stroke={"var(--destructive)"}
                                 strokeWidth={1}
                                 className='w-4'
                             />
@@ -102,7 +104,7 @@ function AgencyInfoCard(props: AgenciesInfoCardProps) {
                         </div>
                         <div className='text-xs flex items-center gap-1 text-foreground'>
                             <Languages
-                                stroke={"var(--success)"}
+                                // stroke={"var(--success)"}
                                 strokeWidth={1}
                                 className='w-4'
                             />

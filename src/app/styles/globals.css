@@ -154,7 +154,8 @@
     0 4px 6px #00000030,
     0 6px 10px #00000015;
 
-  --gradient: linear-gradient(0deg, var(--background) 95%, var(--background-light));
+  /* --gradient: linear-gradient(0deg, var(--background) 95%, var(--background-light)); */
+  --gradient: linear-gradient(0deg, var(--background-light) 95%, var(--background));
   /* --gradient-hover: linear-gradient(0deg, var(--background), var(--background-light)); */
   --gradient-hover: linear-gradient(0deg, var(--background-light), var(--background));
 

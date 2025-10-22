@@ -8,6 +8,7 @@ import { FEATURED_PROFESSIONALS_TAB } from '@/shared/constants/tabs'
 import FeaturedAgenciesTab from './featured-agencies-tab'
 import { FeaturedTabType } from '@/shared/types/tabs.type'
 import FeatureServicesCarousel from './feature-services-carousel'
+import { cn } from '@/shared/lib/utils'
 
 
 function FeaturedProfessional() {
@@ -31,11 +32,16 @@ function FeaturedProfessional() {
                 onValueChange={(value) => handleTabChange(value as FeaturedTabType)}
                 className="gap-6"
             >
-                <TabsList className='items-center justify-center self-center'>
+                <TabsList className={cn(
+                    'items-center justify-center self-center',
+                    // 'bg-linear-to-b from-primary/5 to-transparent bg-transparent border border-primary/5',
+                    'bg-primary/5',
+                )}>
                     {Object.values(FEATURED_PROFESSIONALS_TAB).map((tab) => (
                         <TabsTrigger 
                             key={tab.value} 
                             value={tab.value}
+                            className='data-[state=active]:text-primary text-muted-foreground/90'
                         >
                             {tab.label}
                         </TabsTrigger>

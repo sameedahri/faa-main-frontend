@@ -161,7 +161,7 @@ export function BaseCarouselCard(props: PropsWithChildren<{
     return (
         <div 
             className={cn(
-                'p-5 rounded-md bg-gradient-hover shadow-sm my-2 w-[95%] mx-auto md:mx-0 md:w-full md:max-w-[320px]', 
+                'p-5 rounded-md shadow-sm my-2 w-[95%] mx-auto md:mx-0 md:w-full md:max-w-[320px] bg-linear-to-b from-primary/5 via-transparent to-transparent',
                 props.className
             )}
         >

@@ -53,7 +53,7 @@ function AgentInfoCard() {
                     <div className='flex justify-between pt-1'>
                         <div className='flex items-center gap-1 text-xs text-foreground'>
                             <IdCard
-                                stroke={"var(--primary)"}
+                                // stroke={"var(--primary)"}
                                 strokeWidth={1}
                                 className='w-5'
                             />
@@ -73,7 +73,7 @@ function AgentInfoCard() {
                     <div className='flex justify-between'>
                         <div className='flex items-center gap-1 text-xs text-foreground'>
                             <MapPin
-                                stroke={"var(--destructive)"}
+                                // stroke={"var(--destructive)"}
                                 strokeWidth={1}
                                 className='w-4'
                             />
@@ -81,7 +81,7 @@ function AgentInfoCard() {
                         </div>
                         <div className='text-xs flex items-center gap-1 text-foreground'>
                             <Languages
-                                stroke={"var(--success)"}
+                                // stroke={"var(--success)"}
                                 strokeWidth={1}
                                 className='w-4'
                             />
