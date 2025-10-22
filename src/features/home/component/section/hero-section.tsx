@@ -44,53 +44,59 @@ function HeroSection() {
                             <TabsTrigger value="events">Events</TabsTrigger>
                         </TabsList>
                         <TabsContent value="agents" className='w-full'>
-                            <div className='flex flex-wrap gap-3 bg-background-light/60 backdrop-blur-2xl rounded-md p-5 lg:flex-nowrap'>
-                                <InputGroup
-                                    className='bg-white'
-                                >
-                                    <InputGroupAddon>
-                                        <Search />
-                                    </InputGroupAddon>
-                                    <InputGroupInput
-                                        placeholder='Search by specialty or name' 
-                                        // className=' w-full'
-                                    />
-                                </InputGroup>
-                                <NativeSelect className='bg-white w-full'>
-                                    <NativeSelectOption value={""}>All Mission</NativeSelectOption>
-                                    <NativeSelectOption value={"Visa & Immigration"}>Visa & Immigration</NativeSelectOption>
-                                    <NativeSelectOption value={"IT & TECH"}>IT & Tech</NativeSelectOption>
-                                    <NativeSelectOption value={"Mortgage and Finance"}>Mortgage and Finance</NativeSelectOption>
-                                </NativeSelect>
-                                <InputGroup
-                                    className='bg-white'
-                                >
-                                    <InputGroupAddon>
-                                        <MapPin />
-                                    </InputGroupAddon>
-                                    <InputGroupInput
-                                        placeholder='Search by location'
-                                    // className=' w-full'
-                                    />
-                                </InputGroup>
-                                <Button size={"sm"} className='h-11 w-32'>
-                                    <Search />
-                                    Search
-                                </Button>
-                            </div>
+                            <HeroFilters />
                         </TabsContent>
-                        <TabsContent value="agencies">
-                            Agencies Content
+                        <TabsContent value="agencies" className='w-full'>
+                            <HeroFilters />
                         </TabsContent>
-                        <TabsContent value="services">
-                            Services Content
+                        <TabsContent value="services" className='w-full'>
+                            <HeroFilters />
                         </TabsContent>
-                        <TabsContent value="events">
-                            Events Content
+                        <TabsContent value="events" className='w-full'>
+                            <HeroFilters />
                         </TabsContent>
                     </Tabs>
                 </div>
             </div>
+        </div>
+    )
+}
+
+function HeroFilters() {
+    return (
+        <div className='flex flex-wrap gap-3 bg-background-light/60 backdrop-blur-2xl rounded-md p-5 lg:flex-nowrap'>
+            <InputGroup
+                className='bg-white'
+            >
+                <InputGroupAddon>
+                    <Search />
+                </InputGroupAddon>
+                <InputGroupInput
+                    placeholder='Search by specialty or name'
+                // className=' w-full'
+                />
+            </InputGroup>
+            <NativeSelect className='bg-white w-full'>
+                <NativeSelectOption value={""}>All Mission</NativeSelectOption>
+                <NativeSelectOption value={"Visa & Immigration"}>Visa & Immigration</NativeSelectOption>
+                <NativeSelectOption value={"IT & TECH"}>IT & Tech</NativeSelectOption>
+                <NativeSelectOption value={"Mortgage and Finance"}>Mortgage and Finance</NativeSelectOption>
+            </NativeSelect>
+            <InputGroup
+                className='bg-white'
+            >
+                <InputGroupAddon>
+                    <MapPin />
+                </InputGroupAddon>
+                <InputGroupInput
+                    placeholder='Search by location'
+                // className=' w-full'
+                />
+            </InputGroup>
+            <Button size={"sm"} className='h-11 w-32'>
+                <Search />
+                Search
+            </Button>
         </div>
     )
 }

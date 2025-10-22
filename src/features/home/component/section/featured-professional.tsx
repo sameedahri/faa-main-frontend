@@ -7,8 +7,9 @@ import FeaturedAgentsTab from './featured-agents-tab'
 import { FEATURED_PROFESSIONALS_TAB } from '@/shared/constants/tabs'
 import FeaturedAgenciesTab from './featured-agencies-tab'
 import { FeaturedTabType } from '@/shared/types/tabs.type'
-import FeatureServicesCarousel from './feature-services-carousel'
+import FeatureServicesCarousel from './featured-services-carousel'
 import { cn } from '@/shared/lib/utils'
+import FeaturedEventsCarousel from './featured-events-carousel'
 
 
 function FeaturedProfessional() {
@@ -59,7 +60,7 @@ function FeaturedProfessional() {
                     <FeatureServicesCarousel />
                 </TabsContent>
                 <TabsContent value={FEATURED_PROFESSIONALS_TAB.EVENTS.value}>
-                    <FeaturedAgentsTab />
+                    <FeaturedEventsCarousel />
                 </TabsContent>
             </Tabs>
         </div>

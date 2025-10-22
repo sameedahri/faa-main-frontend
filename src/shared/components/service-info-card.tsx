@@ -48,19 +48,20 @@ function ServiceInfoCard() {
 
                 <Separator className='my-1' />
 
-                <div className='grid grid-cols-1 gap-3'>
-                    {/* <Button
+                <div className='grid grid-cols-2 gap-3'>
+                    <Button
                         variant={"soft-muted"}
                         size={"sm"}
-                        className='h-9'
+                        className='h-9 w-full shadow-sm hover:shadow-md'
                     >
                         Details
-                    </Button> */}
+                    </Button>
                     <Button
                         variant={"soft-primary"}
                         size={"sm"}
-                        className='h-9'
+                        className='h-9 text-primary hover:bg-primary/10 shadow-sm hover:shadow-md'
                     >
+                        <Phone />
                         Contact
                     </Button>
                 </div>
