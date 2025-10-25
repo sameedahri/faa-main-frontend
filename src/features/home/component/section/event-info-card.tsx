@@ -56,8 +56,8 @@ function EventInfoCard() {
                             <Td>08:00 PM - 11:00 PM</Td>
                         </Tr>
                         <Tr className='border-b-0'>
-                            <Td className='font-medium'>Event Date</Td>
-                            <Td>Mon 12/12/2025</Td>
+                            <Td className='font-medium pb-0'>Event Date</Td>
+                            <Td className='pb-0'>Mon 12/12/2025</Td>
                         </Tr>
                     </tbody>
                 </table>
@@ -88,7 +88,7 @@ function EventInfoCard() {
 
 function Tr({ children, className }: PropsWithChildren<{className?: string}>) {
     return (
-        <tr className={cn('border-b border-border/70', className)}>
+        <tr className={cn('', className)}>
             {children}
         </tr>
     )

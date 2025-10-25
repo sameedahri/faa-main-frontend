@@ -3,12 +3,14 @@ import Logo from '@/components/logo'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/ui/navigation-menu'
 import { NAV_MENU } from '@/shared/constants/nav-menu'
 import Link from 'next/link'
+import MobileMenuButton from './mobile-menu-button'
 
 function Navbar() {
     return (
         <div className='z-20 sticky top-0 backdrop-blur-md bg-background-light/70 shadow'>
             <div className='container h-nav flex items-center justify-between'>
                 <Logo />
+                <MobileMenuButton />
                 <NavigationMenu 
                     viewport={false}
                     className='hidden md:block'
