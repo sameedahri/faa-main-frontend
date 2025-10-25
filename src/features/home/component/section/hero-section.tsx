@@ -26,10 +26,10 @@ function HeroSection() {
             ></div> */}
             <div className="container h-full relative w-full flex items-center">
                 <div className={cn(
-                    "rounded-md px-6 py-6 flex flex-col gap-5 mx-auto w-full md:py-10 md:px-10 xl:w-[60%]",
-                    "backdrop-blur-sm border bg-linear-to-b to-transparent from-white/30 border-white/50 border-t-white/5 border-l-white/5 "
+                    "rounded-md px-6 py-6 flex flex-col gap-5 mx-auto w-full md:py-10 md:px-10 xl:w-[60%] xl:gap-8",
+                    "backdrop-blur-sm order bg-linear-to-b from-primary/10 to-white/80 "
                 )}>
-                    <h1 className="text-3xl text-center font-bold font-heading  text-white text-shadow-lg md:text-5xl lg:text-5xl xl:text-6xl">Find. Connect. <strong className=''>Succeed.</strong></h1>
+                    <h1 className="text-3xl text-center font-bold font-heading  text-white text-shadow-lg text-shadow-primary/50 md:text-5xl lg:text-5xl xl:text-6xl">Find. Connect. <strong className=''>Succeed.</strong></h1>
                     <HeroFilters />
                     {/* <Tabs defaultValue="agents" className='items-center gap-5'>
                         <TabsList className='bg-background-light/60 backdrop-blur-2xl'>
@@ -61,7 +61,7 @@ function HeroFilters() {
     return (
         <div className='flex flex-col gap-5'>
             {/* <div className='flex flex-wrap gap-3 bg-background-light/60 backdrop-blur-2xl rounded-md p-5 lg:flex-nowrap'> */}
-            <div className='grid grid-cols-1 gap-3 md:grid-cols-2'>
+            <div className='grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4'>
                 <InputGroup
                     className='bg-white'
                 >
@@ -95,7 +95,7 @@ function HeroFilters() {
                     Search
                 </Button>
             </div>
-            <div className='flex flex-wrap gap-3 justify-center'>
+            {/* <div className='flex flex-wrap gap-3 justify-center'>
                 {commonServices.map((service) => (
                     <Button 
                         asChild 
@@ -109,7 +109,7 @@ function HeroFilters() {
                         </Link>
                     </Button>
                 ))}
-            </div>
+            </div> */}
         </div>
     )
 }
