@@ -1,17 +1,14 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { home } from '@/shared/constants/images'
 import { cn } from '@/shared/lib/utils'
 import Image from 'next/image'
-import React from 'react'
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
 import { MapPin, Search } from 'lucide-react'
 import { NativeSelect, NativeSelectOption } from '@/shared/components/ui/native-select'
 import { Button } from '@/shared/components/ui/button'
-import Link from 'next/link'
 
 function HeroSection() {
     return (
-        <div className="relative py-10 min-h-[800px] overflow-hidden grid">
+        <div className="relative py-10 min-h-svh overflow-hidden grid md:min-h-[650px]">
             <Image
                 src={home.heroImage}
                 alt="Hero"
@@ -26,7 +23,7 @@ function HeroSection() {
             ></div> */}
             <div className="container h-full relative w-full flex items-center">
                 <div className={cn(
-                    "rounded-md px-6 py-6 flex flex-col gap-5 mx-auto w-full md:py-10 md:px-10 xl:w-[60%] xl:gap-8",
+                    "rounded-md px-6 py-6 flex flex-col gap-5 mx-auto w-full mb-nav md:mb-0 md:py-10 md:px-10 xl:w-[60%] xl:gap-8",
                     "backdrop-blur-sm order bg-linear-to-b from-primary/10 to-white/80 "
                 )}>
                     <h1 className="text-3xl text-center font-bold font-heading  text-white text-shadow-lg text-shadow-primary/50 md:text-5xl lg:text-5xl xl:text-6xl">Find. Connect. <strong className=''>Succeed.</strong></h1>

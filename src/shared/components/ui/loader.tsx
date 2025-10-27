@@ -1,6 +1,5 @@
 import { cn } from '@/lib/utils'
 import { Loader as LoaderIcon } from 'lucide-react'
-import React from 'react'
 
 function Loader({ className }: { className?: string }) {
     return (
