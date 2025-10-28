@@ -1,5 +1,5 @@
 import React from 'react'
-import { BaseCarouselCard } from '@/features/home/component/section/featured-base-carousel'
+import { BaseCarouselCard } from './featured-base-carousel'
 import { Badge } from '@/shared/components/ui/badge'
 import { Button } from '@/shared/components/ui/button'
 import { MapPin, Phone, UserRoundPen } from 'lucide-react'
@@ -57,9 +57,9 @@ function ServiceInfoCard() {
                         Details
                     </Button>
                     <Button
-                        variant={"soft-primary"}
+                        variant={"outline"}
                         size={"sm"}
-                        className='h-9 text-primary hover:bg-primary/10 shadow-sm hover:shadow-md'
+                        className='h-9 text-primary hover:bg-primary/10 hover:text-primary shadow-sm hover:shadow-md'
                     >
                         <Phone />
                         Contact

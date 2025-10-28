@@ -5,7 +5,7 @@ import { Badge } from '@/ui/badge'
 import { IdCard, Languages, MapPin, Phone, Star, UserRoundPen } from 'lucide-react'
 import { Button } from '@/ui/button'
 import { Separator } from '@/ui/separator'
-import { BaseCarouselCard } from '@/features/home/component/section/featured-base-carousel'
+import { BaseCarouselCard } from './featured-base-carousel'
 
 type AgenciesInfoCardProps = {
     image: StaticImageData;
@@ -125,9 +125,9 @@ function AgencyInfoCard(props: AgenciesInfoCardProps) {
                         View Profile
                     </Button>
                     <Button
-                        variant={"soft-primary"}
+                        variant={"outline"}
                         size={"sm"}
-                        className='h-9 text-primary hover:bg-primary/10 shadow-sm group hover:shadow-md'
+                        className='h-9 text-primary hover:bg-primary/10 hover:text-primary shadow-sm hover:shadow-md'
                     >
                         <Phone />
                         Contact Now

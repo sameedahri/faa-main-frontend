@@ -1,6 +1,6 @@
-import AgencyInfoCard from '@/shared/components/agency-info-card'
 import { agent } from '@/shared/constants/images'
 import { FeaturedBaseCarousel } from './featured-base-carousel'
+import AgencyInfoCard from './agency-info-card'
 
 
 function FeaturedAgenciesCarousel() {

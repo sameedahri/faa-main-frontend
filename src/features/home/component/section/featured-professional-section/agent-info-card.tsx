@@ -5,8 +5,8 @@ import { Badge } from '@/ui/badge'
 import { IdCard, Languages, MapPin, Phone, Star, UserRoundPen } from 'lucide-react'
 import { Button } from '@/ui/button'
 import { Separator } from '@/ui/separator'
-import { BaseCarouselCard } from '@/features/home/component/section/featured-base-carousel'
 import Link from 'next/link'
+import { BaseCarouselCard } from './featured-base-carousel'
 
 function AgentInfoCard() {
     return (
@@ -73,7 +73,6 @@ function AgentInfoCard() {
                     <div className='flex justify-between'>
                         <div className='flex items-center gap-1 text-xs text-foreground'>
                             <MapPin
-                                // stroke={"var(--destructive)"}
                                 strokeWidth={1}
                                 className='w-4'
                             />
@@ -81,7 +80,6 @@ function AgentInfoCard() {
                         </div>
                         <div className='text-xs flex items-center gap-1 text-foreground'>
                             <Languages
-                                // stroke={"var(--success)"}
                                 strokeWidth={1}
                                 className='w-4'
                             />
@@ -102,9 +100,9 @@ function AgentInfoCard() {
                         View Profile
                     </Button>
                     <Button
-                        variant={"soft-primary"}
+                        variant={"outline"}
                         size={"sm"}
-                        className='h-9 text-primary hover:bg-primary/10 shadow-sm hover:shadow-md'
+                        className='h-9 text-primary hover:bg-primary/10 hover:text-primary shadow-sm hover:shadow-md'
                     >
                         <Phone />
                         Contact Now

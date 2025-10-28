@@ -45,7 +45,7 @@ function SectionHeading({ title, LeftIcon, description, descriptionClassName, he
         <div className={cn("flex flex-col gap-0.5", wrapperClassName)}>
             <h2
                 className={cn(
-                    'text-3xl font-bold font-heading grid grid-cols-[auto_1fr] items-start justify-center gap-1.5',
+                    'text-2xl font-bold font-heading grid grid-cols-[auto_1fr] items-start justify-center gap-1.5 md:text-3xl xl:text-4xl',
                     headingClassName
                 )}
             >

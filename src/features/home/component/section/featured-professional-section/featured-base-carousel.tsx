@@ -9,6 +9,7 @@ import { Keyboard, Mousewheel, Navigation } from 'swiper/modules';
 import { Swiper, SwiperProps, SwiperSlide, SwiperSlideProps } from 'swiper/react';
 import { cn } from '@/shared/lib/utils';
 import type { Swiper as SwiperType } from 'swiper';
+import ViewMoreButton from '@/shared/components/buttons/view-more-button';
 
 type FeaturedBaseCarouselProps = PropsWithChildren<{
     swiperProps?: SwiperProps,
@@ -31,7 +32,7 @@ export function FeaturedBaseCarousel(props: FeaturedBaseCarouselProps) {
     };
 
     return (
-        <div className='relative'>
+        <div className='relative w-full'>
             <div className='relative'>
                 {/* Right and left fade overlay */}
                 <CarouselFadeOverlay isBeginning={isBeginning} isEnd={isEnd} />
@@ -89,40 +90,29 @@ export function FeaturedBaseCarousel(props: FeaturedBaseCarouselProps) {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-            </div>
-            <div className='grid grid-cols-4 grid-rows-1 pt-2'>
-                <Button
-                    variant='outline'
-                    asChild
-                    className='col-span-full row-span-full w-[130px] self-center justify-self-center text-muted-foreground hover:text-foreground group select-none'
+                {<Button
+                    ref={prevButtonRef}
+                    variant={"outline"}
+                    size={"icon"}
+                    className={"size-10 rounded-full absolute z-20 -left-3 top-1/2 -translate-y-1/2 disabled:hidden"}
                 >
-                    <Link
-                        href={props.viewMoreLink ?? "#"}
-                    >
-                        View More
-                        <ArrowUpRight />
-                    </Link>
-                </Button>
-                <div className="flex gap-2 items-center col-span-full row-span-full justify-self-end">
-                    <Button
-                        ref={prevButtonRef}
-                        variant={"outline"}
-                        size={"icon"}
-                        className="size-9 rounded-full"
-                    >
-                        <ChevronLeft />
-                    </Button>
-                    <Button
-                        ref={nextButtonRef}
-                        variant={"outline"}
-                        size={"icon"}
-                        className="size-9 rounded-full"
-                    >
-                        <ChevronRight />
-                    </Button>
+                    <ChevronLeft />
+                </Button>}
+                {<Button
+                    ref={nextButtonRef}
+                    variant={"outline"}
+                    size={"icon"}
+                    className="size-10 rounded-full absolute -right-3 z-20 top-1/2 -translate-y-1/2 disabled:hidden"
+                    disabled={isEnd}
+                >
+                    <ChevronRight />
+                </Button>}
 
-                </div>
             </div>
+            <ViewMoreButton 
+                href='#' 
+                className='mx-auto flex mt-4'
+            />
         </div>
     )
 }

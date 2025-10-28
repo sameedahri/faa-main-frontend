@@ -4,8 +4,8 @@ import React from 'react'
 
 function DiscoverAiAgentSection() {
     return (
-        <div className='container'>
-            <section className='p-5 mx-auto rounded-md bg-primary/7 grid gap-6 md:max-w-9/12 md:gap-8 md:p-8 lg:p-10 lg:grid-cols-2 '>
+        <div className='container pb-5'>
+            <section className='shadow-[0px_1px_3px_1px] shadow-primary/20 p-5 mx-auto rounded-md bg-linear-to-br from-background-light/20 via-background-light to-primary/10 grid gap-6 md:max-w-9/12 md:gap-8 md:p-8 lg:p-10 lg:grid-cols-2 '>
                 <div className='flex flex-col gap-2 justify-center md:gap-3'>
                     <h1 className='text-2xl font-semibold leading-tight font-heading md:text-3xl lg:text-4xl'>Discover AI Agents</h1>
                     <p className='text-base text-muted-foreground leading-relaxed lg:text-lg'>
@@ -31,7 +31,7 @@ function DiscoverAiAgentSection() {
 
 function DiscoverAiAgentPoint(props: typeof DISCOVER_AI_AGENT_POINTS[number]) {
     return (
-        <div className='flex gap-2 items-center p-4 border-primary/10 bg-background-light rounded-md'>
+        <div className='flex gap-2 items-center p-3'>
             <div className='aspect-square min-w-12 flex items-center justify-center bg-primary/10 rounded-md'>
                 <props.Icon className='size-5 text-primary' />
             </div>

@@ -1,6 +1,7 @@
 "use client"
 
-import { AgentInfoCard } from '@/shared/components/agent-info-card'
+
+import AgentInfoCard from './agent-info-card'
 import { FeaturedBaseCarousel } from './featured-base-carousel'
 
 

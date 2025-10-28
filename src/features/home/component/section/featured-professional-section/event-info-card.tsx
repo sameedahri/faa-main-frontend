@@ -25,7 +25,8 @@ function EventInfoCard() {
                 <Image
                     src={home.heroImage}
                     alt="Agent Image"
-                    className='object-cover w-full h-full'
+                    className='object-cover w-full h-full select-none'
+                    draggable={false}
                 />
             </div>
             <div className='flex items-center gap-0.5 text-xs text-foreground pt-3'>
@@ -73,9 +74,9 @@ function EventInfoCard() {
                         Details
                     </Button>
                     <Button
-                        variant={"soft-primary"}
+                        variant={"outline"}
                         size={"sm"}
-                        className='h-9 text-primary hover:bg-primary/10 shadow-sm hover:shadow-md'
+                        className='h-9 text-primary hover:bg-primary/10 hover:text-primary shadow-sm hover:shadow-md'
                     >
                         <Phone />
                         Contact
