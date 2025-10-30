@@ -6,13 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  /* --font-base: var(--font-inter); */
-  /* --font-base: var(--font-nunito-sans); */
-  /* --font-base: var(--font-roboto); */
   --font-base: var(--font-noto-sans);
-  /* --font-base: var(--font-montserrat); */
-  /* --font-base: var(--font-poppins); */
-  /* --font-heading: var(--font-merriweather); */
   --font-heading: var(--font-merriweather-sans);
   --color-sidebar-ring: var(--ring);
   --color-sidebar-border: var(--sidebar-border);

@@ -31,12 +31,12 @@ function HeroSection() {
                 </div> */}
                 <div className={cn(
                     "rounded-md px-6 py-6 flex flex-col gap-5 mx-auto w-full md:mb-0 md:py-10 md:px-10 xl:w-[60%] xl:gap-8",
-                    "backdrop-blur-sm order bg-linear-to-b from-primary/90 to-white/80 "
+                    "backdrop-blur-sm order bg-linear-to-b from-primary/90 via-primary/50 to-white/80 "
                 )}>
-                    <div className='flex flex-col items-center gap-3 text-center'>
+                    <div className='flex flex-col items-center gap-1 text-center'>
                         <h1 className="text-3xl text-center font-bold font-heading  text-white text-shadow-lg text-shadow-primary/50 md:text-4xl lg:text-5xl">Find. Connect. <strong className=''>Succeed.</strong></h1>
-                        <p className='text-white text-shadow-lg text-shadow-primary/50 md:text-lg xl:text-xl'>
-                            Discover verified service providers across multiple industries, all in one platform
+                        <p className='text-white font-medium leading-relaxed text-lg md:text-xl lg:text-2xl'>
+                            Discover verified service providers across multiple industries
                         </p>
                     </div>
                     <HeroFilters />

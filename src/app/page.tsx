@@ -1,11 +1,13 @@
-import RealEstateSection from "@/features/home/component/real-estate-section";
-import BannersSection from "@/features/home/component/section/banners-section";
+import RealEstateSection from "@/features/home/component/section/real-estate-section";
 import DiscoverAiAgentSection from "@/features/home/component/section/discover-ai-agent-section";
 import FeaturedProfessional from "@/features/home/component/section/featured-professional-section";
 import HeroSection from "@/features/home/component/section/hero-section";
 import Missions from "@/features/home/component/section/missions";
 import Footer from "@/shared/components/footer";
-import { Separator } from "@/shared/components/ui/separator";
+import AiSection from "@/features/home/component/section/ai-section";
+import Image from "next/image";
+import { home } from "@/shared/constants/images";
+import MissionAccomplishedSection from "@/features/home/component/section/mission-accomplished-section";
 
 
 export default async function Home() {
@@ -14,7 +16,9 @@ export default async function Home() {
             <HeroSection />
             <Missions />
             <RealEstateSection />
+            <AiSection />
             <FeaturedProfessional />
+            <MissionAccomplishedSection />
             {/* <BannersSection /> */}
             <DiscoverAiAgentSection />
             <Footer />
