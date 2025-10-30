@@ -53,7 +53,9 @@
 
   /* Width */
   --width-sidebar: var(--width-sidebar);
-  --width-inner-container: var(--inner-container-width);
+
+  /* Max width */
+  --max-width-inner-container: var(--width-inner-container);
 
   /* Colors */
   --color-warning: var(--warning);
@@ -131,6 +133,7 @@
 
   /* Width */
   --width-sidebar: 200px;
+  --width-inner-container: 1100px;
 
   /* Shadows */
   --shadow-sm: 
@@ -160,9 +163,6 @@
   /* Swiper */
   --swiper-pagination-bullet-inactive-color: var(--primary);
   --swiper-pagination-color: var(--primary);
-
-  /* Max width */
-  --inner-container-width: 1100px;
 }
 
 .dark {

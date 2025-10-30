@@ -6,7 +6,7 @@ import React from 'react'
 function DiscoverAiAgentSection() {
     return (
         <div className='container pt-5 pb-5'>
-            <section className='relative shadow-[0px_1px_5px_2px] shadow-primary/40 p-5 mx-auto rounded-md bg-linear-to-br from-background-light/20 via-background-light to-primary/10 grid gap-6 md:gap-6 md:max-w-[1100px] md:p-8 lg:p-10 lg:grid-cols-2 '>
+            <section className='relative shadow-[0px_1px_5px_2px] shadow-primary/40 p-5 mx-auto rounded-md bg-linear-to-br from-background-light/20 via-background-light to-primary/10 grid gap-6 md:gap-6 md:max-w-inner-container md:p-8 lg:p-10 lg:grid-cols-2 '>
                 <div className='flex flex-col gap-2 justify-center relative md:gap-3'>
                     <SectionHeading 
                         title={"Mission AI Agents"}
