@@ -42,7 +42,7 @@ export interface SectionHeadingProps {
  */
 function SectionHeading({ title, LeftIcon, description, descriptionClassName, headingClassName, wrapperClassName }: SectionHeadingProps) {
     return (
-        <div className={cn("flex flex-col gap-0.5 lg:gap-1.5", wrapperClassName)}>
+        <div className={cn("flex flex-col gap-1 lg:gap-1.5", wrapperClassName)}>
             <h2
                 className={cn(
                     'text-2xl tracking-normal font-bold font-heading grid grid-cols-[auto_1fr] items-start justify-center gap-1.5 md:text-3xl xl:text-4xl',

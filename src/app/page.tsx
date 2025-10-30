@@ -5,6 +5,7 @@ import HeroSection from "@/features/home/component/section/hero-section";
 import Missions from "@/features/home/component/section/missions";
 import Footer from "@/shared/components/footer";
 import MissionAccomplishedSection from "@/features/home/component/section/mission-accomplished-section";
+import JoinTheNetworkSection from "@/features/home/component/section/join-the-network-section";
 
 export default async function Home() {
     return (
@@ -15,6 +16,7 @@ export default async function Home() {
             <FeaturedProfessional />
             <DiscoverAiAgentSection />
             <MissionAccomplishedSection />
+            <JoinTheNetworkSection />
             <Footer />
         </div>
     )

@@ -53,6 +53,7 @@
 
   /* Width */
   --width-sidebar: var(--width-sidebar);
+  --width-inner-container: var(--inner-container-width);
 
   /* Colors */
   --color-warning: var(--warning);
@@ -76,8 +77,6 @@
 
   /* Borders */
   --border-highlight: var(--border-highlight);
-
-  /* Animation */
 }
 
 :root {
@@ -161,6 +160,9 @@
   /* Swiper */
   --swiper-pagination-bullet-inactive-color: var(--primary);
   --swiper-pagination-color: var(--primary);
+
+  /* Max width */
+  --inner-container-width: 1100px;
 }
 
 .dark {

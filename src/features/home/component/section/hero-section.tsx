@@ -8,7 +8,7 @@ import { Button } from '@/shared/components/ui/button'
 
 function HeroSection() {
     return (
-        <div className="relative py-16 overflow-hidden grid md:min-h-[750px] md:rounded-md md:shadow-sm">
+        <div className="relative py-16 overflow-hidden grid md:min-h-[750px]">
             <Image
                 src={home.heroImage}
                 alt="Hero"
@@ -22,13 +22,6 @@ function HeroSection() {
                 className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-white/98 -z-[5] pointer-events-none "
             ></div> */}
             <div className="container h-full relative w-full flex flex-col justify-center items-center gap-6">
-                {/* <div className='flex flex-col items-center gap-3 text-center'>
-                    <h1 className="text-3xl text-center font-bold font-heading  text-white text-shadow-lg text-shadow-primary/50 md:text-4xl lg:text-5xl">Find. Connect. <strong className=''>Succeed.</strong></h1>
-                    <p className='text-white text-shadow-lg text-xl text-shadow-primary/50'>
-                        Discover verified service providers across multiple industries, all in one platform
-                    </p>
-
-                </div> */}
                 <div className={cn(
                     "rounded-md px-6 py-6 flex flex-col gap-5 mx-auto w-full md:mb-0 md:py-10 md:px-10 xl:w-[60%] xl:gap-8",
                     "backdrop-blur-sm order bg-linear-to-b from-primary/50 via-primary/20 to-white/80 "

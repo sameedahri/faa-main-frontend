@@ -160,7 +160,7 @@ export function BaseCarouselCard(props: PropsWithChildren<{
     return (
         <div 
             className={cn(
-                'p-5 rounded-md border border-primary/10 my-2 w-full mx-auto md:mx-0 md:w-full bg-linear-to-b from-primary/5 via-transparent to-transparent',
+                'p-5 rounded-md border border-primary/10 my-2 w-full mx-auto md:mx-0 md:w-full bg-linear-to-br from-primary/5 via-transparent to-transparent',
                 props.className
             )}
         >
