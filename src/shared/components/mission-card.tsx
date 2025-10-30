@@ -14,7 +14,7 @@ function MissionCard(props: MissionCardProps) {
     return (
         <Link
             href="#"
-            className="flex flex-col items-center justify-center w-full gap-3 p-7 rounded-md group transition-all duration-400 border border-primary/10 bg-linear-to-br from-primary/4 via-transparent to-transparent hover:shadow-lg h-[-webkit-fill-available] relative hover:scale-105"
+            className="flex flex-col items-center justify-center w-full gap-3 p-7 rounded-md group transition-all duration-400 border border-primary/10 bg-linear-to-br from-primary/4 via-transparent to-transparent hover:shadow-lg relative hover:scale-105"
         >
             {upcoming && (
                 <Badge
