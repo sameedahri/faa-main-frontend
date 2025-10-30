@@ -14,9 +14,13 @@ function AiSection() {
                 title: "Mission AI",
                 description: "Explore cutting-edge AI agents designed to revolutionize your workflow. From intelligent automation to smart assistance, find the perfect AI solution."
             }}
-            viewMoreLink="#"
             cardsList={AI_SECTION_CARDS}
             switchContent={true}
+            viewMoreProps={{
+                href: "#",
+                children: "Explore All AI Agents",
+                className: "w-auto self-start"
+            }}
         />
     )
 }
@@ -46,6 +50,6 @@ const AI_SECTION_CARDS = [
         Icon: Brain,
         href: "#",
     },
-] as const 
+] as const
 
 export default AiSection

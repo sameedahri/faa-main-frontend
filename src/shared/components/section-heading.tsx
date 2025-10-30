@@ -11,7 +11,7 @@ export interface SectionHeadingProps {
     /**
      * Optional description to display
      */
-    description?: string
+    description?: React.ReactNode
 
     /**
      * Optional tailwind classes to apply to the description
@@ -26,7 +26,7 @@ export interface SectionHeadingProps {
     /**
      * Optional heading to display
      */
-    title: string
+    title: React.ReactNode
 
     wrapperClassName?: string
 }
@@ -42,10 +42,10 @@ export interface SectionHeadingProps {
  */
 function SectionHeading({ title, LeftIcon, description, descriptionClassName, headingClassName, wrapperClassName }: SectionHeadingProps) {
     return (
-        <div className={cn("flex flex-col gap-0.5 lg:gap-1", wrapperClassName)}>
+        <div className={cn("flex flex-col gap-0.5 lg:gap-1.5", wrapperClassName)}>
             <h2
                 className={cn(
-                    'text-2xl font-bold font-heading grid grid-cols-[auto_1fr] items-start justify-center gap-1.5 md:text-3xl xl:text-4xl',
+                    'text-2xl tracking-normal font-bold font-heading grid grid-cols-[auto_1fr] items-start justify-center gap-1.5 md:text-3xl xl:text-4xl',
                     headingClassName
                 )}
             >

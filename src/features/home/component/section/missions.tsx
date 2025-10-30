@@ -10,7 +10,7 @@ function Missions() {
         <div className='container flex flex-col gap-6 relative md:gap-8'>
             <div className='flex w-full justify-center'>
                 <SectionHeading
-                    title="Choose Your Mission"
+                    title={<>Choose Your Mission</>}
                     description='Discover verified professionals across multiple industries, all in one platform'
                     descriptionClassName='text-center'
                     wrapperClassName='items-center'
@@ -28,7 +28,7 @@ function Missions() {
             </div>
             <ViewMoreButton  
                 href='#'
-                className='self-center'
+                className='self-center -mt-3'
             />
         </div>
     )

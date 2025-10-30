@@ -18,7 +18,7 @@ function ViewMoreButton({
         <Button
             variant='ghost'
             asChild
-            className={cn('underline underline-offset-4 decoration-muted-foreground/40 w-[130px] text-muted-foreground hover:text-foreground group select-none',
+            className={cn('underline underline-offset-4 decoration-primary/40 w-[130px] text-primary hover:text-primary group select-none',
                 className
             )}
             {...rest}

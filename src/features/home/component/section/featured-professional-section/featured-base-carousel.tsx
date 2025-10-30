@@ -111,7 +111,7 @@ export function FeaturedBaseCarousel(props: FeaturedBaseCarouselProps) {
             </div>
             <ViewMoreButton 
                 href='#' 
-                className='mx-auto flex mt-4'
+                className='mx-auto flex mt-2'
             />
         </div>
     )
@@ -151,7 +151,7 @@ export function BaseCarouselCard(props: PropsWithChildren<{
     return (
         <div 
             className={cn(
-                'p-5 rounded-md shadow-sm my-2 w-full mx-auto md:mx-0 md:w-full bg-linear-to-b from-primary/5 via-transparent to-transparent',
+                'p-5 rounded-md border border-primary/10 my-2 w-full mx-auto md:mx-0 md:w-full bg-linear-to-b from-primary/5 via-transparent to-transparent',
                 props.className
             )}
         >

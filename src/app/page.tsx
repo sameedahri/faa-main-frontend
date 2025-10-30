@@ -8,6 +8,7 @@ import AiSection from "@/features/home/component/section/ai-section";
 import Image from "next/image";
 import { home } from "@/shared/constants/images";
 import MissionAccomplishedSection from "@/features/home/component/section/mission-accomplished-section";
+import { Separator } from "@/shared/components/ui/separator";
 
 
 export default async function Home() {
@@ -15,12 +16,18 @@ export default async function Home() {
         <div className="flex flex-col gap-10 md:gap-14 xl:gap-20">
             <HeroSection />
             <Missions />
+            {/* <Separator className="bg-gray-200 container data-[orientation=horizontal]:w-10/12 " /> */}
             <RealEstateSection />
-            <AiSection />
+            {/* <Separator className="bg-gray-200 container data-[orientation=horizontal]:w-10/12 " /> */}
+            {/* <AiSection /> */}
+            {/* <Separator className="bg-gray-200 container data-[orientation=horizontal]:w-10/12 " /> */}
             <FeaturedProfessional />
-            <MissionAccomplishedSection />
-            {/* <BannersSection /> */}
+            {/* <Separator className="bg-gray-200 container data-[orientation=horizontal]:w-10/12 " /> */}
             <DiscoverAiAgentSection />
+
+            <MissionAccomplishedSection />
+            {/* <Separator className="bg-gray-200 container data-[orientation=horizontal]:w-10/12 " /> */}
+            {/* <BannersSection /> */}
             <Footer />
         </div>
     )

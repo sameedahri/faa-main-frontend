@@ -1,12 +1,12 @@
 import ViewMoreButton from '@/shared/components/buttons/view-more-button'
 import SectionHeading from '@/shared/components/section-heading'
 import { cn } from '@/shared/lib/utils'
-import { Icon } from '@/shared/types/icon.type'
 import { Route } from 'next'
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 import React, { ComponentProps } from 'react'
 import { BaseCard } from './base-card'
+import { ArrowRight } from 'lucide-react'
 
 interface BaseImageContentSectionProps {
     /**
@@ -23,7 +23,11 @@ interface BaseImageContentSectionProps {
     /**
      * The link to the view more page
      */
-    viewMoreLink?: Route
+    viewMoreProps: {
+        href: Route
+        className?: string
+        children?: React.ReactNode
+    }
     /**
      * If true, the content will be switched between the cards and the image
      */
@@ -46,27 +50,45 @@ export function BaseImageContentSection(props: BaseImageContentSectionProps) {
                     <SectionHeading
                         {...props.sectionHeading}
                     />
-                    <div className="grid gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+                    <div className="grid gap-5 grid-cols-1">
                         {props.cardsList.map((card) => (
-                            <BaseCard
+                            <Link
                                 key={card.title}
-                                {...card}
-                            />
+                                href={card.href}
+                                className={cn(
+                                    'p-5 shadow-s border border-primary/10 rounded-md justify-between flex gap-5 items-center bg-linear-to-br from-primary/4 via-transparent to-transparent bg-non',
+                                    "transition-all hover:scale-105 duration-400 group hover:[&>svg]:text-primary hover:shadow-lg",
+                                    card.className
+                                )}
+                            >
+                                <div className='flex gap-5 items-center'>
+                                    <div className='bg-primary/5 p-3 rounded-md  border-transparent aspect-square transition-all duration-200 flex items-center justify-center [&>svg]:text-primary/60 [&>svg]:transition-all [&>svg]:duration-200 [&>svg]:size-7 [&>svg]:stroke-[1.7] group-hover:[&>svg]:text-primary group-hover:border-primary/80'>
+                                        <card.Icon />
+                                    </div>
+                                    <div className='flex flex-col gap-0'>
+                                        <h1 className='text-lg font-medium text-foreground/90 group-hover:text-primary font-heading lg:text-xl'>{card.title}</h1>
+                                        <p className='text-muted-foreground text-sm leading-relaxed lg:text-base'>
+                                            {card.description}
+                                        </p>
+                                    </div>
+                                </div>
+                                <ArrowRight className='size-5 transition-all duration-400 stroke-2 text-muted-foreground/50' />
+                            </Link>
                         ))}
                     </div>
                     <ViewMoreButton
-                        href={props.viewMoreLink ?? "#"}
-                        className='-mt-2'
+                        {...props.viewMoreProps}
+                        className={cn('-mt-3', props.viewMoreProps.className)}
                     />
                 </div>
                 <div className={cn(
-                    "rounded-md overflow-hidden shadow-sm hidden w-full h-full max-h-[550px] lg:block",
+                    "rounded-md overflow-hidden shadow-sm p-5 hidden w-full h-full lg:block",
                     props.switchContent && "lg:order-1"
                 )}>
                     <Image
                         src={props.image.path}
                         alt={props.image.alt}
-                        className='w-full h-full object-cover '
+                        className='w-full h-full object-cover rounded'
                         placeholder='blur'
                     />
                 </div>

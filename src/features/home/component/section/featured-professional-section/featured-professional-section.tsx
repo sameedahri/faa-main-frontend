@@ -25,7 +25,7 @@ function FeaturedProfessional() {
         // TODO: Remove this pb-40 after implementing
         <div className='container flex flex-col gap-6 pt-5 md:gap-6'>
             <SectionHeading
-                title={`Featured ${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}`}
+                title={<>Featured {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}</>}
                 description="Discover verified professionals across multiple industries, all in one platform"
                 wrapperClassName='text-center items-center'
             />
@@ -39,14 +39,14 @@ function FeaturedProfessional() {
                 >
                     <TabsList className={cn(
                         'items-center justify-center self-center',
-                        'bg-background',
+                        'bg-background-dark',
                     )}>
                         {Object.values(FEATURED_PROFESSIONALS_TAB).map((tab) => (
                             <TabsTrigger
                                 key={tab.value}
                                 value={tab.value}
                                 className={cn(
-                                    'data-[state=active]:text-white data-[state=active]:bg-primary/70 text-muted-foreground/90',
+                                    'data-[state=active]:text-foreground text-foreground/100',
                                     {
                                         "hidden md:block": tab.value === FEATURED_PROFESSIONALS_TAB.EVENTS.value,
                                     }
