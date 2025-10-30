@@ -157,6 +157,10 @@
 
   /* borders */
   --border-highlight: oklch(1 0 0);
+
+  /* Swiper */
+  --swiper-pagination-bullet-inactive-color: var(--primary);
+  --swiper-pagination-color: var(--primary);
 }
 
 .dark {

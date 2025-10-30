@@ -5,7 +5,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Route } from 'next';
 import Link from 'next/link';
 import React, { PropsWithChildren, useRef, useState } from 'react'
-import { Keyboard, Mousewheel, Navigation } from 'swiper/modules';
+import { Keyboard, Mousewheel, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperProps, SwiperSlide, SwiperSlideProps } from 'swiper/react';
 import { cn } from '@/shared/lib/utils';
 import type { Swiper as SwiperType } from 'swiper';
@@ -38,7 +38,7 @@ export function FeaturedBaseCarousel(props: FeaturedBaseCarouselProps) {
                 <CarouselFadeOverlay isBeginning={isBeginning} isEnd={isEnd} />
                 
                 <Swiper
-                    modules={[Mousewheel, Keyboard, Navigation]}
+                    modules={[Mousewheel, Keyboard, Navigation, Pagination]}
                     keyboard
                     mousewheel={{
                         forceToAxis: true,
@@ -52,27 +52,36 @@ export function FeaturedBaseCarousel(props: FeaturedBaseCarouselProps) {
                         nextEl: nextButtonRef.current,
                         prevEl: prevButtonRef.current,
                     }}
+                    pagination={{
+                        // el: paginationRef.current,
+                        clickable: true,
+                        enabled: true,
+                        type: 'bullets',
+                    }}
                     breakpoints={{
                         200: {
                             slidesPerView: 1,
+                            pagination: true,
                         },
                         320: {
                             slidesPerView: 1,
                         },
                         768: {
                             slidesPerView: "auto",
+
                         },
                         1024: {
                             slidesPerView: "auto",
-                            allowTouchMove: false,
                         },
                         1280: {
                             slidesPerView: "auto",
                             spaceBetween: 20,
                             slidesPerGroup: 2,
                             allowTouchMove: false,
+                            pagination: false,
                         },
                     }}
+                    className='!pb-9 xl:!pb-0'
                     onInit={(swiper) => {
                         setIsInitialized(true);
                         handleSlideChange(swiper);
@@ -94,7 +103,7 @@ export function FeaturedBaseCarousel(props: FeaturedBaseCarouselProps) {
                     ref={prevButtonRef}
                     variant={"outline"}
                     size={"icon"}
-                    className={"size-10 rounded-full absolute z-20 -left-3 top-1/2 -translate-y-1/2 disabled:hidden"}
+                    className={"hidden size-10 rounded-full absolute z-20 -left-2 top-1/2 -translate-y-1/2 disabled:hidden xl:flex"}
                 >
                     <ChevronLeft />
                 </Button>}
@@ -102,7 +111,7 @@ export function FeaturedBaseCarousel(props: FeaturedBaseCarouselProps) {
                     ref={nextButtonRef}
                     variant={"outline"}
                     size={"icon"}
-                    className="size-10 rounded-full absolute -right-3 z-20 top-1/2 -translate-y-1/2 disabled:hidden"
+                    className="hidden size-10 rounded-full absolute -right-2 z-20 top-1/2 -translate-y-1/2 disabled:hidden xl:flex"
                     disabled={isEnd}
                 >
                     <ChevronRight />
