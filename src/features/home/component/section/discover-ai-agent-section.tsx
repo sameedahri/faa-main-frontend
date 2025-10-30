@@ -9,7 +9,7 @@ function DiscoverAiAgentSection() {
             <section className='relative shadow-[0px_1px_5px_2px] shadow-primary/40 p-5 mx-auto rounded-md bg-linear-to-br from-background-light/20 via-background-light to-primary/10 grid gap-6 md:gap-6 md:max-w-[1100px] md:p-8 lg:p-10 lg:grid-cols-2 '>
                 <div className='flex flex-col gap-2 justify-center relative md:gap-3'>
                     <SectionHeading 
-                        title={<>Discover AI Agents</>}
+                        title={"Mission AI Agents"}
                         wrapperClassName='text-primary'
                     />
                     <p className='text-base text-muted-foreground leading-relaxed lg:text-lg'>

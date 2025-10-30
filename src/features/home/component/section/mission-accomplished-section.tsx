@@ -1,11 +1,12 @@
 import SectionHeading from '@/shared/components/section-heading'
 import { IconClock24 } from '@tabler/icons-react'
-import { Award, Badge, Clock, Equal, EqualApproximately, TrendingUp, User2, VerifiedIcon, Zap } from 'lucide-react'
+import { ArrowRight, Award, Badge, Clock, Equal, EqualApproximately, TrendingUp, User2, VerifiedIcon, Zap } from 'lucide-react'
 import { BaseCard } from './featured-professional-section/base-card'
 import { Route } from 'next'
 import { Icon } from '@/shared/types/icon.type'
 import Link from 'next/link'
 import { cn } from '@/shared/lib/utils'
+import ViewMoreButton from '@/shared/components/buttons/view-more-button'
 
 function MissionAccomplishedSection() {
     return (
@@ -35,6 +36,11 @@ function MissionAccomplishedSection() {
                     </Link>
                 ))}
             </div>
+            <ViewMoreButton
+                href='#'
+                className='self-center -mt-3 w-auto'
+                children={"Discover More"}
+            />
         </div>
     )
 }

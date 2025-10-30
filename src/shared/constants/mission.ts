@@ -62,7 +62,7 @@ export const missions = [
     },
     {
         image: AI,
-        title: "AI Agents",
+        title: "AI Services",
         upcoming: true,
     },
     {

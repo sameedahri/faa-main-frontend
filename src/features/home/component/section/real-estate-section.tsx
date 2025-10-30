@@ -11,7 +11,7 @@ function RealEstateSection() {
                 alt: "Real Estate Section"
             }}
             sectionHeading={{
-                title: <>Real Estate Excellence</>,
+                title: "Mission Real Estate",
                 description: "Your gateway to premier real estate market. Find agents, agencies, properties, and projects all in one place."
             }}
             viewMoreProps={{
