@@ -11,7 +11,7 @@ function Missions() {
             <div className='flex w-full justify-center'>
                 <SectionHeading
                     title={<>Choose Your Mission</>}
-                    description='Discover verified professionals across multiple industries, all in one platform'
+                    // description='Discover verified professionals across multiple industries, all in one platform'
                     descriptionClassName='text-center'
                     wrapperClassName='items-center'
                 />

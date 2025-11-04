@@ -1,4 +1,4 @@
-import heroImage from "@/assets/images/home-page/hero.jpeg";
+import heroImage from "@/assets/images/home-page/hero.jpg";
 import bannerImage from "@/assets/images/home-page/explore-slider-image.jpeg";
 import realEstateSectionImage from "@/assets/images/home-page/real-estate-section.jpeg";
 import realEstateSvg from "@/assets/images/home-page/real-estate.svg";
@@ -11,5 +11,5 @@ export {
     realEstateSectionImage,
     realEstateSvg,
     realEstateAgencySvg,
-    missionAiSection
+    missionAiSection,
 }

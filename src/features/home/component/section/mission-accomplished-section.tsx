@@ -13,9 +13,9 @@ function MissionAccomplishedSection() {
         <div className='container flex flex-col gap-6 relative pt-5 md:gap-8'>
             <SectionHeading
                 title={<>Mission Accomplished Every Time</>}
-                description="From real estate to legal, finance to design — we connect you with verified agents across every field. Fast, simple, and trustworthy — that's our mission."
-                descriptionClassName='max-w-[100ch]'
-                wrapperClassName='text-center items-center'
+                // description="From real estate to legal, finance to design — we connect you with verified agents across every field. Fast, simple, and trustworthy — that's our mission."
+                descriptionClassName='max-w-[70ch]'
+                wrapperClassName='md:text-center md:items-center'
             />
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
                 {MISSION_ACCOMPLISHED_CARDS_CONTENT.map((card) => (
@@ -23,12 +23,12 @@ function MissionAccomplishedSection() {
                         key={card.title}
                         href={card.href}
                         className={cn(
-                            'px-5 py-8 border border-primary/13 rounded-md flex flex-col items-center text-center gap-4 bg-linear-to-b from-primary/4 via-transparent to-transparent',
+                            'px-5 py-8 border border-primary/13 rounded-md flex flex-col gap-4 bg-linear-to-b from-primary/4 via-transparent to-transparent',
                         )}
                     >
                         <card.Icon className='size-10 stroke-[1.7] duration-400 transition-all text-primary/80 lg:size-12' />
                         <div className='flex flex-col gap-0.5 lg:gap-1.5'>
-                            <h1 className='text-lg font-medium text-foreground/90 lg:text-xl'>{card.title}</h1>
+                            <h1 className='text-lg font-semibold text-foreground/90 lg:text-xl'>{card.title}</h1>
                             <p className='text-muted-foreground text-sm leading-relaxed lg:text-base'>
                                 {card.description}
                             </p>
@@ -38,7 +38,7 @@ function MissionAccomplishedSection() {
             </div>
             <ViewMoreButton
                 href='#'
-                className='self-center -mt-3 w-auto'
+                className='-mt-3 w-auto self-start md:self-center'
                 children={"Discover More"}
             />
         </div>

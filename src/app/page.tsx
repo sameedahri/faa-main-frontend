@@ -9,15 +9,17 @@ import JoinTheNetworkSection from "@/features/home/component/section/join-the-ne
 
 export default async function Home() {
     return (
-        <div className="flex flex-col gap-10 md:gap-14 xl:gap-20">
+        <div className=" flex flex-col gap-10 md:gap-12 xl:gap-16">
             <HeroSection />
-            <Missions />
-            <RealEstateSection />
-            <FeaturedProfessional />
-            <DiscoverAiAgentSection />
-            <MissionAccomplishedSection />
-            <JoinTheNetworkSection />
-            <Footer />
+            <div className="flex flex-col gap-10 md:gap-14 xl:gap-24">
+                <Missions />
+                <RealEstateSection />
+                <FeaturedProfessional />
+                <DiscoverAiAgentSection />
+                <MissionAccomplishedSection />
+                <JoinTheNetworkSection />
+                <Footer />
+            </div>
         </div>
     )
 }

@@ -5,10 +5,12 @@ import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/in
 import { MapPin, Search } from 'lucide-react'
 import { NativeSelect, NativeSelectOption } from '@/shared/components/ui/native-select'
 import { Button } from '@/shared/components/ui/button'
+import { PAGE_ROUTES } from '@/shared/constants/page-routes'
+import Link from 'next/link'
 
 function HeroSection() {
     return (
-        <div className="relative py-16 overflow-hidden grid md:min-h-[750px]">
+        <div className="relative py-16 overflow-hidden grid bg-linear-to-r from-black/80 via-black/50 to-black/10 md:min-h-[650px]">
             <Image
                 src={home.heroImage}
                 alt="Hero"
@@ -17,42 +19,18 @@ function HeroSection() {
                 priority
                 placeholder="blur"
             />
-            {/* Fade gradient overlay */}
-            {/* <div 
-                className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-white/98 -z-[5] pointer-events-none "
-            ></div> */}
             <div className="container h-full relative w-full flex flex-col justify-center items-center gap-6">
                 <div className={cn(
-                    "rounded-md px-6 py-6 flex flex-col gap-5 mx-auto w-full md:mb-0 md:py-10 md:px-10 xl:w-[60%] xl:gap-8",
-                    "backdrop-blur-sm order bg-linear-to-b from-primary/50 via-primary/20 to-white/80 "
+                    "rounded-md px-6 border border-border/5 py-6 flex flex-col gap-5 mx-auto w-full md:mb-0 md:py-10 md:px-10 xl:max-w-[850px] xl:gap-8",
+                    "backdrop-blur-sm order"
                 )}>
                     <div className='flex flex-col items-center gap-1 text-center'>
-                        <h1 className="text-3xl text-center font-bold font-heading  text-white text-shadow-lg text-shadow-primary/50 md:text-4xl lg:text-5xl">Find. Connect. <strong className=''>Succeed.</strong></h1>
-                        <p className='text-white font-medium leading-relaxed text-lg text-shadow-lg text-shadow-primary/50 md:text-xl lg:text-2xl'>
+                        <h1 className="text-3xl text-center font-bold font-heading  text-white text-shadow-lg  md:text-4xl lg:text-6xl">Find. Connect. <strong className=''>Succeed.</strong></h1>
+                        <p className='text-white font-medium leading-relaxed text-lg text-shadow-lg  md:text-xl lg:text-2xl'>
                             Discover verified service providers across multiple industries
                         </p>
                     </div>
                     <HeroFilters />
-                    {/* <Tabs defaultValue="agents" className='items-center gap-5'>
-                        <TabsList className='bg-background-light/60 backdrop-blur-2xl'>
-                            <TabsTrigger value="agents">Agents</TabsTrigger>
-                            <TabsTrigger value="agencies">Agencies</TabsTrigger>
-                            <TabsTrigger value="services">Services</TabsTrigger>
-                            <TabsTrigger value="events">Events</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="agents" className='w-full'>
-                            <HeroFilters />
-                        </TabsContent>
-                        <TabsContent value="agencies" className='w-full'>
-                            <HeroFilters />
-                        </TabsContent>
-                        <TabsContent value="services" className='w-full'>
-                            <HeroFilters />
-                        </TabsContent>
-                        <TabsContent value="events" className='w-full'>
-                            <HeroFilters />
-                        </TabsContent>
-                    </Tabs> */}
                 </div>
             </div>
         </div>
@@ -92,9 +70,13 @@ function HeroFilters() {
                     <NativeSelectOption value={"IT & TECH"}>IT & Tech</NativeSelectOption>
                     <NativeSelectOption value={"Mortgage and Finance"}>Mortgage and Finance</NativeSelectOption>
                 </NativeSelect>
-                <Button size={"sm"} className='h-11 w-full lg:w-full'>
-                    <Search />
-                    Search
+                <Button
+                    asChild
+                    size={"sm"} className='h-11 w-full text-base font-semibold lg:w-full'>
+                    <Link href={PAGE_ROUTES.SEARCH}>
+                        <Search className='size-4.5' />
+                        Search
+                    </Link>
                 </Button>
             </div>
             {/* <div className='flex flex-wrap gap-3 justify-center'>
@@ -134,7 +116,7 @@ const commonServices = [
         title: "Marketing Services",
         href: "#"
     },
-    
+
     {
         title: "Consultants",
         href: "#"

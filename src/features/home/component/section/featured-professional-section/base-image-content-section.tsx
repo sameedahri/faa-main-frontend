@@ -42,7 +42,7 @@ interface BaseImageContentSectionProps {
 export function BaseImageContentSection(props: BaseImageContentSectionProps) {
     return (
         <div className='py-5 relative'>
-            <div className='container grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center'>
+            <div className='relative container grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center'>
                 <div className={cn(
                     "flex flex-col gap-6 relative md:gap-8",
                     props.switchContent && "lg:order-2"
@@ -82,7 +82,7 @@ export function BaseImageContentSection(props: BaseImageContentSectionProps) {
                     />
                 </div>
                 <div className={cn(
-                    "rounded-md overflow-hidden shadow-sm p-5 hidden w-full h-full lg:block",
+                    "rounded-md overflow-hidden shadow-sm hidden w-full h-full lg:block",
                     props.switchContent && "lg:order-1"
                 )}>
                     <Image

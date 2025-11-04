@@ -34,7 +34,7 @@ function MissionCard(props: MissionCardProps) {
                     className="opacity-80 group-hover:opacity-100 transition-all ease-out duration-700 object-contain w-[40px] h-[40px] md:w-[60px] md:h-[60px]"
                 />
             {/* </div> */}
-            <h3 className='font-medium text-foreground/70 group-hover:text-foreground tracking-wide text-base transition-colors duration-700 md:text-lg md:text-center'>{title}</h3>
+            <h3 className='font-medium text-foreground/90 group-hover:text-foreground tracking-wide text-base transition-colors duration-700 md:text-lg md:text-center'>{title}</h3>
             <ArrowRight className='size-4 ml-auto text-muted-foreground/50 group-hover:text-primary md:hidden' />  
 
         </Link>

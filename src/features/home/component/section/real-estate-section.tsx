@@ -12,7 +12,7 @@ function RealEstateSection() {
             }}
             sectionHeading={{
                 title: "Mission Real Estate",
-                description: "Your gateway to premier real estate market. Find agents, agencies, properties, and projects all in one place."
+                // description: "Your gateway to premier real estate market. Find agents, agencies, properties, and projects all in one place."
             }}
             viewMoreProps={{
                 href: "#",

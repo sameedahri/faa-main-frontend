@@ -26,7 +26,7 @@ function FeaturedProfessional() {
         <div className='container flex flex-col gap-6 pt-5 md:gap-6'>
             <SectionHeading
                 title={<>Featured {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}</>}
-                description="Discover verified professionals across multiple industries, all in one platform"
+                // description="Discover verified professionals across multiple industries, all in one platform"
                 wrapperClassName='text-center items-center'
             />
             <Suspense
