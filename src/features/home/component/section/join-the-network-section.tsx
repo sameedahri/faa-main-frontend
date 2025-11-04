@@ -5,12 +5,12 @@ import React from 'react'
 
 function JoinTheNetworkSection() {
     return (
-        <div className='container border border-primary/10 flex flex-col gap-10 max-w-inner-container items-center px-5 py-10 rounded-md bg-linear-to-t from-primary/6 via-primary/2 to-white md:py-16 md:px-10'>
+        <div className='mx-auto border border-primary/10 flex flex-col gap-10 max-w-inner-container items-center px-5 py-10 rounded-md bg-linear-to-t from-primary/6 via-primary/2 to-white md:py-16 md:px-10'>
             <SectionHeading 
                 title="Your Mission Awaits: Join the Network"
                 // description="Join the UAE's fastest-growing network of verified professionals. Get more clients, build your reputation, and scale your business—all in one place."
                 wrapperClassName='text-center items-center'
-                descriptionClassName='max-w-[80ch]'
+                // descriptionClassName='max-w-[80ch]'
             />
             <div className='grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-10'>
                 {JOIN_THE_NETWORK_CARDS_CONTENT.map((card) => (

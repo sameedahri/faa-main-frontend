@@ -41,15 +41,17 @@ interface BaseImageContentSectionProps {
 
 export function BaseImageContentSection(props: BaseImageContentSectionProps) {
     return (
-        <div className='py-5 relative'>
+        <div className='py-5 relative flex flex-col gap-8'>
+            <div className="container">
+                <SectionHeading
+                    {...props.sectionHeading}
+                />
+            </div>
             <div className='relative container grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center'>
                 <div className={cn(
                     "flex flex-col gap-6 relative md:gap-8",
                     props.switchContent && "lg:order-2"
                 )}>
-                    <SectionHeading
-                        {...props.sectionHeading}
-                    />
                     <div className="grid gap-5 grid-cols-1">
                         {props.cardsList.map((card) => (
                             <Link
