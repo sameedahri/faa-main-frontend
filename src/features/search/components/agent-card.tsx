@@ -9,7 +9,7 @@ import Image from 'next/image'
 function AgentCard() {
     return (
         <div className={cn(
-            'p-3 rounded-md border border-primary/10 bg-linear-to-br from-primary/5 cursor-pointer grid grid-cols-[150px_1fr] gap-5',
+            'p-4 rounded-md bg-background-light  cursor-pointer grid grid-cols-[130px_1fr] gap-5',
             'transition-all duration-300 hover:shadow-lg'
 
         )}>
@@ -21,16 +21,16 @@ function AgentCard() {
                     placeholder='blur'
                 />
             </div>
-            <div className='flex flex-col gap-2 justify-between'>
+            <div className='flex flex-col gap-4'>
                 <div className="flex flex-col gap-1">
                     <h2 className='text-lg font-semibold'>John Smith</h2>
-                    {/* <p>
-                        Estate Agent, Legal Services
-                    </p> */}
-                    <div className='flex gap-2'>
+                    <p className='text-muted-foreground text-sm'>
+                        Estate Agent | Real Estate Broker
+                    </p>
+                    {/* <div className='flex gap-2'>
                         <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>Estate Agent</Badge>
                         <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>Legal Services</Badge>
-                    </div>
+                    </div> */}
                 </div>
                 {/* Location */}
                 <div className="flex gap-5">
@@ -44,30 +44,36 @@ function AgentCard() {
                         <span>4.5 <small>(100)</small></span>
                     </div>
                 </div>
-                <div className="flex gap-2">
-                    <Button
-                        variant={"outline"}
-                        className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
-                        size={"sm"}
-                    >
-                        <Mail className='w-4 h-4' />
-                        Email
-                    </Button>
-                    <Button
-                        variant={"outline"}
-                        className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
-                        size={"sm"}
-                    >
-                        <Phone className='w-4 h-4' />
-                        Call
-                    </Button>
-                    <Button
-                        variant={"soft-success"}
-                        size={"sm"}
-                    >
-                        <IconBrandWhatsapp className='w-4 h-4' />
-                        Whatsapp
-                    </Button>
+                <div className='flex justify-between mt-auto'>
+                    <div className='flex gap-2'>
+                        <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>Estate Agent</Badge>
+                        <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>Legal Services</Badge>
+                    </div>
+                    <div className="flex gap-2">
+                        <Button
+                            variant={"outline"}
+                            className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
+                            size={"icon"}
+                        >
+                            <Mail className='w-4 h-4' />
+                            {/* Email */}
+                        </Button>
+                        <Button
+                            variant={"outline"}
+                            className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
+                            size={"icon"}
+                        >
+                            <Phone className='w-4 h-4' />
+                            {/* Call */}
+                        </Button>
+                        <Button
+                            variant={"soft-success"}
+                            size={"icon"}
+                        >
+                            <IconBrandWhatsapp className='w-4 h-4' />
+                            {/* Whatsapp */}
+                        </Button>
+                    </div>
                 </div>
             </div>
         </div>

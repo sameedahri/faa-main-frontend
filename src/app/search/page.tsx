@@ -1,5 +1,6 @@
 import AgentCard from "@/features/search/components/agent-card"
 import FiltersNav from "@/features/search/components/filters-nav"
+import FiltersSidebar from "@/features/search/components/filters-sidebar"
 import Footer from "@/shared/components/footer"
 import { Label } from "@/shared/components/ui/label"
 import { Tabs, TabsContent } from "@/shared/components/ui/tabs"
@@ -9,15 +10,15 @@ import { PropsWithChildren } from "react"
 export default function SearchPage() {
     return (
         <Tabs defaultValue="agents">
-            <div className="pb-10 relative flex flex-col gap-7">
+            <div className="pb-10 relative flex flex-col gap-7 bg-background">
                 <FiltersNav />
-                <div className="container">
-                    <h1 className="text-2xl font-semibold">Search Results <span className="text-muted-foreground text-base">(12)</span></h1>
-                </div>
-                <div className="container grid grid-cols-[1fr_30%] items-start gap-5 relative">
+               
+                <div className="container grid grid-cols-[300px_1fr] items-start gap-7 relative">
+                    <FiltersSidebar />
                     <div className="grid grid-cols-1 gap-5">
+                        <h1 className="text-2xl font-semibold">Search Results <span className="text-muted-foreground text-base">(12)</span></h1>
                         <TabsContent value="agents">
-                            <div className="grid grid-cols-1 gap-5">
+                            <div className="grid grid-cols-1 gap-7">
                                 {Array.from({ length: 10 }).map((_, index) => (
                                     <AgentCard key={index} />
                                 ))}
@@ -45,33 +46,10 @@ export default function SearchPage() {
                             </div>
                         </TabsContent>
                     </div>
-                    <div className="flex flex-col gap-5">
-                        <div className="bg-background p-10 min-h-[400px] rounded-md">
-
-                        </div>
-                        <div className="bg-background p-10 min-h-[200px] rounded-md">
-
-                        </div>
-                        <div className="bg-background p-10 min-h-[300px] rounded-md">
-
-                        </div>
-                    </div>
                 </div>
             </div>
             <Footer />
         </Tabs>
-    )
-}
-
-
-
-
-function SearchFilterInputGroup(props: PropsWithChildren<{ label: string }>) {
-    return (
-        <div className="flex flex-col gap-2">
-            <Label>{props.label}</Label>
-            {props.children}
-        </div>
     )
 }
 
@@ -133,3 +111,12 @@ const SERVICE_TYPES_OPTIONS = [
     { value: "Events", label: "Events" },
     { value: "AI Agents", label: "AI Agents" },
 ] as const;
+
+function SearchFilterInputGroup(props: PropsWithChildren<{ label: string }>) {
+    return (
+        <div className="flex flex-col gap-2">
+            <Label>{props.label}</Label>
+            {props.children}
+        </div>
+    )
+}

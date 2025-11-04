@@ -11,15 +11,15 @@ const tabTriggerClassName = "rounded-sm h-full data-[state=active]:bg-primary/10
 
 function FiltersNav() {
     return (
-        <div className="py-5 border-b">
-            <div className="container grid grid-cols-[1fr_1fr_1fr_auto] gap-5">
-                <TabsList className="h-11 p-1 bg-background-light shadow-none border rounded-md w-full">
+        <div className="py-5 border-b bg-background-light">
+            <div className="container grid grid-cols-3 gap-5">
+                <TabsList className="h-11 p-1 bg-background-light shadow-sm border rounded-md w-full">
                     <TabsTrigger value="agents" className={tabTriggerClassName}>Agents</TabsTrigger>
                     <TabsTrigger value="agencies" className={tabTriggerClassName}>Agencies</TabsTrigger>
                     <TabsTrigger value="services" className={tabTriggerClassName}>Services</TabsTrigger>
                     <TabsTrigger value="events" className={tabTriggerClassName}>Events</TabsTrigger>
                 </TabsList>
-                <InputGroup className="shadow-s">
+                <InputGroup className="shadow-sm">
                     <InputGroupAddon>
                         <Search />
                     </InputGroupAddon>
@@ -27,7 +27,7 @@ function FiltersNav() {
                         placeholder='Search by specialty or name'
                     />
                 </InputGroup>
-                <InputGroup className="shadow-s">
+                <InputGroup className="shadow-sm">
                     <InputGroupAddon>
                         <MapPin />
                     </InputGroupAddon>
@@ -35,78 +35,6 @@ function FiltersNav() {
                         placeholder='Location'
                     />
                 </InputGroup>
-                <Popover>
-                    <PopoverTrigger asChild>
-                        <Button
-                            size={"sm"}
-                            className='h-11 text-base border border-input font-semibold w-[120px]'
-                            variant={"outline"}
-                        >
-                            <Filter className='size-4.5' />
-                            Filters
-                        </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="flex flex-col gap-6 p-5 mt-1" align="end">
-                        <SearchFilterInputGroup label="Industry">
-                            <NativeSelect className='bg-white w-full'>
-                                {INDUSTRIES_OPTIONS.map((option) => (
-                                    <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>
-                                ))}
-                            </NativeSelect>
-                        </SearchFilterInputGroup>
-                        <SearchFilterInputGroup label="Emirates">
-                            <NativeSelect>
-                                {EMIRATES_OPTIONS.map((option) => (
-                                    <NativeSelectOption
-                                        key={option.value}
-                                        value={option.value}
-                                    >
-                                        {option.label}
-                                    </NativeSelectOption>
-                                ))}
-                            </NativeSelect>
-                        </SearchFilterInputGroup>
-                        <SearchFilterInputGroup label="Languages">
-                            <NativeSelect>
-                                {LANGUAGES_OPTIONS.map((option) => (
-                                    <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>
-                                ))}
-                            </NativeSelect>
-                        </SearchFilterInputGroup>
-                        <SearchFilterInputGroup label="Rating">
-                            <NativeSelect>
-                                {RATING_OPTIONS.map((option) => (
-                                    <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>
-                                ))}
-                            </NativeSelect>
-                        </SearchFilterInputGroup>
-                        <SearchFilterInputGroup label="Availability">
-                            <NativeSelect>
-                                {AVAILABILITY_OPTIONS.map((option) => (
-                                    <NativeSelectOption key={option.value} value={option.value}>{option.label}</NativeSelectOption>
-                                ))}
-                            </NativeSelect>
-                        </SearchFilterInputGroup>
-                        <div className="grid grid-cols-2 gap-3">
-                            <Button
-                                size={"sm"}
-                                className='h-9 border'
-                                variant={"outline-primary"}
-                            >
-                                Reset
-                            </Button>
-                            <PopoverClose asChild>
-                                <Button
-                                    size={"sm"}
-                                    className='h-9 border'
-                                // variant={"bootstrap"}
-                                >
-                                    Close
-                                </Button>
-                            </PopoverClose>
-                        </div>
-                    </PopoverContent>
-                </Popover>
             </div>
         </div>
     )
