@@ -104,7 +104,7 @@
   --accent: var(--background-dark);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.5694 0.2068 24.72);
-  --border: oklch(0.922 0 0);
+  --border: oklch(0.93 0 0);
   --input: oklch(0.87 0 0);
   --ring: var(--primary);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -215,7 +215,7 @@
     @apply scroll-smooth;
   }
   .container {
-    @apply mx-auto px-5 w-8/12;
+    @apply mx-auto px-5 xl:!max-w-[1300px];
   }
 }
 

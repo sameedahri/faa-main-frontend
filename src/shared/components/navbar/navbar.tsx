@@ -7,7 +7,7 @@ import MobileMenuButton from './mobile-menu-button'
 
 function Navbar() {
     return (
-        <div className='z-20 sticky top-0 backdrop-blur-md bg-background-light/70 shadow-sm'>
+        <div className='z-20 sticky top-0 backdrop-blur-md bg-background-light/70 border-b'>
             <div className='container h-nav flex items-center justify-between'>
                 <Logo />
                 <MobileMenuButton />
