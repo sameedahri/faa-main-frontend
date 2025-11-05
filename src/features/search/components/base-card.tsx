@@ -30,7 +30,7 @@ export function BaseCardTitle(props: PropsWithChildren) {
 
 export function BaseCardImage({className, ...props}: ImageProps) {
     return (
-        <div className='rounded-md overflow-hidden shadow-sm'>
+        <div className='rounded-md overflow-hidden aspect-[11/10] shadow-sm'>
             <Image
                 placeholder={"blur"}
                 className={cn('object-cover w-full h-full', className)}
