@@ -14,6 +14,7 @@ const badgeVariants = cva(
                 outline: "border bg-transparent text-inherit",
                 bootstrap: "border text-inherit",
                 ghost: "border-none bg-transparent",
+                gradient: "bg-linear-to-r text-white"
             },
             variant: {
                 default: "",
@@ -242,6 +243,46 @@ const badgeVariants = cva(
                 variant: "elite",
                 class: "text-elite [a&]:hover:bg-elite/10"
             },
+            {
+                type: "gradient",
+                variant: "default",
+                class: "from-primary/70 via-primary to-primary/60 text-white"
+            },
+            {
+                type: "gradient",
+                variant: "secondary",
+                class: "from-secondary/70 via-secondary to-secondary/60 text-secondary"
+            },
+            {
+                type: "gradient",
+                variant: "destructive",
+                class: "from-destructive/70 via-destructive to-destructive/60 text-destructive"
+            },
+            {
+                type: "gradient",
+                variant: "warning",
+                class: "from-warning/70 via-warning to-warning/60 text-warning"
+            },
+            {
+                type: "gradient",
+                variant: "success",
+                class: "from-success/70 via-success to-success/60 text-success"
+            },
+            {
+                type: "gradient",
+                variant: "muted",
+                class: "from-muted-foreground/70 via-muted-foreground to-muted-foreground/60"
+            },
+            {
+                type: "gradient",
+                variant: "pro",
+                class: "from-pro/70 via-pro to-pro/60 text-pro text-white"
+            },
+            {
+                type: "gradient",
+                variant: "elite",
+                class: "from-elite/70 via-elite to-elite/60 text-pro text-white"
+            },
         ],
         defaultVariants: {
             type: "solid",
@@ -251,6 +292,9 @@ const badgeVariants = cva(
     }
 )
 
+export type BadgeProps = React.ComponentProps<"span"> &
+    VariantProps<typeof badgeVariants> & { asChild?: boolean }
+
 function Badge({
     className,
     variant,
@@ -258,8 +302,7 @@ function Badge({
     asChild = false,
     size = "default",
     ...props
-}: React.ComponentProps<"span"> &
-    VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+}: BadgeProps) {
     const Comp = asChild ? Slot : "span"
 
     return (

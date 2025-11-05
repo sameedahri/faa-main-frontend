@@ -87,7 +87,7 @@
   --radius: 0.625rem;
   --background-light: oklch(1 0 0);
   --background: oklch(0.9807 0.0051 247.88);
-  --background-dark: oklch(0.9750 0.0051 247.88);
+  --background-dark: oklch(0.975 0.0051 247.88);
   --foreground: oklch(0.4 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.35 0 0);
@@ -128,7 +128,7 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --placeholder: oklch(0.70 0 0);
+  --placeholder: oklch(0.7 0 0);
 
   /* Height */
   --height-nav: 4rem;
@@ -138,26 +138,27 @@
   --width-inner-container: 1100px;
 
   /* Shadows */
-  --shadow-sm: 
-    inset 0 1px 2px rgba(0, 0, 0, 0.03),
-    0 1px 2px rgba(0, 0, 0, 0.09),
-    0 2px 4px rgba(0, 0, 0, 0.07);
+  --shadow-sm: inset 0 1px 2px rgba(0, 0, 0, 0.03),
+    0 1px 2px rgba(0, 0, 0, 0.09), 0 2px 4px rgba(0, 0, 0, 0.07);
 
-  --shadow-md: 
-    inset 0 1px 2px #ffffff30,
-    0 2px 4px #00000030,
+  --shadow-md: inset 0 1px 2px #ffffff30, 0 2px 4px #00000030,
     0 4px 8px #00000015;
 
-  --shadow-lg: 
-    inset 0 1px 2px #ffffff30,
-    0 4px 6px #00000030,
+  --shadow-lg: inset 0 1px 2px #ffffff30, 0 4px 6px #00000030,
     0 6px 10px #00000015;
 
   /* --gradient: linear-gradient(0deg, var(--background) 95%, var(--background-light)); */
-  --gradient: linear-gradient(0deg, var(--background-light) 95%, var(--background));
+  --gradient: linear-gradient(
+    0deg,
+    var(--background-light) 95%,
+    var(--background)
+  );
   /* --gradient-hover: linear-gradient(0deg, var(--background), var(--background-light)); */
-  --gradient-hover: linear-gradient(0deg, var(--background-light), var(--background));
-
+  --gradient-hover: linear-gradient(
+    0deg,
+    var(--background-light),
+    var(--background)
+  );
 
   /* borders */
   --border-highlight: oklch(1 0 0);
@@ -215,7 +216,7 @@
     @apply scroll-smooth;
   }
   .container {
-    @apply mx-auto px-5 xl:!max-w-[1300px];
+    @apply mx-auto px-5 xl:!max-w-[1200px];
   }
 }
 
@@ -233,4 +234,34 @@
   animation: spin-slow 1.5s linear infinite;
 }
 
-
+.gradient-card {
+  @apply px-3 py-0.5 text-white flex items-center justify-center font-semibold;
+  font-size: 12px;
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  /* border: 3px solid transparent; */
+  /* border-image: linear-gradient(90deg, #41fff4 0%, rgba(65, 255, 244, 0) 100%); */
+  /* background-clip: border-box; */
+  border-image-slice: 1;
+  background: conic-gradient(
+    from 69deg,
+    #082a34 15%,
+    #50b9da 33%,
+    #157ab1 48%,
+    #3d96b2 51%,
+    #136274 67%,
+    #45b8bf 75%,
+    #12686d 94%
+  );
+  /* background: conic-gradient(
+    from 0deg,
+    #082a34 15%,
+    #50b9da 33%,
+    #157ab1 48%,
+    #3d96b2 51%,
+    #136274 67%,
+    #45b8bf 75%,
+    #12686d 94%
+  ); */
+}

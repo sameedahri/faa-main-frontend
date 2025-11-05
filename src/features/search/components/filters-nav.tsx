@@ -1,23 +1,19 @@
-import { Button } from "@/shared/components/ui/button"
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/shared/components/ui/input-group"
 import { Label } from "@/shared/components/ui/label"
-import { NativeSelect, NativeSelectOption } from "@/shared/components/ui/native-select"
-import { Popover, PopoverClose, PopoverContent, PopoverTrigger } from "@/shared/components/ui/popover"
 import { TabsList, TabsTrigger } from "@/shared/components/ui/tabs"
-import { Filter, MapPin, Search } from "lucide-react"
+import { MapPin, Search } from "lucide-react"
 import { PropsWithChildren } from "react"
 
 const tabTriggerClassName = "rounded-sm h-full data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-none data-[state=active]:font-medium text-muted-foreground"
 
 function FiltersNav() {
     return (
-        <div className="py-5 border-b bg-background-light">
-            <div className="container grid grid-cols-3 gap-5">
+        <div className="border-b bg-background-light h-[calc(var(--height-nav)+1rem)] flex items-center sticky top-0 z-20">
+            <div className="container grid grid-cols-[auto_1fr_1fr] gap-5">
                 <TabsList className="h-11 p-1 bg-background-light shadow-sm border rounded-md w-full">
                     <TabsTrigger value="agents" className={tabTriggerClassName}>Agents</TabsTrigger>
                     <TabsTrigger value="agencies" className={tabTriggerClassName}>Agencies</TabsTrigger>
                     <TabsTrigger value="services" className={tabTriggerClassName}>Services</TabsTrigger>
-                    <TabsTrigger value="events" className={tabTriggerClassName}>Events</TabsTrigger>
                 </TabsList>
                 <InputGroup className="shadow-sm">
                     <InputGroupAddon>

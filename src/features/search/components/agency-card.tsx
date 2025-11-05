@@ -1,40 +1,39 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { agent } from '@/constants/images'
+import { getSubscriptionVariant } from '@/shared/lib/helpers'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
-import { Mail, MapPin, Phone, Star } from 'lucide-react'
+import { Mail, MapPin, Phone, Star, User } from 'lucide-react'
 import { BaseCard, BaseCardImage, BaseCardTitle } from './base-card'
+import { SubscriptionName } from '@/shared/types/subscription.type'
 
-export interface AgentCardProps {
+export interface AgencyCardProps {
     name: string
     profession: string[]
     location: string
     rating: number
     reviews: number
-    subscription: "Pro" | "Elite" | "Basic" | "Standard"
+    subscription: SubscriptionName
     specialization: string[]
+    noOfAgents: number
 }
 
-const subscriptionVariants: Record<AgentCardProps["subscription"], "pro" | "elite" | "muted" | "default"> = {
-    Pro: "pro",
-    Elite: "elite",
-    Basic: "muted",
-    Standard: "default",
-}
-
-function AgentCard(props: AgentCardProps) {
+function AgencyCard(props: AgencyCardProps) {
     return (
         <BaseCard>
-            <BaseCardImage src={agent.agentImage1} alt="Agent Image" />
+            <BaseCardImage 
+                src={agent.agentImage1}
+                alt="Agency Image"
+            />
             <div className='flex flex-col gap-4 justify-between'>
                 <div className="flex flex-col gap-1">
                     <div className='flex items-center gap-2'>
                         <BaseCardTitle>{props.name}</BaseCardTitle>
                         <div className='flex gap-2'>
                             <Badge
-                                variant={subscriptionVariants[props.subscription]}
+                                variant={getSubscriptionVariant(props.subscription)}
                                 type={'gradient'}
-                                className='rounded-full min-w-[45px]'
+                                className='rounded-full min-w-[45px] shadow-sm'
                             >
                                 {props.subscription}
                             </Badge>
@@ -45,7 +44,7 @@ function AgentCard(props: AgentCardProps) {
                     </p>
 
                 </div>
-                <div className="flex gap-5">
+                <div className="flex flex-wrap gap-4">
                     <div className='flex items-center gap-1 text-xs text-foreground  w-auto'>
                         <MapPin className='w-4 h-4' />
                         <span>{props.location}</span>
@@ -54,6 +53,10 @@ function AgentCard(props: AgentCardProps) {
                     <div className='flex items-center gap-1 text-xs text-foreground'>
                         <Star stroke={'transparent'} fill='var(--warning)' className='w-4 h-4' />
                         <span>{props.rating} <small>({props.reviews})</small></span>
+                    </div>
+                    <div className='flex items-center gap-1 text-xs text-foreground'>
+                        <User className='w-4 h-4' />
+                        <span>{props.noOfAgents}</span>
                     </div>
                 </div>
                 <div className='flex flex-wrap gap-2'>
@@ -88,4 +91,4 @@ function AgentCard(props: AgentCardProps) {
     )
 }
 
-export default AgentCard
+export default AgencyCard
