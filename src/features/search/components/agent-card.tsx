@@ -16,12 +16,13 @@ export interface AgentCardProps {
     reviews: number
     subscription: SubscriptionName
     specialization: string[]
+    className?: string
 }
 
-function AgentCard(props: AgentCardProps) {
+function AgentCard({className, ...props}: AgentCardProps) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
-        <BaseCard>
+        <BaseCard className={className}>
             <BaseCardImage src={agent.agentImage1} alt="Agent Image" />
             <div className='flex flex-col gap-4 justify-between'>
                 <div className="flex flex-col gap-1">

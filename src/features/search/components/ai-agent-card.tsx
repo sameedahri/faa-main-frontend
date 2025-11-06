@@ -22,7 +22,7 @@ function AiAgentCard(props: AiAgentCardProps) {
             <div className='shadow-sm rounded-md flex items-center justify-center bg-primary/2'>
                 <BotIcon className='text-primary size-10' />
             </div>
-            <div className='flex flex-col gap-4 justify-between'>
+            <div className='flex flex-col gap-3.5 justify-between'>
                 <div className="flex flex-col gap-1">
                     <div className='flex items-center gap-2'>
                         <BaseCardTitle>{props.name}</BaseCardTitle>
@@ -44,14 +44,14 @@ function AiAgentCard(props: AiAgentCardProps) {
                     </div>
 
                 </div>
-                <p className='text-sm text-muted-foreground'>
+                <p className='text-sm text-muted-foreground leading-relaxed'>
                     {props.description}
                 </p>
                 <div className="flex gap-5">
                     {/* Rating */}
-                    <div className='flex items-center gap-1 text-xs text-foreground'>
-                        <Star stroke={'transparent'} fill='var(--warning)' className='w-4 h-4' />
-                        <span>{props.rating} <small>({props.reviews})</small></span>
+                    <div className='flex items-center gap-1 text-base text-foreground'>
+                        <Star stroke={'transparent'} fill='var(--warning)' className='size-4.5' />
+                        <span className='font-medium text-foreground'>{props.rating} <small className='text-muted-foreground'>({props.reviews})</small></span>
                     </div>
                    
                 </div>

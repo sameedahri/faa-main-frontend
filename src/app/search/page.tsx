@@ -6,27 +6,36 @@ import FiltersSidebar from "@/features/search/components/filters-sidebar"
 import ServiceCard, { ServiceCardProps } from "@/features/search/components/service-card"
 import Footer from "@/shared/components/footer"
 import { Tabs, TabsContent } from "@/shared/components/ui/tabs"
+import { SearchTabType } from "@/shared/types/tabs.type"
+import { SEARCH_TAB } from "@/shared/constants/tabs"
+import { cn } from "@/shared/lib/utils"
 
 
-export default function SearchPage() {
+export default async function SearchPage(props: PageProps<"/search">) {
+    const searchParams = await props.searchParams
+    const tab = searchParams["tab"] as SearchTabType || SEARCH_TAB.AGENTS.value
+
     return (
-        <Tabs defaultValue="agents">
+        <Tabs defaultValue={tab}>
             <div className="pb-10 relative flex flex-col gap-7 bg-background">
                 <FiltersNav />
                 <div className="container grid grid-cols-[300px_1fr] items-start gap-7 relative">
-                    <FiltersSidebar />
+                    <FiltersSidebar tab={tab} />
                     <div className="grid grid-cols-1 gap-5">
-                        <TabsContent value="agents">
+                        <TabsContent value={SEARCH_TAB.AGENTS.value}>
                             <div className="grid grid-cols-1 gap-7">
                                 {agents.map((agent, index) => (
                                     <AgentCard 
-                                        key={index} 
+                                        key={index}
+                                        className={cn({
+                                            "shadow-[0px_0px_5px_1px] shadow-primary/30 border border-primary/40 hover:shadow-[0px_0px_10px_1px] hover:shadow-primary/60": index < 3,
+                                        })} 
                                         {...agent}
                                     />
                                 ))}
                             </div>
                         </TabsContent>
-                        <TabsContent value="agencies">
+                        <TabsContent value={SEARCH_TAB.AGENCIES.value}>
                             <div className="grid grid-cols-1 gap-7">
                                 {agencies.map((agent, index) => (
                                     <AgencyCard
@@ -36,7 +45,7 @@ export default function SearchPage() {
                                 ))}
                             </div>
                         </TabsContent>
-                        <TabsContent value="services">
+                        <TabsContent value={SEARCH_TAB.SERVICES.value}>
                             <div className="grid grid-cols-1 gap-7">
                                 {services.map((service, index) => (
                                     <ServiceCard
@@ -46,7 +55,7 @@ export default function SearchPage() {
                                 ))}
                             </div>
                         </TabsContent>
-                        <TabsContent value="aiAgents">
+                        <TabsContent value={SEARCH_TAB.AI_AGENTS.value}>
                             <div className="grid grid-cols-1 gap-7">
                                 {aiAgents.map((aiAgent, index) => (
                                     <AiAgentCard

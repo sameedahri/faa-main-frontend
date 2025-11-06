@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 export function ProBadge() {
     return (
         <Tooltip>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
                 <Badge
                     variant={"pro"}
                     type={'gradient'}
@@ -31,7 +31,7 @@ export function ProBadge() {
 export function EliteBadge() {
     return (
         <Tooltip>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
                 <Badge
                     variant={"elite"}
                     type={'gradient'}

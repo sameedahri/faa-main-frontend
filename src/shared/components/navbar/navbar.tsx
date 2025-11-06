@@ -7,7 +7,7 @@ import MobileMenuButton from './mobile-menu-button'
 
 function Navbar() {
     return (
-        <div className='z-20 top-0 backdrop-blur-md bg-background-light/70 border-b'>
+        <div className='z-20 top-0 relative backdrop-blur-md bg-background-light/70 border-b'>
             <div className='container h-nav flex items-center justify-between'>
                 <Logo />
                 <MobileMenuButton />
@@ -26,7 +26,7 @@ function Navbar() {
                                             {item.label}
                                         </NavigationMenuTrigger>
                                         <NavigationMenuContent>
-                                            <ul className='grid w-[200px] gap-0'>
+                                            <ul className='grid w-[200px] gap-0 relative z-50'>
                                                 {item.subMenu.map((subItem) => (
                                                     <li key={subItem.label}>
                                                         <NavigationMenuLink

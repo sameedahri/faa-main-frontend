@@ -10,12 +10,12 @@ import { PropsWithChildren } from "react";
  * Base Card Wrapper Component,
  * @param props - { children: React.ReactNode }
  */
-export function BaseCard(props: PropsWithChildren) {
+export function BaseCard(props: PropsWithChildren<{ className?: string }>) {
     return (
         <div className={cn(
             'p-4 rounded-md bg-background-light cursor-pointer grid grid-cols-[140px_1fr_auto] gap-5',
             'transition-all duration-300 hover:shadow-lg'
-        )}>
+        , props.className)}>
             {props.children}
         </div>
     )
