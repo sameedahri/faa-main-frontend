@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Merriweather_Sans, Noto_Sans } from "next/font/google";
+import { Merriweather_Sans, Noto_Sans, Plus_Jakarta_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import { Navbar } from "@/shared/components/navbar";
 // import Swiper styles
@@ -26,6 +26,12 @@ const notoSans = Noto_Sans({
     weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
+const plusJakartaSans = Plus_Jakarta_Sans({
+    variable: "--font-plus-jakarta-sans",
+    subsets: ["latin"],
+    weight: [ "200", "300", "400", "500", "600", "700", "800"],
+});
+
 
 export const metadata: Metadata = {
     title: "Find Any Agent",
@@ -40,7 +46,7 @@ export default function RootLayout({
     return (
         <html lang="en" data-scroll-behavior="smooth">
             <body
-                className={` ${merriweatherSans.variable} ${notoSans.variable} antialiased relative`}
+                className={` ${merriweatherSans.variable} ${notoSans.variable} ${plusJakartaSans.variable} antialiased relative`}
             >
                 <Navbar />
                 {children}

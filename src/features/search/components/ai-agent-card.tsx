@@ -1,57 +1,59 @@
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { agent } from '@/constants/images'
-import { IconBrandWhatsapp } from '@tabler/icons-react'
-import { Mail, MapPin, Phone, Star } from 'lucide-react'
-import { BaseCard, BaseCardImage, BaseCardTitle } from './base-card'
-import { getSubscriptionBadge } from '@/shared/lib/helpers'
-import { VerifiedBadge } from '@/shared/components/badges/verified-badges'
+import { BaseCard, BaseCardTitle } from './base-card'
 import { SubscriptionName } from '@/shared/types/subscription.type'
+import { getSubscriptionBadge } from '@/shared/lib/helpers'
+import { Badge } from '@/shared/components/ui/badge'
+import { BotIcon, Mail, Phone, Star } from 'lucide-react'
+import { Button } from '@/shared/components/ui/button'
+import { IconBrandWhatsapp } from '@tabler/icons-react'
 
-export interface AgentCardProps {
+export type AiAgentCardProps = {
     name: string
-    profession: string[]
-    location: string
+    industries: string[]
     rating: number
     reviews: number
+    description: string
     subscription: SubscriptionName
-    specialization: string[]
 }
 
-function AgentCard(props: AgentCardProps) {
+function AiAgentCard(props: AiAgentCardProps) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
         <BaseCard>
-            <BaseCardImage src={agent.agentImage1} alt="Agent Image" />
+            <div className='shadow-sm rounded-md flex items-center justify-center bg-primary/2'>
+                <BotIcon className='text-primary size-10' />
+            </div>
             <div className='flex flex-col gap-4 justify-between'>
                 <div className="flex flex-col gap-1">
                     <div className='flex items-center gap-2'>
                         <BaseCardTitle>{props.name}</BaseCardTitle>
                         <div className='flex gap-2'>
                             {SubscriptionBadge && <SubscriptionBadge />}
-                            {props.subscription !== "Basic" && <VerifiedBadge />}
                         </div>
                     </div>
-                    <p className='text-muted-foreground text-sm'>
-                        {props.profession.join(' | ')}
-                    </p>
+                    <div className='flex flex-wrap gap-2'>
+                        {props.industries.map((industry, index) => (
+                            <Badge
+                                key={index}
+                                variant={'muted'}
+                                type={'outline'}
+                                className='rounded-full border h-6'
+                            >
+                                {industry}
+                            </Badge>
+                        ))}
+                    </div>
 
                 </div>
+                <p className='text-sm text-muted-foreground'>
+                    {props.description}
+                </p>
                 <div className="flex gap-5">
-                    <div className='flex items-center gap-1 text-xs text-foreground  w-auto'>
-                        <MapPin className='w-4 h-4' />
-                        <span>{props.location}</span>
-                    </div>
                     {/* Rating */}
                     <div className='flex items-center gap-1 text-xs text-foreground'>
                         <Star stroke={'transparent'} fill='var(--warning)' className='w-4 h-4' />
                         <span>{props.rating} <small>({props.reviews})</small></span>
                     </div>
-                </div>
-                <div className='flex flex-wrap gap-2'>
-                    {props.specialization.map((profession, index) => (
-                        <Badge key={index} variant={'muted'} type={'outline'} className='rounded-full border h-6'>{profession}</Badge>
-                    ))}
+                   
                 </div>
             </div>
             <div className="flex gap-2 items-end">
@@ -80,4 +82,4 @@ function AgentCard(props: AgentCardProps) {
     )
 }
 
-export default AgentCard
+export default AiAgentCard

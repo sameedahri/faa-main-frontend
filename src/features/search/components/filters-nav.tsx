@@ -14,6 +14,7 @@ function FiltersNav() {
                     <TabsTrigger value="agents" className={tabTriggerClassName}>Agents</TabsTrigger>
                     <TabsTrigger value="agencies" className={tabTriggerClassName}>Agencies</TabsTrigger>
                     <TabsTrigger value="services" className={tabTriggerClassName}>Services</TabsTrigger>
+                    <TabsTrigger value="aiAgents" className={tabTriggerClassName}>AI Agents</TabsTrigger>
                 </TabsList>
                 <InputGroup className="shadow-sm">
                     <InputGroupAddon>

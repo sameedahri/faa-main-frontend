@@ -1,11 +1,12 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { agent } from '@/constants/images'
-import { getSubscriptionVariant } from '@/shared/lib/helpers'
+import { getSubscriptionBadge, getSubscriptionVariant } from '@/shared/lib/helpers'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
 import { Mail, MapPin, Phone, Star, User } from 'lucide-react'
 import { BaseCard, BaseCardImage, BaseCardTitle } from './base-card'
 import { SubscriptionName } from '@/shared/types/subscription.type'
+import { VerifiedBadge } from '@/shared/components/badges/verified-badges'
 
 export interface AgencyCardProps {
     name: string
@@ -19,6 +20,7 @@ export interface AgencyCardProps {
 }
 
 function AgencyCard(props: AgencyCardProps) {
+    const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
         <BaseCard>
             <BaseCardImage 
@@ -30,13 +32,8 @@ function AgencyCard(props: AgencyCardProps) {
                     <div className='flex items-center gap-2'>
                         <BaseCardTitle>{props.name}</BaseCardTitle>
                         <div className='flex gap-2'>
-                            <Badge
-                                variant={getSubscriptionVariant(props.subscription)}
-                                type={'gradient'}
-                                className='rounded-full min-w-[45px] shadow-sm'
-                            >
-                                {props.subscription}
-                            </Badge>
+                            {SubscriptionBadge && <SubscriptionBadge />}
+                            {props.subscription !== "Basic" && <VerifiedBadge />}
                         </div>
                     </div>
                     <p className='text-muted-foreground text-sm'>

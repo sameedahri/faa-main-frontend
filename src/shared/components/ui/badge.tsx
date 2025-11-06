@@ -276,12 +276,12 @@ const badgeVariants = cva(
             {
                 type: "gradient",
                 variant: "pro",
-                class: "from-pro/70 via-pro to-pro/60 text-pro text-white"
+                class: "from-pro/70 via-pro to-pro/60 "
             },
             {
                 type: "gradient",
                 variant: "elite",
-                class: "from-elite/70 via-elite to-elite/60 text-pro text-white"
+                class: "from-elite/70 via-elite to-elite/60"
             },
         ],
         defaultVariants: {

@@ -6,7 +6,7 @@ import React, { PropsWithChildren } from 'react'
 
 function FiltersSidebar() {
     return (
-        <div className="flex flex-col gap-6 p-5 rounded-md bg-background-light sticky top-[calc(var(--height-nav)+2rem)]">
+        <div className="overflow-y-auto h-fit max-h-[calc(100vh-var(--height-nav)-8.5rem)] flex flex-col gap-6 p-5 rounded-md bg-background-light sticky top-[calc(var(--height-nav)+2rem)]">
             <h2 className='flex items-center gap-1 font-semibold text-lg'>
                 <Filter className='size-4.5' />  
                 Filters

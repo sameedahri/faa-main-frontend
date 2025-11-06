@@ -1,5 +1,6 @@
 import AgencyCard, { AgencyCardProps } from "@/features/search/components/agency-card"
 import AgentCard, { AgentCardProps } from "@/features/search/components/agent-card"
+import AiAgentCard, { AiAgentCardProps } from "@/features/search/components/ai-agent-card"
 import FiltersNav from "@/features/search/components/filters-nav"
 import FiltersSidebar from "@/features/search/components/filters-sidebar"
 import ServiceCard, { ServiceCardProps } from "@/features/search/components/service-card"
@@ -41,6 +42,16 @@ export default function SearchPage() {
                                     <ServiceCard
                                         key={index}
                                         {...service}
+                                    />
+                                ))}
+                            </div>
+                        </TabsContent>
+                        <TabsContent value="aiAgents">
+                            <div className="grid grid-cols-1 gap-7">
+                                {aiAgents.map((aiAgent, index) => (
+                                    <AiAgentCard
+                                        key={index}
+                                        {...aiAgent}
                                     />
                                 ))}
                             </div>
@@ -145,7 +156,6 @@ const agents: AgentCardProps[] = [
         specialization: ["New Developments", "Off-Plan Properties", "Family Homes"]
     }
 ];
-
 
 const agencies: AgencyCardProps[] = [
     {
@@ -330,5 +340,72 @@ const services: ServiceCardProps[] = [
         rating: 4.9,
         reviews: 234,
         price: 6000
+    }
+];
+
+const aiAgents: AiAgentCardProps[] = [
+    {
+        name: "Property Valuation AI Agent",
+        industries: ["Real Estate", "Valuation", "Consulting"],
+        rating: 4.8,
+        reviews: 156,
+        description: "Our AI agent is designed to provide accurate property valuations based on market data and expert analysis.",
+        subscription: "Pro"
+    },
+    {
+        name: "Property Valuation AI Agent",
+        industries: ["Real Estate", "Valuation", "Consulting"],
+        rating: 4.8,
+        reviews: 156,
+        description: "Our AI agent is designed to provide accurate property valuations based on market data and expert analysis.",
+        subscription: "Pro"
+    },
+    {
+        name: "Home Staging & Interior Design AI Agent",
+        industries: ["Interior Design", "Home Staging", "Real Estate"],
+        rating: 4.9,
+        reviews: 203,
+        description: "Our AI agent is designed to provide accurate home staging and interior design services based on market data and expert analysis.",
+        subscription: "Elite"
+    },
+    {
+        name: "Mortgage Advisory AI Agent",
+        industries: ["Finance", "Mortgage", "Consulting"],
+        rating: 4.6,
+        reviews: 142,
+        description: "Our AI agent is designed to provide accurate mortgage advisory services based on market data and expert analysis.",
+        subscription: "Pro"
+    },
+    {
+        name: "Property Legal Documentation AI Agent",
+        industries: ["Legal", "Real Estate", "Documentation"],
+        rating: 4.7,
+        reviews: 98,
+        description: "Our AI agent is designed to provide accurate property legal documentation services based on market data and expert analysis.",
+        subscription: "Pro"
+    },
+    {
+        name: "Real Estate Photography & Videography AI Agent",
+        industries: ["Photography", "Videography", "Marketing"],
+        rating: 4.9,
+        reviews: 287,
+        description: "Our AI agent is designed to provide accurate real estate photography and videography services based on market data and expert analysis.",
+        subscription: "Elite"
+    },
+    {
+        name: "Property Management Solutions AI Agent",
+        industries: ["Property Management", "Maintenance", "Real Estate"],
+        rating: 4.5,
+        reviews: 124,
+        description: "Our AI agent is designed to provide accurate property management solutions based on market data and expert analysis.",
+        subscription: "Pro"
+    },
+    {
+        name: "Investment Portfolio Analysis AI Agent",
+        industries: ["Investment", "Finance", "Consulting"],
+        rating: 4.8,
+        reviews: 167,
+        description: "Our AI agent is designed to provide accurate investment portfolio analysis services based on market data and expert analysis.",
+        subscription: "Elite"
     }
 ];
