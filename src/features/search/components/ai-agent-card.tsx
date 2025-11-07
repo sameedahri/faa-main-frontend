@@ -18,15 +18,15 @@ export type AiAgentCardProps = {
 function AiAgentCard(props: AiAgentCardProps) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
-        <BaseCard>
-            <div className='shadow-sm rounded-md flex items-center justify-center bg-primary/2'>
+        <BaseCard className='grid-cols-[160px_1fr_auto]'>
+            <div className='shadow-sm rounded-md aspect-square self-center flex items-center justify-center bg-primary/2'>
                 <BotIcon className='text-primary size-10' />
             </div>
             <div className='flex flex-col gap-3.5 justify-between'>
                 <div className="flex flex-col gap-1">
-                    <div className='flex items-center gap-2'>
+                    <div className='flex items-start gap-2'>
                         <BaseCardTitle>{props.name}</BaseCardTitle>
-                        <div className='flex gap-2'>
+                        <div className='flex gap-2 pt-1'>
                             {SubscriptionBadge && <SubscriptionBadge />}
                         </div>
                     </div>

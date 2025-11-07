@@ -81,7 +81,8 @@ const agents: AgentCardProps[] = [
         rating: 4.5,
         reviews: 100,
         subscription: "Pro",
-        specialization: ["Residential Properties", "Luxury Villas", "Downtown Apartments"]
+        specialization: ["Residential Properties", "Luxury Villas", "Downtown Apartments"],
+        isTeamMember: true,
     },
     {
         name: "Sarah Johnson",
@@ -99,7 +100,8 @@ const agents: AgentCardProps[] = [
         rating: 4.6,
         reviews: 89,
         subscription: "Pro",
-        specialization: ["Office Spaces", "Retail Properties", "Industrial Buildings"]
+        specialization: ["Office Spaces", "Retail Properties", "Industrial Buildings"],
+        isTeamMember: true,
     },
     {
         name: "Emily Chen",
@@ -135,7 +137,8 @@ const agents: AgentCardProps[] = [
         rating: 4.5,
         reviews: 98,
         subscription: "Standard",
-        specialization: ["Multi-Family Properties", "REITs", "Property Development"]
+        specialization: ["Multi-Family Properties", "REITs", "Property Development"],
+        isTeamMember: true,
     },
     {
         name: "Aisha Abdullah",

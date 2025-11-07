@@ -1,12 +1,16 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { agent } from '@/constants/images'
+import { agency, agent } from '@/constants/images'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
 import { Mail, MapPin, Phone, Star } from 'lucide-react'
 import { BaseCard, BaseCardImage, BaseCardTitle } from './base-card'
 import { getSubscriptionBadge } from '@/shared/lib/helpers'
 import { VerifiedBadge } from '@/shared/components/badges/verified-badges'
 import { SubscriptionName } from '@/shared/types/subscription.type'
+import Image from 'next/image'
+import Link from 'next/link'
+import { INDUSTRY_NAMES } from '@/shared/constants/industry'
+import { Separator } from '@/shared/components/ui/separator'
 
 export interface AgentCardProps {
     name: string
@@ -17,9 +21,10 @@ export interface AgentCardProps {
     subscription: SubscriptionName
     specialization: string[]
     className?: string
+    isTeamMember?: boolean
 }
 
-function AgentCard({className, ...props}: AgentCardProps) {
+function AgentCard({ className, ...props }: AgentCardProps) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
         <BaseCard className={className}>
@@ -36,8 +41,8 @@ function AgentCard({className, ...props}: AgentCardProps) {
                     <p className='text-muted-foreground text-sm'>
                         {props.profession.join(' | ')}
                     </p>
-
                 </div>
+
                 <div className="flex gap-5">
                     <div className='flex items-center gap-1 text-xs text-foreground  w-auto'>
                         <MapPin className='w-4 h-4' />
@@ -49,33 +54,51 @@ function AgentCard({className, ...props}: AgentCardProps) {
                         <span>{props.rating} <small>({props.reviews})</small></span>
                     </div>
                 </div>
+
                 <div className='flex flex-wrap gap-2'>
                     {props.specialization.map((profession, index) => (
                         <Badge key={index} variant={'muted'} type={'outline'} className='rounded-full border h-6'>{profession}</Badge>
                     ))}
                 </div>
             </div>
-            <div className="flex gap-2 items-end">
-                <Button
-                    variant={"outline"}
-                    className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
-                    size={"icon"}
-                >
-                    <Mail />
-                </Button>
-                <Button
-                    variant={"outline"}
-                    className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
-                    size={"icon"}
-                >
-                    <Phone />
-                </Button>
-                <Button
-                    variant={"soft-success"}
-                    size={"icon"}
-                >
-                    <IconBrandWhatsapp className='size-5' />
-                </Button>
+            <div className="flex flex-col gap-2 justify-between items-end">
+                {props.isTeamMember ? (
+                    <Link
+                        className='aspect-square w-15 overflow-hidden rounded-md border transition hover:border-primary/50'
+                        href={"#"}
+                    >
+                        <Image
+                            src={agency.demoAgencyLogoImg}
+                            alt="Agent Image"
+                        />
+                    </Link>
+                ) : (
+                    <div>
+                    </div>
+                )}
+
+                <div className="flex gap-2">
+                    <Button
+                        variant={"outline"}
+                        className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
+                        size={"icon"}
+                    >
+                        <Mail />
+                    </Button>
+                    <Button
+                        variant={"outline"}
+                        className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
+                        size={"icon"}
+                    >
+                        <Phone />
+                    </Button>
+                    <Button
+                        variant={"soft-success"}
+                        size={"icon"}
+                    >
+                        <IconBrandWhatsapp className='size-5' />
+                    </Button>
+                </div>
             </div>
         </BaseCard>
     )

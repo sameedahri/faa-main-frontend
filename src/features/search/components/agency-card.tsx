@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { agent } from '@/constants/images'
+import { agency, agent } from '@/constants/images'
 import { getSubscriptionBadge, getSubscriptionVariant } from '@/shared/lib/helpers'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
 import { Mail, MapPin, Phone, Star, User } from 'lucide-react'
@@ -24,7 +24,7 @@ function AgencyCard(props: AgencyCardProps) {
     return (
         <BaseCard>
             <BaseCardImage 
-                src={agent.agentImage1}
+                src={agency.demoAgencyLogoImg}
                 alt="Agency Image"
             />
             <div className='flex flex-col gap-4 justify-between'>

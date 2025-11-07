@@ -1,9 +1,11 @@
 import * as shared from "./shared"
 import * as home from "./home"
 import * as agent from "./agent"
+import * as agency from "./agency"
 
 export { 
     shared,
     home,
-    agent
+    agent,
+    agency,
 }
