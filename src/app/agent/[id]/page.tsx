@@ -3,16 +3,18 @@ import { Button } from "@/shared/components/ui/button"
 import { VerifiedBadge } from "@/shared/components/badges/verified-badges"
 import { agent } from "@/shared/constants/images"
 import { getSubscriptionBadge } from "@/shared/lib/helpers"
-import { Award, BriefcaseBusiness, LanguagesIcon, Mail, MapPin, Phone, Star } from "lucide-react"
+import { Award, BriefcaseBusiness, Filter, LanguagesIcon, Mail, MapPin, Phone, Star } from "lucide-react"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { IconBrandWhatsapp, IconLicense } from "@tabler/icons-react"
 import Link from "next/link"
 import { Badge } from "@/shared/components/ui/badge"
-import { Tabs } from "@/shared/components/ui/tabs"
+import { Tabs, TabsContent } from "@/shared/components/ui/tabs"
 import { TabsList, TabsTrigger } from "@/ui/tabs"
 import { AGENT_DETAILS_TAB } from "@/shared/constants/tabs"
 import { Separator } from "@/shared/components/ui/separator"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components/ui/select"
+import PropertyCard, { PropertyCardProps } from "@/features/search/components/property-card"
 
 function getAgentDetails(id: string) {
     return AGENTS.find((agent) => agent.id === id)
@@ -30,7 +32,7 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
 
     return (
         <div className="bg-background">
-            <div className="container grid grid-cols-[400px_1fr] gap-7 py-7">
+            <div className="container grid grid-cols-[350px_1fr] gap-7 py-7">
                 {/* Agent Profile Info Side */}
                 <div className="flex flex-col gap-6">
                     <div className="flex flex-col gap-4 items-center bg-background-light rounded-md p-6 relative">
@@ -39,8 +41,6 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                             alt="Agent Image"
                             className="w-30 aspect-square rounded-full shadow-sm"
                         />
-
-
                         <div className="flex flex-col gap-2">
                             <div className="flex flex-col gap-1 text-center pt-0">
                                 <div className="relative w-fit mx-auto">
@@ -56,11 +56,13 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
 
                             </div>
                             <div className="flex flex-col gap-1.5">
-                                <p className="text-muted-foreground">{agentDetails?.profession.join(' | ')}</p>
+                                <p className="text-sm">
+                                    {agentDetails?.profession.join(' | ')}
+                                </p>
                                 {agentDetails.isTeamMember && (
-                                    <div className="flex items-center gap-1 justify-center text-muted-foreground text-sm">
-                                        <BriefcaseBusiness className="size-4" />
-                                        <p className="text-muted-foreground text-sm">Dubai Elite Properties</p>
+                                    <div className="flex items-center gap-1 justify-center text-muted-foreground">
+                                        <BriefcaseBusiness className="size-3" />
+                                        <p className="text-muted-foreground text-xs">Dubai Elite Properties</p>
                                     </div>
                                 )}
                             </div>
@@ -69,12 +71,12 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
 
 
                         <div className="flex flex-wrap gap-5 text-sm">
-                            <div className='flex items-center gap-1 text-foreground'>
+                            <div className='flex items-center gap-0.5 text-foreground'>
                                 <Star className='size-4 text-muted-foreground fill-warning stroke-transparent' />
                                 <span className="">{agentDetails.rating} <small className="text-muted-foreground font-normal">({agentDetails.reviews})</small></span>
                             </div>
-                            <div className='flex items-center gap-1 text-foreground'>
-                                <MapPin className='size-4 text-muted-foreground fill-destructive stroke-white' />
+                            <div className='flex items-center gap-0.5 text-foreground'>
+                                <MapPin className='size-4 text-muted-foreground fill-primary stroke-white' />
                                 <span className="" >{agentDetails.location}</span>
                             </div>
                         </div>
@@ -118,41 +120,41 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                         </div>
                     </div>
                     <div className="bg-background-light rounded-md p-6 flex flex-col gap-1">
-                        <h3 className="text-lg font-bold font-heading">About</h3>
-                        <p className="text-muted-foreground text-base leading-relaxed">
+                        <h3 className="font-bold font-heading">About</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. In enim consequuntur aliquid praesentium iste autem! Voluptate temporibus aliquid illum dolorem.
                         </p>
                     </div>
                     <div className="bg-background-light rounded-md p-6 flex flex-col gap-1">
-                        <h3 className="text-lg font-bold font-heading">Professional Information</h3>
+                        <h3 className="font-bold font-heading">Professional Information</h3>
                         <div className="flex flex-col gap-5 pt-2">
                             <div className="flex flex-col gap-0.5">
-                                <h4 className="text-sm flex items-center gap-0.5 font-base text-muted-foreground font-medium">
+                                <h4 className="text-sm flex items-center gap-0.5 font-medium text-foreground ">
                                     <IconLicense className="size-4" />
                                     License
                                 </h4>
-                                <p>8979812</p>
+                                <p className="text-sm">8979812</p>
                             </div>
                             {/* <Separator /> */}
-                            <div className="flex flex-col gap-0.5">
-                                <h4 className="text-sm flex items-center gap-0.5 font-base font-medium text-muted-foreground">
+                            <div className="flex flex-col gap-0.5 text-sm">
+                                <h4 className="text-sm flex items-center gap-0.5 text-foreground font-medium">
                                     <Award className="size-4" />
                                     Experience
                                 </h4>
-                                <p>12 years</p>
+                                <p className="text-sm">12 years</p>
                             </div>
                             {/* <Separator /> */}
                             <div className="flex flex-col gap-0.5">
-                                <h4 className=" text-sm flex items-center gap-0.5 font-base text-muted-foreground font-medium">
+                                <h4 className=" text-sm flex items-center gap-0.5 text-foreground font-medium">
                                     <LanguagesIcon className="size-4" />
                                     Languages
                                 </h4>
-                                <p>English, Arabic</p>
+                                <p className="text-sm">English, Arabic</p>
                             </div>
                         </div>
                     </div>
-                    <div className="bg-background-light rounded-md p-6 flex flex-col gap-2">
-                        <h3 className="text-lg font-bold font-heading">Specialization</h3>
+                    <div className="bg-background-light rounded-md p-6 flex flex-col gap-3">
+                        <h3 className="font-bold font-heading">Specialization</h3>
                         <div className="flex flex-wrap gap-2">
                             {agentDetails.specialization.map((specialization, index) => (
                                 <Badge key={index} variant={"muted"} type={"outline"} className="rounded-full border h-6">
@@ -165,7 +167,7 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
 
                 {/* Agent Services Side */}
                 <Tabs defaultValue={AGENT_DETAILS_TAB.PROPERTIES.value}>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-6">
                         <TabsList className="bg-background-light w-full p-1 shadow-sm">
                             {Object.values(AGENT_DETAILS_TAB).map((tab) => (
                                 <TabsTrigger
@@ -178,11 +180,142 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                                 </TabsTrigger>
                             ))}
                         </TabsList>
+
+                        {/* Filter Card */}
+                        <div className="bg-background-light w-full rounded-md p-4 flex flex-col gap-4">
+                            <h3 className="text-base font-semibold font-heading flex items-center gap-1.5">
+                                <Filter className="size-4.5" />
+                                Filters Properties
+                            </h3>
+                            <div className="grid grid-cols-4 gap-3">
+                                <Select>
+                                    <SelectTrigger size={"sm"} className="border-border">
+                                        <SelectValue placeholder="All Type" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="sale">Sale</SelectItem>
+                                        <SelectItem value="rent">Rent</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                                <Select>
+                                    <SelectTrigger size={"sm"} className="border-border">
+                                        <SelectValue placeholder="All Property Type" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="apartment">Apartment</SelectItem>
+                                        <SelectItem value="villa">Villa</SelectItem>
+                                        <SelectItem value="townhouse">Townhouse</SelectItem>
+                                        <SelectItem value="plot">Plot</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                                <Select>
+                                    <SelectTrigger size={"sm"} className="border-border">
+                                        <SelectValue placeholder="Any Beds" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="1 bedroom">1 Bedroom</SelectItem>
+                                        <SelectItem value="2 bedroom">2 Bedroom</SelectItem>
+                                        <SelectItem value="3 bedroom">3 Bedroom</SelectItem>
+                                        <SelectItem value="4 bedroom">4 Bedroom</SelectItem>
+                                        <SelectItem value="5 bedroom">5 Bedroom</SelectItem>
+                                        <SelectItem value="6 bedroom">6 Bedroom</SelectItem>
+                                        <SelectItem value="7 bedroom">7 Bedroom</SelectItem>
+                                        <SelectItem value="8 bedroom">8 Bedroom</SelectItem>
+                                        <SelectItem value="9 bedroom">9 Bedroom</SelectItem>
+                                        <SelectItem value="10 bedroom">10 Bedroom</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                                <Select>
+                                    <SelectTrigger size={"sm"} className="border-border">
+                                        <SelectValue placeholder="Any Price" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="100000">100,000</SelectItem>
+                                        <SelectItem value="200000">200,000</SelectItem>
+                                        <SelectItem value="300000">300,000</SelectItem>
+                                        <SelectItem value="400000">400,000</SelectItem>
+                                        <SelectItem value="500000">500,000</SelectItem>
+                                        <SelectItem value="600000">600,000</SelectItem>
+                                        <SelectItem value="700000">700,000</SelectItem>
+                                        <SelectItem value="800000">800,000</SelectItem>
+                                        <SelectItem value="900000">900,000</SelectItem>
+                                        <SelectItem value="1000000">1,000,000</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        </div>
+
+                        {/* List of Properties */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {PROPERTY_CARDS.map((property, index) => (
+                                <PropertyCard key={index} {...property} />
+                            ))}
+                        </div>
                     </div>
                 </Tabs>
             </div>
         </div>
     )
 }
+
+const PROPERTY_CARDS: PropertyCardProps[] = [
+    {
+        title: "Luxury Villa in Palm Jumeirah",
+        price: 100000,
+        location: "Palm Jumeirah, Dubai",
+        bedrooms: 3,
+        bathrooms: 2,
+        area: 1000,
+    },
+    {
+        title: "Modern Apartment in Downtown Dubai",
+        price: 200000,
+        location: "Downtown Dubai, Dubai",
+        bedrooms: 4,
+        bathrooms: 3,
+        area: 1500,
+    },
+    {
+        title: "Spacious Townhouse in Arabian Ranches",
+        price: 300000,
+        location: "Arabian Ranches, Dubai",
+        bedrooms: 5,
+        bathrooms: 4,
+        area: 2000,
+    },
+    {
+        title: "Penthouse in Dubai Marina",
+        price: 400000,
+        location: "Dubai Marina, Dubai",
+        bedrooms: 6,
+        bathrooms: 5,
+        area: 2500,
+    },
+    {
+        title: "Beachfront Villa in Jumeirah Beach Residence",
+        price: 500000,
+        location: "Jumeirah Beach Residence, Dubai",
+        bedrooms: 7,
+        bathrooms: 6,
+        area: 3000,
+    },
+    {
+        title: "Contemporary Apartment in Business Bay",
+        price: 600000,
+        location: "Business Bay, Dubai",
+        bedrooms: 8,
+        bathrooms: 7,
+        area: 3500,
+    },
+    {
+        title: "Elegant Villa in Emirates Hills",
+        price: 700000,
+        location: "Emirates Hills, Dubai",
+        bedrooms: 9,
+        bathrooms: 8,
+        area: 4000,
+    },
+]
+
 
 export default AgentDetailsPage
