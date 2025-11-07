@@ -8,6 +8,7 @@ import { SEARCH_TAB } from "@/shared/constants/tabs"
 import { SearchTabType } from "@/shared/types/tabs.type"
 import { MapPin, Search } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
+import { Route } from "next"
 
 const tabTriggerClassName = "rounded-sm h-full data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-none data-[state=active]:font-medium text-muted-foreground"
 
@@ -16,7 +17,7 @@ function FiltersNav() {
     const searchParams = useSearchParams()
     
     const handleTabChange = (value: SearchTabType) => {
-        router.push(`${PAGE_ROUTES.SEARCH}?tab=${value}`);
+        router.push(`${PAGE_ROUTES.SEARCH}?tab=${value}` as Route);
     }
     return (
         <div className="border-b bg-background-light h-[calc(var(--height-nav)+1rem)] flex items-center sticky top-0 z-10">

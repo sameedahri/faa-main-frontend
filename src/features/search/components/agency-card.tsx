@@ -9,6 +9,7 @@ import { SubscriptionName } from '@/shared/types/subscription.type'
 import { VerifiedBadge } from '@/shared/components/badges/verified-badges'
 
 export interface AgencyCardProps {
+    id: string
     name: string
     profession: string[]
     location: string
@@ -22,7 +23,7 @@ export interface AgencyCardProps {
 function AgencyCard(props: AgencyCardProps) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
-        <BaseCard>
+        <BaseCard href={"#"}>
             <BaseCardImage 
                 src={agency.demoAgencyLogoImg}
                 alt="Agency Image"
@@ -31,9 +32,9 @@ function AgencyCard(props: AgencyCardProps) {
                 <div className="flex flex-col gap-1">
                     <div className='flex items-center gap-2'>
                         <BaseCardTitle>{props.name}</BaseCardTitle>
-                        <div className='flex gap-2'>
-                            {SubscriptionBadge && <SubscriptionBadge />}
+                        <div className='flex gap-1.5'>
                             {props.subscription !== "Basic" && <VerifiedBadge />}
+                            {SubscriptionBadge && <SubscriptionBadge />}
                         </div>
                     </div>
                     <p className='text-muted-foreground text-sm'>

@@ -4,4 +4,5 @@ export const PAGE_ROUTES = {
     HOME: '/',
     MISSIONS: '/missions',
     SEARCH: '/search',
-} as const satisfies Record<string, Route>
+    AGENT_DETAILS: (agentId: string) => `/agent/${agentId}` as Route,
+} as const

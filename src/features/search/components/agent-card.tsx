@@ -1,3 +1,5 @@
+"use client"
+
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { agency, agent } from '@/constants/images'
@@ -11,6 +13,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { INDUSTRY_NAMES } from '@/shared/constants/industry'
 import { Separator } from '@/shared/components/ui/separator'
+import { PAGE_ROUTES } from '@/shared/constants/page-routes'
+import { Route } from 'next'
+import { useRouter } from 'next/navigation'
 
 export interface AgentCardProps {
     name: string
@@ -22,20 +27,25 @@ export interface AgentCardProps {
     specialization: string[]
     className?: string
     isTeamMember?: boolean
+    id: string
+    email: string
 }
 
 function AgentCard({ className, ...props }: AgentCardProps) {
+    const router = useRouter()
+    const isRealEstateBroker = props.profession.includes(INDUSTRY_NAMES.REAL_ESTATE_BROKER) || props.profession.includes(INDUSTRY_NAMES.REAL_ESTATE)
+
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
-        <BaseCard className={className}>
+        <BaseCard className={className} href={PAGE_ROUTES.AGENT_DETAILS(props.id)}>
             <BaseCardImage src={agent.agentImage1} alt="Agent Image" />
             <div className='flex flex-col gap-4 justify-between'>
                 <div className="flex flex-col gap-1">
                     <div className='flex items-center gap-2'>
                         <BaseCardTitle>{props.name}</BaseCardTitle>
                         <div className='flex gap-2'>
-                            {SubscriptionBadge && <SubscriptionBadge />}
                             {props.subscription !== "Basic" && <VerifiedBadge />}
+                            {SubscriptionBadge && <SubscriptionBadge />}
                         </div>
                     </div>
                     <p className='text-muted-foreground text-sm'>
@@ -53,7 +63,28 @@ function AgentCard({ className, ...props }: AgentCardProps) {
                         <Star stroke={'transparent'} fill='var(--warning)' className='w-4 h-4' />
                         <span>{props.rating} <small>({props.reviews})</small></span>
                     </div>
+                    {/* <div className='flex flex-wrap gap-3 items-center text-sm'> */}
+                        <div className='flex items-center gap-1 text-xs'>
+                            <span className=''>Rent</span>
+                            <span>(10)</span>
+                        </div>
+                        <div className='flex items-center gap-1 text-xs'>
+                            <span className=''>Sale</span>
+                            <span>(10)</span>
+                        </div>
+                    {/* </div> */}
                 </div>
+
+                {/* <div className='flex flex-wrap gap-3 items-center text-sm'>
+                    <div className='flex items-center gap-1'>
+                        <span className='font-medium'>Rent</span>
+                        <span>(10)</span>
+                    </div>
+                    <div className='flex items-center gap-1'>
+                        <span className='font-medium'>Sale</span>
+                        <span>(10)</span>
+                    </div>
+                </div> */}
 
                 <div className='flex flex-wrap gap-2'>
                     {props.specialization.map((profession, index) => (
@@ -82,6 +113,11 @@ function AgentCard({ className, ...props }: AgentCardProps) {
                         variant={"outline"}
                         className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
                         size={"icon"}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            e.preventDefault()
+                            router.push(`mailto:${props.email}`)
+                        }}
                     >
                         <Mail />
                     </Button>
@@ -89,14 +125,25 @@ function AgentCard({ className, ...props }: AgentCardProps) {
                         variant={"outline"}
                         className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
                         size={"icon"}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            e.preventDefault()
+                            router.push(`tel:1234567890`, {})
+                        }}
                     >
                         <Phone />
                     </Button>
                     <Button
                         variant={"soft-success"}
                         size={"icon"}
+                        asChild
+                        onClick={(e) => {
+                            e.stopPropagation()
+                        }}
                     >
-                        <IconBrandWhatsapp className='size-5' />
+                        <Link href="https://wa.me/1234567890" target="_blank">
+                            <IconBrandWhatsapp className='size-5' />
+                        </Link>
                     </Button>
                 </div>
             </div>

@@ -35,3 +35,18 @@ export const SEARCH_TAB = {
         value: 'ai-agents',
     },
 } as const;
+
+export const AGENT_DETAILS_TAB = {
+    PROPERTIES: {
+        label: 'Properties',
+        value: 'properties',
+    },
+    SERVICES: {
+        label: 'Services',
+        value: 'services',
+    },
+    REVIEWS: {
+        label: 'Reviews',
+        value: 'reviews',
+    },
+} as const;

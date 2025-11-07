@@ -13,7 +13,7 @@ export const NAV_MENU: NavMenu[] = [
         href: PAGE_ROUTES.HOME,
     },
     {
-        label: 'Mission',
+        label: 'Missions',
         href: PAGE_ROUTES.MISSIONS,
     },
     {

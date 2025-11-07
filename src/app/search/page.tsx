@@ -24,7 +24,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
                     <div className="grid grid-cols-1 gap-5">
                         <TabsContent value={SEARCH_TAB.AGENTS.value}>
                             <div className="grid grid-cols-1 gap-7">
-                                {agents.map((agent, index) => (
+                                {AGENTS.map((agent, index) => (
                                     <AgentCard 
                                         key={index}
                                         className={cn({
@@ -73,9 +73,11 @@ export default async function SearchPage(props: PageProps<"/search">) {
     )
 }
 
-const agents: AgentCardProps[] = [
+export const AGENTS: AgentCardProps[] = [
     {
+        id: "1",
         name: "John Smith",
+        email: "john.smith@example.com",
         profession: ["Estate Agent", "Real Estate Broker"],
         location: "Dubai UAE",
         rating: 4.5,
@@ -85,7 +87,9 @@ const agents: AgentCardProps[] = [
         isTeamMember: true,
     },
     {
+        id: "2",
         name: "Sarah Johnson",
+        email: "sarah.johnson@example.com",
         profession: ["Property Consultant", "Investment Advisor"],
         location: "Abu Dhabi UAE",
         rating: 4.8,
@@ -94,7 +98,9 @@ const agents: AgentCardProps[] = [
         specialization: ["Commercial Real Estate", "Investment Properties", "Portfolio Management"]
     },
     {
+        id: "3",
         name: "Mohammed Al-Rashid",
+        email: "mohammed.al-rashid@example.com",
         profession: ["Commercial Real Estate Agent"],
         location: "Riyadh Saudi Arabia",
         rating: 4.6,
@@ -104,7 +110,9 @@ const agents: AgentCardProps[] = [
         isTeamMember: true,
     },
     {
+        id: "4",
         name: "Emily Chen",
+        email: "emily.chen@example.com",
         profession: ["Residential Property Specialist"],
         location: "Singapore",
         rating: 4.9,
@@ -113,7 +121,9 @@ const agents: AgentCardProps[] = [
         specialization: ["Condominiums", "HDB Flats", "Landed Properties"]
     },
     {
+        id: "5",
         name: "David Martinez",
+        email: "david.martinez@example.com",
         profession: ["Luxury Real Estate Advisor"],
         location: "London UK",
         rating: 4.7,
@@ -122,7 +132,9 @@ const agents: AgentCardProps[] = [
         specialization: ["Penthouses", "Prime Central London", "Historic Properties"]
     },
     {
+        id: "6",
         name: "Fatima Hassan",
+        email: "fatima.hassan@example.com",
         profession: ["Real Estate Broker", "Legal Consultant"],
         location: "Doha Qatar",
         rating: 4.3,
@@ -131,7 +143,9 @@ const agents: AgentCardProps[] = [
         specialization: ["Residential Sales", "Property Law", "Contract Negotiation"]
     },
     {
+        id: "7",
         name: "James Wilson",
+        email: "james.wilson@example.com",
         profession: ["Property Investment Manager"],
         location: "Toronto Canada",
         rating: 4.5,
@@ -141,7 +155,9 @@ const agents: AgentCardProps[] = [
         isTeamMember: true,
     },
     {
+        id: "8",
         name: "Aisha Abdullah",
+        email: "aisha.abdullah@example.com",
         profession: ["Real Estate Agent", "Mortgage Advisor"],
         location: "Kuwait City Kuwait",
         rating: 4.8,
@@ -150,7 +166,9 @@ const agents: AgentCardProps[] = [
         specialization: ["First-Time Buyers", "Mortgage Solutions", "Waterfront Properties"]
     },
     {
+        id: "9",
         name: "Robert Thompson",
+        email: "robert.thompson@example.com",
         profession: ["Commercial Property Specialist"],
         location: "New York USA",
         rating: 4.4,
@@ -159,7 +177,9 @@ const agents: AgentCardProps[] = [
         specialization: ["Manhattan Office Buildings", "Co-working Spaces", "Mixed-Use Developments"]
     },
     {
+        id: "10",
         name: "Layla Ahmed",
+        email: "layla.ahmed@example.com",
         profession: ["Estate Agent", "Property Developer"],
         location: "Sharjah UAE",
         rating: 4.6,
@@ -171,6 +191,7 @@ const agents: AgentCardProps[] = [
 
 const agencies: AgencyCardProps[] = [
     {
+        id: "1",
         name: "Prime Properties Dubai",
         profession: ["Real Estate Agency", "Property Management"],
         location: "Dubai UAE",
@@ -181,6 +202,7 @@ const agencies: AgencyCardProps[] = [
         noOfAgents: 45
     },
     {
+        id: "2",
         name: "Global Realty Group",
         profession: ["International Real Estate", "Relocation Services"],
         location: "London UK",
@@ -191,6 +213,7 @@ const agencies: AgencyCardProps[] = [
         noOfAgents: 78
     },
     {
+        id: "3",
         name: "Metro Real Estate Solutions",
         profession: ["Residential Sales", "Rental Services"],
         location: "New York USA",
@@ -201,6 +224,7 @@ const agencies: AgencyCardProps[] = [
         noOfAgents: 32
     },
     {
+        id: "4",
         name: "Al Sahara Properties",
         profession: ["Real Estate Brokerage", "Investment Advisory"],
         location: "Riyadh Saudi Arabia",
@@ -211,6 +235,7 @@ const agencies: AgencyCardProps[] = [
         noOfAgents: 28
     },
     {
+        id: "5",
         name: "Skyline Property Consultants",
         profession: ["Property Consultancy", "Valuation Services"],
         location: "Singapore",
@@ -221,6 +246,7 @@ const agencies: AgencyCardProps[] = [
         noOfAgents: 52
     },
     {
+        id: "6",
         name: "Coastal Realty Partners",
         profession: ["Real Estate Agency"],
         location: "Miami USA",
@@ -231,6 +257,7 @@ const agencies: AgencyCardProps[] = [
         noOfAgents: 18
     },
     {
+        id: "7",
         name: "Heritage Properties Ltd",
         profession: ["Estate Agency", "Property Sales"],
         location: "Abu Dhabi UAE",
@@ -241,6 +268,7 @@ const agencies: AgencyCardProps[] = [
         noOfAgents: 22
     },
     {
+        id: "8",
         name: "Maple Leaf Realty",
         profession: ["Real Estate Brokerage", "Mortgage Services"],
         location: "Toronto Canada",
@@ -251,6 +279,7 @@ const agencies: AgencyCardProps[] = [
         noOfAgents: 35
     },
     {
+        id: "9",
         name: "Pearl Real Estate",
         profession: ["Property Agency"],
         location: "Doha Qatar",
@@ -261,6 +290,7 @@ const agencies: AgencyCardProps[] = [
         noOfAgents: 12
     },
     {
+        id: "10",
         name: "Prestige International Realty",
         profession: ["Luxury Real Estate", "Portfolio Management", "Concierge Services"],
         location: "Monaco",

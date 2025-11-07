@@ -16,7 +16,7 @@ export interface ServiceCardProps {
 
 function ServiceCard(props: ServiceCardProps) {
     return (
-        <BaseCard>
+        <BaseCard href={"#"}>
             {/* Image */}
             <BaseCardImage src={home.heroImage} alt="Service Image" />
             
