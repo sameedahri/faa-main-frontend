@@ -68,7 +68,6 @@ export default async function SearchPage(props: PageProps<"/search">) {
                     </div>
                 </div>
             </div>
-            <Footer />
         </Tabs>
     )
 }

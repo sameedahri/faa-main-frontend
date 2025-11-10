@@ -11,6 +11,7 @@ import 'swiper/css/thumbs';
 import 'swiper/css/mousewheel';
 import 'swiper/css/keyboard';
 import 'swiper/css/grid';
+import Footer from "@/shared/components/footer";
 
 
 const merriweatherSans = Merriweather_Sans({
@@ -50,6 +51,7 @@ export default function RootLayout({
             >
                 <Navbar />
                 {children}
+                <Footer />
             </body>
         </html>
     );
