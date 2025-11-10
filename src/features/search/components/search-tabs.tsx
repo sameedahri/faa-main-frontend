@@ -17,7 +17,7 @@ function SearchTabs() {
         router.push(`${PAGE_ROUTES.SEARCH}?tab=${value}` as Route);
     }
     return (
-        <div className="container mt-5 sticky top-5 z-10">
+        <div className="py-6 top-0 sticky bg-background/90 backdrop-blur-sm overflow-hidden">
             <TabsList className={`${INPUT_HEIGHT.DEFAULT} p-1 bg-background-light shadow-sm border rounded-md w-full`}>
                 {Object.values(SEARCH_TAB).map((tab) => (
                     <TabsTrigger

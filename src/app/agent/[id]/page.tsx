@@ -1,4 +1,4 @@
-import { AGENTS } from "@/app/search/page"
+import { AGENTS, services } from "@/app/search/page"
 import { Filter } from "lucide-react"
 import { notFound } from "next/navigation"
 import { Tabs, TabsContent } from "@/shared/components/ui/tabs"
@@ -6,10 +6,11 @@ import { TabsList, TabsTrigger } from "@/ui/tabs"
 import { AGENT_DETAILS_TAB } from "@/shared/constants/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components/ui/select"
 import PropertyCard from "@/features/search/components/property-card"
-import AgentServiceCard from "@/features/agent/components/agent-service-card"
 import AgentReviewCard from "@/features/agent/components/agent-review-card"
 import AgentInfoSection from "@/features/agent/components/agent-info-section"
-import { AGENT_REVIEWS, AGENT_SERVICES, PROPERTY_CARDS } from "@/features/agent/components/data"
+import { AGENT_REVIEWS, PROPERTY_CARDS } from "@/features/agent/components/data"
+import BackButton from "@/shared/components/back-button"
+import ServiceCard from "@/features/search/components/service-card"
 
 function getAgentDetails(id: string) {
     return AGENTS.find((agent) => agent.id === id)
@@ -25,7 +26,16 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
 
     return (
         <div className="bg-background">
-            <div className="container grid grid-cols-[350px_1fr] gap-7 py-7">
+            <div className="container py-3">
+                <BackButton 
+                    variant={"ghost"} 
+                    size={"sm"}
+                    className="rounded-md hover:text-primary"
+                >
+                    Back
+                </BackButton>
+            </div>
+            <div className="container grid grid-cols-[350px_1fr] gap-7 pb-7">
                 {/* Agent Profile Info Side */}
                 <AgentInfoSection {...agentDetails} />
 
@@ -53,7 +63,7 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                         >
                             <>
                                 {/* Filter Card */}
-                                <div className="bg-background-light w-full rounded-md p-4 flex flex-col gap-4">
+                                <div className="bg-background-light w-full rounded-md p-4 flex flex-col gap-4 mb-7">
                                     <h3 className="text-base font-semibold font-heading flex items-center gap-1.5">
                                         <Filter className="size-4.5" />
                                         Filters Properties
@@ -126,8 +136,8 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                             value={AGENT_DETAILS_TAB.SERVICES.value}
                             className="grid grid-cols-1 md:grid-cols-1 gap-6"
                         >
-                            {AGENT_SERVICES.map((service, index) => (
-                                <AgentServiceCard key={index} {...service} />
+                            {services.map((service, index) => (
+                                <ServiceCard key={index} {...service} />
                             ))}
                         </TabsContent>
                         <TabsContent

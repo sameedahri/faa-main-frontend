@@ -1,7 +1,9 @@
 import { Badge } from "@/shared/components/ui/badge"
+import { Button } from "@/shared/components/ui/button"
 import { Separator } from "@/shared/components/ui/separator"
 import { home } from "@/shared/constants/images"
-import { Bath, BedDouble, Grid3x2, MapPin, Square } from "lucide-react"
+import { IconBrandWhatsapp } from "@tabler/icons-react"
+import { Bath, BedDouble, Grid3x2, Mail, MapPin, Phone, Square } from "lucide-react"
 import Image from "next/image"
 
 export type PropertyCardProps = {
@@ -51,10 +53,37 @@ function PropertyCard(props: PropertyCardProps) {
                         <span>{props.location}</span>
                     </Badge> */}
                 </div>
-                <h3 className='text-xl font-bold text-primary'> <small className='text-muted-foreground text-sm font-normal'>AED</small> {props.price.toLocaleString()}</h3>
+                <h3 className='text-xl font-bold text-foreground my-1'> 
+                    <small className='text-foreground/80 text-sm font-normal'>AED {" "}</small> 
+                    {props.price.toLocaleString() }
+                </h3>
+                <div className="grid grid-cols-3 gap-3 *:w-full *:shadow-sm pt-1">
+                    <Button
+                        variant={"outline"}
+                        className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
+                        size={"icon"}
+                    >
+                        <Mail />
+                        Email
+                    </Button>
+                    <Button
+                        variant={"outline"}
+                        className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
+                        size={"icon"}
+                    >
+                        <Phone />
+                        Call
+                    </Button>
+                    <Button
+                        variant={"soft-success"}
+                        size={"icon"}
+                    >
+                        <IconBrandWhatsapp className='size-5' />
+                    </Button>
+                </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default PropertyCard
+export default PropertyCard;

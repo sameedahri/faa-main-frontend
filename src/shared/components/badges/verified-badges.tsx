@@ -1,6 +1,5 @@
-import { Badge } from "@/ui/badge";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/ui/tooltip";
-import { BadgeCheck, ShieldCheck, ThumbsUp } from "lucide-react";
+import { BadgeCheck} from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 
 type VerifiedBadgeProps = {
@@ -11,7 +10,7 @@ export function VerifiedBadge({ className }: VerifiedBadgeProps) {
     return (
         <Tooltip>
             <TooltipTrigger>
-                <BadgeCheck className={cn("size-4.5 text-primary stroke-1.5", className)}/>
+                <BadgeCheck className={cn("size-4.5 text-primary stroke-1.5", className)} tabIndex={-1}/>
             </TooltipTrigger>
             <TooltipContent 
                 className='bg-primary/90 backdrop-blur-md text-primary-foreground shadow-sm font-medium max-w-[250px]' 

@@ -20,8 +20,8 @@ function FiltersNav() {
     }
     return (
         <div className="bg-background-light/10 backdrop-blur-3xl h-[calc(var(--height-nav)+1.8rem)] flex items-center sticky top-0 z-10">
-            <div className="container">
-                <TabsList className={`${INPUT_HEIGHT.DEFAULT} p-1 bg-background-light border rounded-md w-full`}>
+            <div className="container flex">
+                <TabsList className={`${INPUT_HEIGHT.DEFAULT} p-1 bg-background-light border rounded-md w-full max-w-fit`}>
                     {Object.values(SEARCH_TAB).map((tab) => (
                         <TabsTrigger
                             key={tab.value}

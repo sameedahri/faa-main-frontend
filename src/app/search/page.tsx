@@ -4,13 +4,12 @@ import AiAgentCard, { AiAgentCardProps } from "@/features/search/components/ai-a
 import FiltersNav from "@/features/search/components/filters-nav"
 import FiltersSidebar from "@/features/search/components/filters-sidebar"
 import ServiceCard, { ServiceCardProps } from "@/features/search/components/service-card"
-import Footer from "@/shared/components/footer"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs"
+import { Tabs, TabsContent } from "@/shared/components/ui/tabs"
 import { SearchTabType } from "@/shared/types/tabs.type"
 import { SEARCH_TAB } from "@/shared/constants/tabs"
 import { cn } from "@/shared/lib/utils"
-import { INPUT_HEIGHT } from "@/shared/constants/styles"
 import SearchTabs from "@/features/search/components/search-tabs"
+
 
 
 export default async function SearchPage(props: PageProps<"/search">) {
@@ -19,56 +18,56 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
     return (
         <Tabs defaultValue={tab}>
-            <div className="pb-10 relative flex flex-col gap-0  bg-background">
-                <FiltersNav />
-                {/* <SearchTabs /> */}
+            <div className="pb-10 relative flex flex-col gap-0 bg-background">
                 <div className="container grid grid-cols-[300px_1fr] items-start gap-7 relative">
                     <FiltersSidebar tab={tab} />
-                    <div className="grid grid-cols-1 gap-5">
-                        
-                        <TabsContent value={SEARCH_TAB.AGENTS.value}>
-                            <div className="grid grid-cols-1 gap-7">
-                                {AGENTS.map((agent, index) => (
-                                    <AgentCard 
-                                        key={index}
-                                        className={cn({
-                                            "shadow-[0px_0px_5px_1px] shadow-primary/30 border border-primary/40 hover:shadow-[0px_0px_10px_1px] hover:shadow-primary/60": index < 3,
-                                        })} 
-                                        {...agent}
-                                    />
-                                ))}
-                            </div>
-                        </TabsContent>
-                        <TabsContent value={SEARCH_TAB.AGENCIES.value}>
-                            <div className="grid grid-cols-1 gap-7">
-                                {agencies.map((agent, index) => (
-                                    <AgencyCard
-                                        key={index}
-                                        {...agent}
-                                    />
-                                ))}
-                            </div>
-                        </TabsContent>
-                        <TabsContent value={SEARCH_TAB.SERVICES.value}>
-                            <div className="grid grid-cols-1 gap-7">
-                                {services.map((service, index) => (
-                                    <ServiceCard
-                                        key={index}
-                                        {...service}
-                                    />
-                                ))}
-                            </div>
-                        </TabsContent>
-                        <TabsContent value={SEARCH_TAB.AI_AGENTS.value}>
-                            <div className="grid grid-cols-1 gap-7">
-                                {aiAgents.map((aiAgent, index) => (
-                                    <AiAgentCard
-                                        key={index}
-                                        {...aiAgent}
-                                    />
-                                ))}
-                            </div>
-                        </TabsContent>
+                    <div className="">
+                        <SearchTabs />
+                        <div className="grid grid-cols-1 gap-5">
+                            <TabsContent value={SEARCH_TAB.AGENTS.value}>
+                                <div className="grid grid-cols-1 gap-7">
+                                    {AGENTS.map((agent, index) => (
+                                        <AgentCard 
+                                            key={index}
+                                            className={cn({
+                                                "shadow-[0px_0px_5px_1px] shadow-primary/30 border border-primary/40 hover:shadow-[0px_0px_10px_1px] hover:shadow-primary/60": index < 3,
+                                            })} 
+                                            {...agent}
+                                        />
+                                    ))}
+                                </div>
+                            </TabsContent>
+                            <TabsContent value={SEARCH_TAB.AGENCIES.value}>
+                                <div className="grid grid-cols-1 gap-7">
+                                    {agencies.map((agent, index) => (
+                                        <AgencyCard
+                                            key={index}
+                                            {...agent}
+                                        />
+                                    ))}
+                                </div>
+                            </TabsContent>
+                            <TabsContent value={SEARCH_TAB.SERVICES.value}>
+                                <div className="grid grid-cols-1 gap-7">
+                                    {services.map((service, index) => (
+                                        <ServiceCard
+                                            key={index}
+                                            {...service}
+                                        />
+                                    ))}
+                                </div>
+                            </TabsContent>
+                            <TabsContent value={SEARCH_TAB.AI_AGENTS.value}>
+                                <div className="grid grid-cols-1 gap-7">
+                                    {aiAgents.map((aiAgent, index) => (
+                                        <AiAgentCard
+                                            key={index}
+                                            {...aiAgent}
+                                        />
+                                    ))}
+                                </div>
+                            </TabsContent>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -305,7 +304,7 @@ const agencies: AgencyCardProps[] = [
     }
 ];
 
-const services: ServiceCardProps[] = [
+export const services: ServiceCardProps[] = [
     {
         name: "Professional Property Valuation",
         industries: ["Real Estate", "Valuation", "Consulting"],
