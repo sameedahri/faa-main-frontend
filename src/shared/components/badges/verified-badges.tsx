@@ -21,7 +21,7 @@ export function VerifiedBadge({ className }: VerifiedBadgeProps) {
                     Verified
                 </h2>
                 <p className="text-sm">
-                    Identity and credentials verified by our team for your peace of mind.
+                    Documents and identity confirmed by our team.
                 </p>
             </TooltipContent>
         </Tooltip>

@@ -185,6 +185,12 @@ function AiAgentsFilters() {
 function BaseFilters() {
     return (
         <>
+            <SearchFilterInputGroup label="Search">
+                <Input placeholder="Search by name or email" />
+            </SearchFilterInputGroup>
+            <SearchFilterInputGroup label="Location">
+                <Input placeholder="Search by location" />
+            </SearchFilterInputGroup>
             <SearchFilterInputGroup label="Industry">
                 <Select>
                     <SelectTrigger className='border-border'>

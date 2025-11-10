@@ -5,10 +5,12 @@ import FiltersNav from "@/features/search/components/filters-nav"
 import FiltersSidebar from "@/features/search/components/filters-sidebar"
 import ServiceCard, { ServiceCardProps } from "@/features/search/components/service-card"
 import Footer from "@/shared/components/footer"
-import { Tabs, TabsContent } from "@/shared/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui/tabs"
 import { SearchTabType } from "@/shared/types/tabs.type"
 import { SEARCH_TAB } from "@/shared/constants/tabs"
 import { cn } from "@/shared/lib/utils"
+import { INPUT_HEIGHT } from "@/shared/constants/styles"
+import SearchTabs from "@/features/search/components/search-tabs"
 
 
 export default async function SearchPage(props: PageProps<"/search">) {
@@ -17,11 +19,13 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
     return (
         <Tabs defaultValue={tab}>
-            <div className="pb-10 relative flex flex-col gap-7 bg-background">
+            <div className="pb-10 relative flex flex-col gap-0  bg-background">
                 <FiltersNav />
+                {/* <SearchTabs /> */}
                 <div className="container grid grid-cols-[300px_1fr] items-start gap-7 relative">
                     <FiltersSidebar tab={tab} />
                     <div className="grid grid-cols-1 gap-5">
+                        
                         <TabsContent value={SEARCH_TAB.AGENTS.value}>
                             <div className="grid grid-cols-1 gap-7">
                                 {AGENTS.map((agent, index) => (

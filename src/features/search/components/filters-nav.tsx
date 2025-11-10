@@ -10,19 +10,18 @@ import { MapPin, Search } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Route } from "next"
 
-const tabTriggerClassName = "rounded-sm h-full data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-none data-[state=active]:font-medium text-muted-foreground"
+const tabTriggerClassName = "rounded-sm h-full data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-none data-[state=active]:font-semibold text-muted-foreground"
 
 function FiltersNav() {
     const router = useRouter()
-    const searchParams = useSearchParams()
     
     const handleTabChange = (value: SearchTabType) => {
         router.push(`${PAGE_ROUTES.SEARCH}?tab=${value}` as Route);
     }
     return (
-        <div className="border-b bg-background-light h-[calc(var(--height-nav)+1rem)] flex items-center sticky top-0 z-10">
-            <div className="container grid grid-cols-[auto_1fr_1fr] gap-5">
-                <TabsList className={`${INPUT_HEIGHT.DEFAULT} p-1 bg-background-light shadow-sm border rounded-md w-full`}>
+        <div className="bg-background-light/10 backdrop-blur-3xl h-[calc(var(--height-nav)+1.8rem)] flex items-center sticky top-0 z-10">
+            <div className="container">
+                <TabsList className={`${INPUT_HEIGHT.DEFAULT} p-1 bg-background-light border rounded-md w-full`}>
                     {Object.values(SEARCH_TAB).map((tab) => (
                         <TabsTrigger
                             key={tab.value}
@@ -34,22 +33,6 @@ function FiltersNav() {
                         </TabsTrigger>
                     ))}
                 </TabsList>
-                <InputGroup className="shadow-sm">
-                    <InputGroupAddon>
-                        <Search />
-                    </InputGroupAddon>
-                    <InputGroupInput
-                        placeholder='Search by specialty or name'
-                    />
-                </InputGroup>
-                <InputGroup className="shadow-sm">
-                    <InputGroupAddon>
-                        <MapPin />
-                    </InputGroupAddon>
-                    <InputGroupInput
-                        placeholder='Location'
-                    />
-                </InputGroup>
             </div>
         </div>
     )

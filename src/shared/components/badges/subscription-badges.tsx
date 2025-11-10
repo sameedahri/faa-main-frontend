@@ -22,7 +22,9 @@ export function ProBadge() {
                 <h2 className="font-base text-base font-semibold flex items-center gap-1 pb-1">
                     Pro
                 </h2>
-                <p className="text-sm">Premium professional with enhanced visibility, priority support, and verified credentials.</p>
+                <p className="text-sm">
+                    This badge indicates an active Pro Subscription, offering advanced tools, enhanced visibility, and premium listing options.
+                </p>
             </TooltipContent>
         </Tooltip>
     )
@@ -48,7 +50,9 @@ export function EliteBadge() {
                 <h2 className="font-base text-base font-semibold flex items-center gap-1 pb-1">
                     Elite
                 </h2>
-                <p className="text-sm leading-normal">Top-tier expert with exclusive benefits, maximum visibility, and dedicated account management.</p>
+                <p className="text-sm leading-normal">
+                    This badge represents the Elite Subscription Plan, which includes top-tier features, maximum exposure, and exclusive access to platform benefits.
+                </p>
             </TooltipContent>
         </Tooltip>
     )
