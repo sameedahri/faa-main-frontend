@@ -1,6 +1,6 @@
 import { Badge,  } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { agent, home } from '@/constants/images'
+import { home } from '@/constants/images'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
 import { Mail, MapPin, Phone, Star } from 'lucide-react'
 import { BaseCard, BaseCardImage, BaseCardTitle } from './base-card'

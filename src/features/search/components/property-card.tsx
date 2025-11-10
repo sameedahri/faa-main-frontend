@@ -1,4 +1,5 @@
 import { Badge } from "@/shared/components/ui/badge"
+import { Separator } from "@/shared/components/ui/separator"
 import { home } from "@/shared/constants/images"
 import { Bath, BedDouble, Grid3x2, MapPin, Square } from "lucide-react"
 import Image from "next/image"
@@ -23,31 +24,35 @@ function PropertyCard(props: PropertyCardProps) {
                     placeholder="blur"
                 />
             </div>
-            <div>
-                <h2 className="text-base font-semibold font-heading">{props.title}</h2>
+            <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-1">
+                    <h2 className="text-base font-semibold font-heading">{props.title}</h2>
+                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                        <MapPin className='size-4' />
+                        <span>{props.location}</span>
+                    </div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                    <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>
+                        <BedDouble />
+                        <span>{props.bedrooms}</span>
+                    </Badge>
+                    <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>
+                        <Bath />
+                        <span>{props.bathrooms}</span>
+                    </Badge>
+                    <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>
+                        <Grid3x2 />
+                        <span>{props.area} sqft</span>
+                    </Badge>
+                    {/* <br />
+                    <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>
+                        <MapPin />
+                        <span>{props.location}</span>
+                    </Badge> */}
+                </div>
+                <h3 className='text-xl font-bold text-primary'> <small className='text-muted-foreground text-sm font-normal'>AED</small> {props.price.toLocaleString()}</h3>
             </div>
-            <div className="flex flex-wrap gap-2">
-                <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>
-                    <BedDouble />
-                    <span>{props.bedrooms}</span>
-                </Badge>
-                <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>
-                    <Bath />
-                    <span>{props.bathrooms}</span>
-                </Badge>
-                <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>
-                    <Grid3x2 />
-                    <span>{props.area} sqft</span>
-                </Badge>
-                <br />
-                <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>
-                    <MapPin />
-                    <span>{props.location}</span>
-                </Badge>
-            </div>
-                
-
-            <h3 className='text-xl font-bold mt-auto text-primary'> <small className='text-muted-foreground text-sm font-normal'>AED</small> {props.price.toLocaleString()}</h3>
         </div>
     )
 }
