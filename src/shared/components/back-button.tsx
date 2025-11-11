@@ -24,13 +24,13 @@ function BackButton({ backLink, children, ...props }: BackButtonProps) {
         <Button
             onClick={handleBack}
             type='button'
-            variant='outline'
-            size='icon'
-            className='rounded-full'
+            variant='ghost'
+            size='sm'
+            className='rounded-md hover:text-primary'
             {...props}
         >
             <ArrowLeft />
-            {children}
+            {children || 'Back'}
         </Button>
     )
 }

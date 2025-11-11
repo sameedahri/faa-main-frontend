@@ -5,4 +5,5 @@ export const PAGE_ROUTES = {
     MISSIONS: '/missions',
     SEARCH: '/search',
     AGENT_DETAILS: (agentId: string) => `/agent/${agentId}` as Route,
+    PROPERTY_DETAILS: (propertyId: string) => `/property/${propertyId}` as Route,
 } as const

@@ -29,9 +29,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
                                     {AGENTS.map((agent, index) => (
                                         <AgentCard 
                                             key={index}
-                                            className={cn({
-                                                "shadow-[0px_0px_5px_1px] shadow-primary/30 border border-primary/40 hover:shadow-[0px_0px_10px_1px] hover:shadow-primary/60": index < 3,
-                                            })} 
+                                            isFeatured={index < 3}
                                             {...agent}
                                         />
                                     ))}

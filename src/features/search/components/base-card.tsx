@@ -8,32 +8,31 @@ import { cn } from "@/shared/lib/utils";
 import Image, { ImageProps } from "next/image";
 import { PropsWithChildren } from "react";
 import { Route } from "next";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { EmailButton, PhoneButton, WhatsappButton } from "@/shared/components/action-buttons";
 
 /**
  * Base Card Wrapper Component,
  * @param props - { children: React.ReactNode }
  */
 export function BaseCard(props: PropsWithChildren<{ className?: string, href: Route }>) {
-    const router = useRouter()
     
-    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.stopPropagation()
-        e.preventDefault()
-        router.push(props.href)
     }
 
     return (
-        <div
+        <Link
             className={cn(
-                'p-4 rounded-md bg-background-light cursor-pointer grid grid-cols-[140px_1fr_auto] gap-5',
+                'p-4 rounded-md bg-background-light border cursor-pointer grid grid-cols-[140px_1fr_auto] gap-5',
                 'transition-all duration-300 hover:shadow-lg'
                 , props.className)
             }
             onClick={handleClick}
+            href={props.href}
         >
             {props.children}
-        </div>
+        </Link>
     )
 }
 
@@ -52,6 +51,21 @@ export function BaseCardImage({ className, ...props }: ImageProps) {
                 className={cn('object-cover w-full h-full')}
                 {...props}
             />
+        </div>
+    )
+}
+
+export function BaseCardActionButtons(props: {
+    phone: string
+    email: string
+    whatsapp: string
+    className?: string
+}) {
+    return (
+        <div className={cn("flex gap-3", props.className)}>
+            <PhoneButton  phone={props.phone} />
+            <EmailButton email={props.email} />
+            <WhatsappButton whatsapp={props.whatsapp} />
         </div>
     )
 }

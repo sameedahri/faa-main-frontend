@@ -1,10 +1,11 @@
-import { BaseCard, BaseCardTitle } from './base-card'
+import { BaseCard, BaseCardActionButtons, BaseCardTitle } from './base-card'
 import { SubscriptionName } from '@/shared/types/subscription.type'
 import { getSubscriptionBadge } from '@/shared/lib/helpers'
 import { Badge } from '@/shared/components/ui/badge'
 import { BotIcon, Mail, Phone, Star } from 'lucide-react'
 import { Button } from '@/shared/components/ui/button'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
+import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
 
 export type AiAgentCardProps = {
     name: string
@@ -53,31 +54,15 @@ function AiAgentCard(props: AiAgentCardProps) {
                         <Star stroke={'transparent'} fill='var(--warning)' className='size-4.5' />
                         <span className='font-medium text-foreground'>{props.rating} <small className='text-muted-foreground'>({props.reviews})</small></span>
                     </div>
-                   
+
                 </div>
             </div>
-            <div className="flex gap-2 items-end">
-                <Button
-                    variant={"outline"}
-                    className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
-                    size={"icon"}
-                >
-                    <Mail />
-                </Button>
-                <Button
-                    variant={"outline"}
-                    className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
-                    size={"icon"}
-                >
-                    <Phone />
-                </Button>
-                <Button
-                    variant={"soft-success"}
-                    size={"icon"}
-                >
-                    <IconBrandWhatsapp className='size-5' />
-                </Button>
-            </div>
+            <BaseCardActionButtons 
+                phone={""}
+                email={""}
+                whatsapp={""}
+                className="items-end"
+            />
         </BaseCard>
     )
 }

@@ -4,9 +4,10 @@ import { agency, agent } from '@/constants/images'
 import { getSubscriptionBadge, getSubscriptionVariant } from '@/shared/lib/helpers'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
 import { Mail, MapPin, Phone, Star, User } from 'lucide-react'
-import { BaseCard, BaseCardImage, BaseCardTitle } from './base-card'
+import { BaseCard, BaseCardActionButtons, BaseCardImage, BaseCardTitle } from './base-card'
 import { SubscriptionName } from '@/shared/types/subscription.type'
 import { VerifiedBadge } from '@/shared/components/badges/verified-badges'
+import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
 
 export interface AgencyCardProps {
     id: string
@@ -63,28 +64,12 @@ function AgencyCard(props: AgencyCardProps) {
                     ))}
                 </div>
             </div>
-            <div className="flex gap-2 items-end">
-                <Button
-                    variant={"outline"}
-                    className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
-                    size={"icon"}
-                >
-                    <Mail />
-                </Button>
-                <Button
-                    variant={"outline"}
-                    className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
-                    size={"icon"}
-                >
-                    <Phone />
-                </Button>
-                <Button
-                    variant={"soft-success"}
-                    size={"icon"}
-                >
-                    <IconBrandWhatsapp className='size-5' />
-                </Button>
-            </div>
+            <BaseCardActionButtons
+                phone={""}
+                email={""}
+                whatsapp={""}
+                className="items-end"
+            />
         </BaseCard>
     )
 }

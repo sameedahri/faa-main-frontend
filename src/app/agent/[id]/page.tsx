@@ -27,13 +27,7 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
     return (
         <div className="bg-background">
             <div className="container py-3">
-                <BackButton 
-                    variant={"ghost"} 
-                    size={"sm"}
-                    className="rounded-md hover:text-primary"
-                >
-                    Back
-                </BackButton>
+                <BackButton />
             </div>
             <div className="container grid grid-cols-[350px_1fr] gap-7 pb-7">
                 {/* Agent Profile Info Side */}
@@ -55,7 +49,6 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                             ))}
                         </TabsList>
 
-                        
 
                         {/* List of Properties */}
                         <TabsContent 

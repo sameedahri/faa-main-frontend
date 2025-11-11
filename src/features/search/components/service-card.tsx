@@ -1,9 +1,8 @@
 import { Badge,  } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { home } from '@/constants/images'
-import { IconBrandWhatsapp } from '@tabler/icons-react'
-import { Mail, MapPin, Phone, Star } from 'lucide-react'
-import { BaseCard, BaseCardImage, BaseCardTitle } from './base-card'
+import { MapPin, Star } from 'lucide-react'
+import { BaseCard, BaseCardActionButtons, BaseCardImage, BaseCardTitle } from './base-card'
+import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
 
 export interface ServiceCardProps {
     name: string
@@ -51,28 +50,12 @@ function ServiceCard(props: ServiceCardProps) {
             </div>
             
             {/* Action Buttons */}
-            <div className="flex gap-2 items-end">
-                <Button
-                    variant={"outline"}
-                    className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
-                    size={"icon"}
-                >
-                    <Mail />
-                </Button>
-                <Button
-                    variant={"outline"}
-                    className='bg-white text-primary hover:bg-primary/5 hover:text-primary'
-                    size={"icon"}
-                >
-                    <Phone />
-                </Button>
-                <Button
-                    variant={"soft-success"}
-                    size={"icon"}
-                >
-                    <IconBrandWhatsapp className='size-5' />
-                </Button>
-            </div>
+            <BaseCardActionButtons
+                phone={""}
+                email={""}
+                whatsapp={""}
+                className="items-end"
+            />
         </BaseCard>
     )
 }

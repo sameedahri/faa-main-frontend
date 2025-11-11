@@ -7,11 +7,12 @@ export interface AgentReviewCardProps {
     review: string
     rating: number
     date: string
+    amenities: string[]
 }
 
 function AgentReviewCard(props: AgentReviewCardProps) {
     return (
-        <div className='grid grid-cols-1 gap-4 p-5 rounded-md bg-background-light shadow-sm md:grid-cols-[1fr_auto]'>
+        <div className='grid grid-cols-1 gap-4 p-5 rounded-md bg-background-light border md:grid-cols-[1fr_auto]'>
             <div className='flex flex-col gap-3'>
                 <div className='flex flex-col gap-0.5'>
                     <h2 className='font-semibold text-lg'>{props.name}</h2>

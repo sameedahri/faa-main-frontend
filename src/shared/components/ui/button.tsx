@@ -28,7 +28,7 @@ const buttonVariants = cva(
                 link: "text-primary underline-offset-4 hover:underline",
 
                 muted:
-                    "bg-muted text-muted-foreground shadow-xs hover:bg-muted/80",
+                    "bg-background text-muted-foreground shadow-xs hover:bg-muted/80",
 
                 warning: "bg-warning text-warning-foreground shadow-xs hover:bg-warning/90",
                 
