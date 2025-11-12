@@ -17,7 +17,7 @@ function AgentInfoSection(props: AgentCardProps) {
 
     return (
         <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-4 items-center bg-background-light rounded-md p-6 relative">
+            <div className="flex flex-col gap-4 items-center bg-background-light/0 bg-linear-to-t from-background-light to-primary/5 rounded-md p-6 relative">
                 <Image
                     src={agent.agentImage1}
                     alt="Agent Image"
@@ -91,13 +91,13 @@ function AgentInfoSection(props: AgentCardProps) {
                     </Button>
                 </div>
             </div>
-            <div className="bg-background-light/70 rounded-md p-6 flex flex-col gap-1">
+            <div className="bg-background-light/0 rounded-md p-6 flex flex-col gap-1">
                 <h3 className="font-bold font-heading">About</h3>
                 <p className="text-muted-foreground text-sm leading-loose ">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. In enim consequuntur aliquid praesentium iste autem! Voluptate temporibus aliquid illum dolorem.
                 </p>
             </div>
-            <div className="bg-background-light/70 rounded-md p-6 flex flex-col gap-1">
+            <div className="bg-background-light/0 rounded-md p-6 flex flex-col gap-1">
                 <h3 className="font-bold font-heading">Professional Information</h3>
                 <div className="flex flex-col gap-5 pt-2">
                     <div className="flex flex-col gap-0.5">
@@ -125,7 +125,7 @@ function AgentInfoSection(props: AgentCardProps) {
                     </div>
                 </div>
             </div>
-            <div className="bg-background-light/70 rounded-md p-6 flex flex-col gap-3">
+            <div className="bg-background-light/0 rounded-md p-6 flex flex-col gap-3">
                 <h3 className="font-bold font-heading">Specialization</h3>
                 <div className="flex flex-wrap gap-2">
                     {agentDetails.specialization.map((specialization, index) => (

@@ -33,7 +33,7 @@ export function JoinTheNetworkCard(props: typeof JOIN_THE_NETWORK_CARDS_CONTENT[
                 <Check className='text-primary size-7 mt-1' />
             </div>
             <div className='flex flex-col gap-1.5 md:gap-2'>
-                <h2 className='text-lg  font-heading lg:text-xl'>{props.title}</h2>
+                <h2 className='text-lg font-semibold font-heading lg:text-xl'>{props.title}</h2>
                 <p className='text-muted-foreground text-sm w-10/12 mx-auto lg:text-base'>{props.description}</p>
             </div>
         </div>

@@ -11,9 +11,9 @@ export const FEATURED_PROFESSIONALS_TAB = {
         label: 'Services',
         value: 'services',
     },
-    EVENTS: {
-        label: 'Events',
-        value: 'events',
+    PROPERTIES: {
+        label: 'Properties',
+        value: 'properties',
     },
 } as const;
 

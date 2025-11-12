@@ -8,7 +8,7 @@ import { FeaturedTabType } from '@/shared/types/tabs.type'
 import { cn } from '@/shared/lib/utils'
 import Loader from '@/shared/components/ui/loader'
 import FeatureServicesCarousel from './featured-services-carousel'
-import FeaturedEventsCarousel from './featured-events-carousel'
+import FeaturedEventsCarousel from './featured-properties-carousel'
 import FeaturedAgentsCarousel from './featured-agents-carousel'
 import FeaturedAgenciesCarousel from './featured-agencies-carousel'
 
@@ -48,7 +48,7 @@ function FeaturedProfessional() {
                                 className={cn(
                                     'data-[state=active]:text-foreground text-foreground/100',
                                     {
-                                        "hidden md:block": tab.value === FEATURED_PROFESSIONALS_TAB.EVENTS.value,
+                                        "hidden md:block": tab.value === FEATURED_PROFESSIONALS_TAB.PROPERTIES.value,
                                     }
                                 )}
                             >
@@ -67,7 +67,7 @@ function FeaturedProfessional() {
                     <TabsContent value={FEATURED_PROFESSIONALS_TAB.SERVICES.value}>
                         <FeatureServicesCarousel />
                     </TabsContent>
-                    <TabsContent value={FEATURED_PROFESSIONALS_TAB.EVENTS.value}>
+                    <TabsContent value={FEATURED_PROFESSIONALS_TAB.PROPERTIES.value}>
                         <FeaturedEventsCarousel />
                     </TabsContent>
                 </Tabs>

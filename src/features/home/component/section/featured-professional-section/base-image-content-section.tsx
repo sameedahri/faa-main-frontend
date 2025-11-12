@@ -68,7 +68,7 @@ export function BaseImageContentSection(props: BaseImageContentSectionProps) {
                                         <card.Icon />
                                     </div>
                                     <div className='flex flex-col gap-0'>
-                                        <h1 className='text-lg font-medium text-foreground/90 group-hover:text-primary font-heading lg:text-xl'>{card.title}</h1>
+                                        <h1 className='text-lg font-bold text-foreground/90 group-hover:text-primary font-heading lg:text-xl'>{card.title}</h1>
                                         <p className='text-muted-foreground text-sm leading-relaxed lg:text-base'>
                                             {card.description}
                                         </p>
@@ -78,10 +78,10 @@ export function BaseImageContentSection(props: BaseImageContentSectionProps) {
                             </Link>
                         ))}
                     </div>
-                    <ViewMoreButton
+                    {/* <ViewMoreButton
                         {...props.viewMoreProps}
                         className={cn('-mt-3', props.viewMoreProps.className)}
-                    />
+                    /> */}
                 </div>
                 <div className={cn(
                     "rounded-md overflow-hidden shadow-sm hidden w-full h-full lg:block",
@@ -94,6 +94,12 @@ export function BaseImageContentSection(props: BaseImageContentSectionProps) {
                         placeholder='blur'
                     />
                 </div>
+            </div>
+            <div className="container -mt-3">
+                <ViewMoreButton
+                    {...props.viewMoreProps}
+                    className={cn(props.viewMoreProps.className)}
+                />
             </div>
         </div>
     )
