@@ -8,7 +8,7 @@ import React, { HTMLProps } from 'react'
 
 function MortgageDetails() {
     return (
-        <div className='grid grid-cols-[1fr_300px] gap-5 rounded-lg mt-2 p-5 border'>
+        <div className='grid grid-cols-[1fr_300px] gap-10 rounded-lg mt-3 p-4 border'>
             <div className="grid gap-5">
                 <div className=''>
                     <MortgageInputWrapper
@@ -42,7 +42,7 @@ function MortgageDetails() {
                         </div>
                     </MortgageInputWrapper>
                 </div>
-                {/* <Separator className='bg-border'/> */}
+                <Separator className='bg-border'/>
                 <div className="space-y-6">
                     <MortgageInputWrapper labelProps={{
                         children: (
@@ -56,6 +56,7 @@ function MortgageDetails() {
                     }}>
                         <Slider />
                     </MortgageInputWrapper>
+                    <Separator className='bg-border' />
                     <MortgageInputWrapper labelProps={{
                         children: (
                             <div className='flex justify-between items-center w-full'>
@@ -68,6 +69,7 @@ function MortgageDetails() {
                     }}>
                         <Slider />
                     </MortgageInputWrapper>
+                    <Separator className='bg-border' />
                     <MortgageInputWrapper labelProps={{
                         children: (
                             <div className='flex justify-between items-center w-full'>
@@ -82,7 +84,7 @@ function MortgageDetails() {
                     </MortgageInputWrapper>
                 </div>
             </div>
-            <div className='border bg-linear-to-b from-background-light to-background rounded-md p-5 flex flex-col gap-5 justify-start'>
+            <div className='bg-background rounded-md p-5 flex flex-col gap-5 justify-start'>
                 <div className='flex flex-col  text-center gap-0.5'>
                     <small className='text-foreground text-sm'>
                         Monthly Payment
@@ -136,7 +138,7 @@ function MortgageInputWrapper(props: {
     className?: string
 }) {
     return (
-        <div className={cn('flex flex-col gap-4 border rounded-md px-5 pt-3 pb-5', props.className)}>
+        <div className={cn('flex flex-col gap-4', props.className)}>
             <Label
                 className='text-base font-semibold text-foreground'
                 {...props.labelProps}

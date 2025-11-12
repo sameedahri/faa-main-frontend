@@ -1,11 +1,16 @@
 import { PROPERTY_CARDS } from '@/features/agent/components/data'
 import MortgageDetails from '@/features/properties/components/mortgage-details'
+import RegulatoryInformation from '@/features/properties/components/regulatory-information'
+import PropertyCard from '@/features/search/components/property-card'
 import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
 import BackButton from '@/shared/components/back-button'
+import { ReadyToMoveInBadge } from '@/shared/components/badges/property-badges'
 import { agent, home } from '@/shared/constants/images'
+import { PAGE_ROUTES } from '@/shared/constants/page-routes'
 import { cn } from '@/shared/lib/utils'
 import { Bath, BedDouble, CircleSmall, Copy, Grid3x2, MapPin } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { PropsWithChildren } from 'react'
 
@@ -33,11 +38,15 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                     'grid grid-rows-2 grid-cols-3 gap-3',
                     "[&_img]:object-cover [&_img]:w-full [&_img]:h-full [&_img]:rounded-md",
                 )}>
-                    <Image
-                        src={home.heroImage}
-                        alt="Property Image"
-                        className='row-span-full col-start-1 col-end-3'
-                    />
+                    <div className='row-span-full col-start-1 col-end-3 relative'>
+                        <ReadyToMoveInBadge 
+                            className='absolute top-3 left-3'
+                        />
+                        <Image
+                            src={home.heroImage}
+                            alt="Property Image"
+                        />
+                    </div>
                     <Image
                         src={home.heroImage}
                         alt="Property Image"
@@ -53,7 +62,7 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                 {/* Content */}
                 <div className="grid grid-cols-3 items-start gap-3 pb-7">
                     {/* Property Info */}
-                    <div className="flex flex-col gap-14 col-start-1 col-end-3">
+                    <div className="flex flex-col gap-16 col-start-1 col-end-3">
                         {/* Property Title, Price and Features */}
                         <div className="space-y-5">
                             {/* Property Title and Price */}
@@ -115,50 +124,19 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
 
                         {/* Regulatory Information */}
                         <PropertyInfoCard title="Regulatory Information">
-                            <div className="grid grid-cols-2 gap-3 pt-1">
-                                <table className='table-auto w-full'>
-                                    <tbody className='w-full'>
-                                        <tr>
-                                            <td className={tdClassName}>Ads Permit Number</td>
-                                            <td className={cn(tdClassName, "border- font-normal")}>
-                                                <div className="flex items-start gap-3">
-                                                    1234567890
-                                                    <Copy className='size-3' />
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className={tdClassName}>Company License Number</td>
-                                            <td className={cn(tdClassName, "border- font-normal")}>
-                                                <div className="flex items-start gap-3">
-                                                    1234567890
-                                                    <Copy className='size-3' />
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td className={cn(tdClassName, "border-b-0")}>Agent License Number</td>
-                                            <td className={cn(tdClassName, "border- border-b-0 font-normal")}>
-                                                <div className="flex items-start gap-3">
-                                                    8979812
-                                                    <Copy className='size-3' />
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <RegulatoryInformation />
                         </PropertyInfoCard>
 
                         {/* Mortgage */}
                         <PropertyInfoCard title="Mortgage Calculator">
                             <MortgageDetails />
                         </PropertyInfoCard>
+                        
                     </div>
 
                     {/* Agent Info */}
                     <div className='col-start-3 col-end-4 p-5 rounded-lg flex flex-col gap-5 border sticky top-5'>
-                        <div className='flex items-center gap-2'>
+                        <Link href={PAGE_ROUTES.AGENT_DETAILS("1")} className='flex items-center gap-2'>
                             <div className='aspect-square w-[60px] rounded-full overflow-hidden'>
                                 <Image
                                     src={agent.agentImage1}
@@ -172,7 +150,7 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                                     Real Estate Agent
                                 </p>
                             </div>
-                        </div>
+                        </Link>
                         <div className='grid grid-cols-2 gap-3'>
                             <EmailButton email={""} size={"default"}>
                                 Email
@@ -187,6 +165,16 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                     </div>
                 </div>
 
+                {/* Recommendation For You */}
+                <PropertyInfoCard title="Recommendation For You" className='mt-5'>
+                    <div className='grid grid-cols-3 gap-7 pt-4'>
+                        {PROPERTY_CARDS
+                            .slice(0, 3)
+                            .map((property) => (
+                            <PropertyCard key={property.id} {...property} />
+                        ))}
+                    </div>
+                </PropertyInfoCard>
             </div>
         </div>
     )
@@ -205,7 +193,7 @@ function PropertyFeatureCard(props: PropsWithChildren) {
 function PropertyInfoCard(props: PropsWithChildren<{ title: string, className?: string }>) {
     return (
         <div className={cn('flex flex-col gap-2', props.className)}>
-            <h3 className='text-xl font-bold'>{props.title}</h3>
+            <h3 className='text-xl font-bold '>{props.title}</h3>
             {props.children}
         </div>
     )

@@ -17,7 +17,7 @@ function AgentInfoSection(props: AgentCardProps) {
 
     return (
         <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-4 items-center bg-background-light/0 bg-linear-to-t from-background-light to-primary/5 rounded-md p-6 relative">
+            <div className="flex flex-col gap-4 items-center bg-background-light rounded-md p-6 relative">
                 <Image
                     src={agent.agentImage1}
                     alt="Agent Image"
