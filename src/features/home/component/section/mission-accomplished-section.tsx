@@ -23,7 +23,7 @@ function MissionAccomplishedSection() {
                         key={card.title}
                         href={card.href}
                         className={cn(
-                            'px-5 py-8 border border-primary/13 rounded-md flex flex-col gap-4 bg-linear-to-b from-primary/4 via-transparent to-transparent',
+                            'px-5 py-8 border rounded-md flex flex-col gap-4 bg-linear-to-b from-primary/4 via-transparent to-transparent',
                         )}
                     >
                         <card.Icon className='size-10 stroke-[1.7] duration-400 transition-all text-primary/80 lg:size-12' />

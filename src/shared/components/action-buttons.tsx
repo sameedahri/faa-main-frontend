@@ -22,7 +22,7 @@ export function WhatsappButton({
 }: ButtonProps & { whatsapp: string }) {
     return (
         <Button
-            variant={"soft-success"}
+            variant={"bootstrap-success"}
             size={"icon"}
             className={cn(
                 "[&_svg]:size-5",
@@ -38,7 +38,7 @@ export function WhatsappButton({
                 WARNING: I don't why, but by removing this "size-" className, 
                 the above class "[&_svg]:size-5" not works.
             *****/}
-            <IconBrandWhatsapp className="size-" />
+            <IconBrandWhatsapp  />
             {children}
         </Button>
     )
@@ -63,7 +63,7 @@ export function EmailButton({
             variant={"muted"}
             size={"icon"}
             className={cn(
-                "text-primary hover:bg-primary/10 hover:text-primary",
+                "text-primary border border-primary/20 hover:bg-primary/10 hover:text-primary",
                 className
             )}
             onClick={e => {
@@ -72,7 +72,7 @@ export function EmailButton({
             }}
             {...props}
         >
-            <Mail />
+            <Mail  />
             {children}
         </Button>
     )
@@ -97,7 +97,7 @@ export function PhoneButton({
             variant={"muted"}
             size={"icon"}
             className={cn(
-                "text-primary hover:bg-primary/10 hover:text-primary",
+                "text-primary border border-primary/20 hover:bg-primary/10 hover:text-primary",
                 className
             )}
             onClick={e => {
@@ -106,7 +106,7 @@ export function PhoneButton({
             }}
             {...props}
         >
-            <Phone />
+            <Phone  />
             {children}
         </Button>
     )

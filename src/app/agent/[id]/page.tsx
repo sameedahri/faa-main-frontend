@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import { Tabs, TabsContent } from "@/shared/components/ui/tabs"
 import { TabsList, TabsTrigger } from "@/ui/tabs"
 import { AGENT_DETAILS_TAB } from "@/shared/constants/tabs"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectTriggerProps, SelectValue } from "@/shared/components/ui/select"
 import PropertyCard from "@/features/search/components/property-card"
 import AgentReviewCard from "@/features/agent/components/agent-review-card"
 import AgentInfoSection from "@/features/agent/components/agent-info-section"
@@ -25,56 +25,55 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
     }
 
     return (
-        <div className="bg-background">
-            <div className="container py-3">
-                <BackButton />
-            </div>
-            <div className="container grid grid-cols-[350px_1fr] gap-7 pb-7">
+        <div className="bg-background-light relative pb-16">
+            <div className="container grid grid-cols-[350px_1fr] gap-12">
                 {/* Agent Profile Info Side */}
                 <AgentInfoSection {...agentDetails} />
 
                 {/* Agent Services Side */}
                 <Tabs defaultValue={AGENT_DETAILS_TAB.PROPERTIES.value}>
-                    <div className="flex flex-col gap-6">
-                        <TabsList className="bg-background-light w-full p-1 shadow-sm">
-                            {Object.values(AGENT_DETAILS_TAB).map((tab) => (
-                                <TabsTrigger
-                                    key={tab.value}
-                                    className="rounded-sm h-full data-[state=active]:bg-primary/10 data-[state=active]:text-primary data-[state=active]:shadow-none data-[state=active]:font-medium text-muted-foreground"
-                                    value={tab.value}
+                    <div className="flex flex-col gap-0">
+                        <div className="py-6 top-0 sticky bg-background-light backdrop-blur-sm overflow-hidden z-30">
+                            <TabsList className="bg-background-dark w-full p-0 h-9 rounded-full">
+                                {Object.values(AGENT_DETAILS_TAB).map((tab) => (
+                                    <TabsTrigger
+                                        key={tab.value}
+                                        className="rounded-full h-full data-[state=active]:border-primary/60 data-[state=active]:bg-background-light data-[state=active]:text-primary data-[state=active]:font-semibold text-muted-foreground"
+                                        value={tab.value}
 
-                                >
-                                    {tab.label}
-                                </TabsTrigger>
-                            ))}
-                        </TabsList>
+                                    >
+                                        {tab.label}
+                                    </TabsTrigger>
+                                ))}
+                            </TabsList>
+                        </div>
 
 
                         {/* List of Properties */}
-                        <TabsContent 
+                        <TabsContent
                             value={AGENT_DETAILS_TAB.PROPERTIES.value}
                         >
                             <>
                                 {/* Filter Card */}
-                                <div className="bg-background-light w-full rounded-md p-4 flex flex-col gap-4 mb-7">
-                                    <h3 className="text-base font-semibold font-heading flex items-center gap-1.5">
+                                <div className="bg-background- border-t w-full py-5 flex flex-col gap-4 mb-2">
+                                    <h3 className="text-base font-medium font-heading flex items-center gap-1.5">
                                         <Filter className="size-4.5" />
                                         Filters Properties
                                     </h3>
                                     <div className="grid grid-cols-4 gap-3">
                                         <Select>
-                                            <SelectTrigger size={"sm"} className="border-border">
+                                            <FilterSelectTrigger>
                                                 <SelectValue placeholder="All Type" />
-                                            </SelectTrigger>
+                                            </FilterSelectTrigger>
                                             <SelectContent>
                                                 <SelectItem value="sale">Sale</SelectItem>
                                                 <SelectItem value="rent">Rent</SelectItem>
                                             </SelectContent>
                                         </Select>
                                         <Select>
-                                            <SelectTrigger size={"sm"} className="border-border">
+                                            <FilterSelectTrigger>
                                                 <SelectValue placeholder="All Property Type" />
-                                            </SelectTrigger>
+                                            </FilterSelectTrigger>
                                             <SelectContent>
                                                 <SelectItem value="apartment">Apartment</SelectItem>
                                                 <SelectItem value="villa">Villa</SelectItem>
@@ -83,9 +82,9 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                                             </SelectContent>
                                         </Select>
                                         <Select>
-                                            <SelectTrigger size={"sm"} className="border-border">
+                                            <FilterSelectTrigger>
                                                 <SelectValue placeholder="Any Beds" />
-                                            </SelectTrigger>
+                                            </FilterSelectTrigger>
                                             <SelectContent>
                                                 <SelectItem value="1 bedroom">1 Bedroom</SelectItem>
                                                 <SelectItem value="2 bedroom">2 Bedroom</SelectItem>
@@ -100,9 +99,9 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                                             </SelectContent>
                                         </Select>
                                         <Select>
-                                            <SelectTrigger size={"sm"} className="border-border">
+                                            <FilterSelectTrigger>
                                                 <SelectValue placeholder="Any Price" />
-                                            </SelectTrigger>
+                                            </FilterSelectTrigger>
                                             <SelectContent>
                                                 <SelectItem value="100000">100,000</SelectItem>
                                                 <SelectItem value="200000">200,000</SelectItem>
@@ -118,9 +117,16 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                                         </Select>
                                     </div>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                                {/* Property Cards */}
+                                <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
                                     {PROPERTY_CARDS.map((property, index) => (
-                                        <PropertyCard key={index} {...property} />
+                                        <PropertyCard
+                                            key={index}
+                                            property={{ ...property }}
+                                            className="from-background-light bg-background-light"
+                                            orientation="horizontal"
+                                        />
                                     ))}
                                 </div>
                             </>
@@ -148,6 +154,15 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
     )
 }
 
+function FilterSelectTrigger(props: SelectTriggerProps) {
+    return (
+        <SelectTrigger
+            size={"default"}
+            className="bg-background-light border-border"
+            {...props}
+        />
+    )
+}
 
 
 

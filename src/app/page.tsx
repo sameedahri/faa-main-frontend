@@ -8,7 +8,7 @@ import JoinTheNetworkSection from "@/features/home/component/section/join-the-ne
 
 export default async function Home() {
     return (
-        <div className=" flex flex-col gap-10 md:gap-12 xl:gap-16">
+        <div className="flex flex-col gap-10 md:gap-12 xl:gap-16">
             <HeroSection />
             <div className="flex flex-col gap-10 pb-10 md:gap-14 md:pb-14 xl:gap-24 xl:pb-24">
                 <Missions />

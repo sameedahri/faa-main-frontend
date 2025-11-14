@@ -68,18 +68,17 @@
   --color-placeholder: var(--placeholder);
   --color-pro: var(--pro);
   --color-elite: var(--elite);
+  --color-border-highlight: var(--border-highlight);
+
 
   /* Shadows */
-  --shadow-sm: var(--shadow-sm);
+  /* --shadow-sm: var(--shadow-sm);
   --shadow-md: var(--shadow-md);
-  --shadow-lg: var(--shadow-lg);
+  --shadow-lg: var(--shadow-lg); */
 
   /* Gradients */
   --background-image-gradient: var(--gradient);
   --background-image-gradient-hover: var(--gradient-hover);
-
-  /* Borders */
-  --border-highlight: var(--border-highlight);
 }
 
 :root {
@@ -87,23 +86,24 @@
   --background-light: oklch(1 0 0);
   --background: oklch(0.9807 0.0051 247.88);
   --background-dark: oklch(0.975 0.0051 247.88);
-  --foreground: oklch(0.4 0 0);
+  --foreground: oklch(0.2745 0.0551 237.14);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.35 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.35 0 0);
-  --primary: oklch(0.5427 0.1197 239.91);
+  --primary: oklch(0.5694 0.1197 239.91);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   /* --muted: oklch(0.97 0 0); */
   /* --muted: var(--background-dark); */
   --muted: oklch(0.9807 0.0051 247.88);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.5454 0.0367 235.78);
   --accent: var(--background-dark);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.5694 0.2068 24.72);
-  --border: oklch(0.93 0 0);
+  --border: oklch(0.92 0.006 239.91);
+  --border-highlight: oklch(from var(--primary) l c h / 0.1);
   --input: oklch(0.87 0 0);
   --ring: var(--primary);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -118,7 +118,6 @@
   --success-foreground: oklch(0.985 0 0);
   --pro: oklch(0.5702 0.0962 320.82);
   --elite: oklch(0.6002 0.1038 184.7);
-  --border-highlight: oklch(0.985 0 0);
 
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -160,7 +159,9 @@
   );
 
   /* borders */
-  --border-highlight: oklch(1 0 0);
+ 
+
+;
 
   /* Swiper */
   --swiper-pagination-bullet-inactive-color: var(--primary);
@@ -231,6 +232,10 @@
 
 .animate-spin-slow {
   animation: spin-slow 1.5s linear infinite;
+}
+
+.highlighted-card-gradient {
+  @apply bg-linear-to-br from-primary/4 via-transparent to-transparent;
 }
 
 .gradient-card {

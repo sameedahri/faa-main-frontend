@@ -10,6 +10,7 @@ import { PropsWithChildren } from "react";
 import { Route } from "next";
 import Link from "next/link";
 import { EmailButton, PhoneButton, WhatsappButton } from "@/shared/components/action-buttons";
+import { SurfaceCard } from "@/shared/components/ui/surface-card";
 
 /**
  * Base Card Wrapper Component,
@@ -22,30 +23,40 @@ export function BaseCard(props: PropsWithChildren<{ className?: string, href: Ro
     }
 
     return (
-        <Link
+        <SurfaceCard
+            asChild
             className={cn(
-                'p-4 rounded-md bg-background-light border cursor-pointer grid grid-cols-[140px_1fr_auto] gap-5',
-                'transition-all duration-300 hover:shadow-lg'
-                , props.className)
-            }
-            onClick={handleClick}
-            href={props.href}
+                'p-4 cursor-pointer group',
+                "grid grid-cols-[140px_1fr_auto] gap-5",
+                'transition-all duration-300',
+                // "shadow-none    ",
+                "shadow-sm",
+                props.className
+            )}
+            style={{
+                // boxShadow: "0 0 5px 0 rgba(0, 0, 0, 0.15)",
+            }}
         >
-            {props.children}
-        </Link>
+            <Link
+                onClick={handleClick}
+                href={props.href}
+            >
+                {props.children}
+            </Link>
+        </SurfaceCard>
     )
 }
 
 
 export function BaseCardTitle(props: PropsWithChildren) {
     return (
-        <h2 className='text-lg font-semibold'>{props.children}</h2>
+        <h2 className='text-lg font-semibold transition-all group-hover:underline underline-offset-4 decoration-1 duration-200'>{props.children}</h2>
     )
 }
 
 export function BaseCardImage({ className, ...props }: ImageProps) {
     return (
-        <div className={cn('rounded-md overflow-hidden aspect-[11/10] shadow-sm', className)}>
+        <div className={cn('rounded-md overflow-hidden aspect-[11/10]', className)}>
             <Image
                 placeholder={"blur"}
                 className={cn('object-cover w-full h-full')}

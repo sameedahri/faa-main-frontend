@@ -20,7 +20,7 @@ function AiAgentCard(props: AiAgentCardProps) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
         <BaseCard className='grid-cols-[160px_1fr_auto]' href='#'>
-            <div className='shadow-sm rounded-md aspect-square self-center flex items-center justify-center bg-primary/2'>
+            <div className='rounded-md aspect-square self-center flex items-center justify-center bg-primary/2'>
                 <BotIcon className='text-primary size-10' />
             </div>
             <div className='flex flex-col gap-3.5 justify-between'>

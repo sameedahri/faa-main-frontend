@@ -4,7 +4,8 @@ import RegulatoryInformation from '@/features/properties/components/regulatory-i
 import PropertyCard from '@/features/search/components/property-card'
 import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
 import BackButton from '@/shared/components/back-button'
-import { ReadyToMoveInBadge } from '@/shared/components/badges/property-badges'
+import { PropertyStatusBade } from '@/shared/components/badges/property-badges'
+import { Separator } from '@/shared/components/ui/separator'
 import { agent, home } from '@/shared/constants/images'
 import { PAGE_ROUTES } from '@/shared/constants/page-routes'
 import { cn } from '@/shared/lib/utils'
@@ -35,12 +36,13 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
             <div className="container flex flex-col gap-5">
                 {/* Property Images */}
                 <div className={cn(
-                    'grid grid-rows-2 grid-cols-3 gap-3',
+                    'grid grid-rows-2 grid-cols-3 gap-5',
                     "[&_img]:object-cover [&_img]:w-full [&_img]:h-full [&_img]:rounded-md",
                 )}>
                     <div className='row-span-full col-start-1 col-end-3 relative'>
-                        <ReadyToMoveInBadge 
-                            className='absolute top-3 left-3'
+                        <PropertyStatusBade 
+                            status={propertyDetails.status}
+                            className='absolute left-3 top-3'
                         />
                         <Image
                             src={home.heroImage}
@@ -60,9 +62,9 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                 </div>
 
                 {/* Content */}
-                <div className="grid grid-cols-3 items-start gap-3 pb-7">
+                <div className="grid grid-cols-3 items-start gap-5 pb-7">
                     {/* Property Info */}
-                    <div className="flex flex-col gap-16 col-start-1 col-end-3">
+                    <div className="flex flex-col gap-0 col-start-1 col-end-3">
                         {/* Property Title, Price and Features */}
                         <div className="space-y-5">
                             {/* Property Title and Price */}
@@ -81,7 +83,7 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                             </div>
 
                             {/* Property Features */}
-                            <div className='flex flex-wrap gap-2'>
+                            <div className='flex flex-wrap gap-4'>
                                 <PropertyFeatureCard>
                                     <BedDouble />
                                     <span>{propertyDetails.bedrooms} Bedrooms</span>
@@ -97,6 +99,8 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                             </div>
                         </div>
 
+                        <SectionSeparator />
+
                         {/* Property Description */}
                         <PropertyInfoCard title="Description">
                             <p className='text-muted-foreground text-base leading-relaxed'>
@@ -105,9 +109,11 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                             </p>
                         </PropertyInfoCard>
 
+                        <SectionSeparator />
+
                         {/* Features and Amenities */}
                         <PropertyInfoCard title="Features and Amenities">
-                            <div className="grid grid-cols-3 gap-2 pt-1">
+                            <div className="grid grid-cols-3 gap-2">
                                 {propertyDetails.amenities.map((amenity, index) => (
                                     <div
                                         className='grid grid-cols-[auto_1fr] items-center gap-1.5 text-muted-foreground'
@@ -122,20 +128,23 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                             </div>
                         </PropertyInfoCard>
 
+                        <SectionSeparator />
+
                         {/* Regulatory Information */}
                         <PropertyInfoCard title="Regulatory Information">
                             <RegulatoryInformation />
                         </PropertyInfoCard>
 
+                        <SectionSeparator />
+
                         {/* Mortgage */}
                         <PropertyInfoCard title="Mortgage Calculator">
                             <MortgageDetails />
                         </PropertyInfoCard>
-                        
                     </div>
 
                     {/* Agent Info */}
-                    <div className='col-start-3 col-end-4 p-5 rounded-lg flex flex-col gap-5 border sticky top-5'>
+                    <div className='col-start-3 col-end-4 p-5 rounded-lg flex flex-col gap-5 sticky top-5 bg-linear-to-b from-primary/5 via-transparent shadow to-transparent border border-primary/15'>
                         <Link href={PAGE_ROUTES.AGENT_DETAILS("1")} className='flex items-center gap-2'>
                             <div className='aspect-square w-[60px] rounded-full overflow-hidden'>
                                 <Image
@@ -164,14 +173,19 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                         </div>
                     </div>
                 </div>
+                
+                <SectionSeparator className='max-w-full' />
 
                 {/* Recommendation For You */}
-                <PropertyInfoCard title="Recommendation For You" className='mt-5'>
+                <PropertyInfoCard title="Recommendation For You" className='mt-0 gap-0'>
                     <div className='grid grid-cols-3 gap-7 pt-4'>
                         {PROPERTY_CARDS
                             .slice(0, 3)
                             .map((property) => (
-                            <PropertyCard key={property.id} {...property} />
+                            <PropertyCard 
+                                key={property.id} 
+                                property={{...property}} 
+                            />
                         ))}
                     </div>
                 </PropertyInfoCard>
@@ -180,11 +194,15 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
     )
 }
 
-const tdClassName = 'border-b p-3 w-full whitespace-nowrap font-medium'
+function SectionSeparator(props: { className?: string }) {
+    return (
+        <Separator className={cn('my-10 max-w-[99%]', props.className)} />
+    )
+}
 
 function PropertyFeatureCard(props: PropsWithChildren) {
     return (
-        <div className='flex min-w-[150px] flex-col text-center items-center gap-1.5 [&>svg]:size-6 aspect-video bg-background p-5 rounded-md'>
+        <div className='flex min-w-[150px] flex-col text-center items-center gap-1.5 [&>svg]:size-6 aspect-video shadow p-5 rounded-md'>
             {props.children}
         </div>
     )

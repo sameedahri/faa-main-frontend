@@ -4,7 +4,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 export function ProBadge() {
     return (
-        <Tooltip>
+        <Tooltip delayDuration={250}>
             <TooltipTrigger asChild>
                 <Badge
                     variant={"pro"}
@@ -32,7 +32,7 @@ export function ProBadge() {
 
 export function EliteBadge() {
     return (
-        <Tooltip>
+        <Tooltip delayDuration={250}>
             <TooltipTrigger asChild>
                 <Badge
                     variant={"elite"}

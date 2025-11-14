@@ -92,7 +92,7 @@ export function FeaturedBaseCarousel(props: FeaturedBaseCarouselProps) {
                     {props.items.map((item, index) => (
                         <SwiperSlide
                             key={`${props.items.length}-${index}`}
-                            className='w-full md:px-1 md:max-w-[340px]'
+                            className='w-full !h-auto md:px-1 md:max-w-[340px]'
                             {...props.swiperSlideProps}
                         >
                             {item}
@@ -160,7 +160,7 @@ export function BaseCarouselCard(props: PropsWithChildren<{
     return (
         <div 
             className={cn(
-                'p-5 rounded-md border border-primary/10 my-2 w-full mx-auto md:mx-0 md:w-full bg-linear-to-br from-primary/5 via-transparent to-transparent',
+                'p-5 rounded-md border border-border-highlight my-2 w-full mx-auto md:mx-0 md:w-full highlighted-card-gradient',
                 props.className
             )}
         >

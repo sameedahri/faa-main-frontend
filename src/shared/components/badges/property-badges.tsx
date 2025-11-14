@@ -1,17 +1,32 @@
 import { Badge } from "@/ui/badge";
 import { cn } from "@/shared/lib/utils";
+import { PropsWithChildren } from "react";
+import { PropertyStatus } from "@/features/properties/types/properties.type";
 
-export function ReadyToMoveInBadge({ className }: { className?: string }) {
+
+export function PropertyStatusBade(props: { 
+    status: PropertyStatus,
+    className?: string
+}) {
+
+    const renderPropertyStatus = () => {
+        switch(props.status) {
+            case "Off-Plan":
+                return "Off-Plan";
+            case "Ready":
+                return "Ready";
+        }    
+    }
+
     return (
         <Badge
             variant="muted"
-            // type="gradient"
             className={cn(
-                "rounded-full bg-white shadow-sm text-foreground",
-                className,
+                "rounded-full bg-white backdrop-blur-md font-medium shadow-sm text-foreground",
+                props.className
             )}
         >
-            Ready to Move In
+            {renderPropertyStatus()}         
         </Badge>
     )
 }

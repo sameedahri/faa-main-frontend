@@ -26,7 +26,7 @@ function BackButton({ backLink, children, ...props }: BackButtonProps) {
             type='button'
             variant='ghost'
             size='sm'
-            className='rounded-md text-muted-foreground hover:text-primary'
+            className='hover:text-primary shadow-none'
             {...props}
         >
             <ArrowLeft />

@@ -9,8 +9,9 @@ function FeaturedPropertiesCarousel() {
         <FeaturedBaseCarousel
             items={Array.from({ length: 5 }).map((_, index) => (
                 <PropertyCard
-                    {...PROPERTY_CARDS[index]}
+                    property={{...PROPERTY_CARDS[index]}}
                     key={`agent-${index}`}
+                    className='hover:ring-0 hover:ring-offset-0'
                 />
             ))}
         />

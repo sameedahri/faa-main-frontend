@@ -1,7 +1,7 @@
 import { agent } from "@/shared/constants/images"
 import { AgentReviewCardProps } from "./agent-review-card"
 import { AgentServiceCardProps } from "./agent-service-card"
-import { PropertyCardProps } from "@/features/search/components/property-card"
+import { Property } from "@/features/properties/types/properties.type"
 
 export const AGENT_REVIEWS: AgentReviewCardProps[] = [
     {
@@ -118,7 +118,7 @@ export const AGENT_SERVICES: AgentServiceCardProps[] = [
     },
 ]
 
-export const PROPERTY_CARDS: PropertyCardProps[] = [
+export const PROPERTY_CARDS: Property[] = [
     {
         id: "1",
         title: "Luxury Villa in Palm Jumeirah",
@@ -128,6 +128,7 @@ export const PROPERTY_CARDS: PropertyCardProps[] = [
         bathrooms: 2,
         area: 1000,
         amenities: ["Private Beach Access", "Infinity Pool", "Smart Home System", "Private Garden", "Sea View", "Security 24/7"],
+        status: "Ready",
     },
     {
         id: "2",
@@ -138,6 +139,7 @@ export const PROPERTY_CARDS: PropertyCardProps[] = [
         bathrooms: 3,
         area: 1500,
         amenities: ["Gym", "Swimming Pool", "Concierge Service", "Covered Parking", "Children's Play Area", "BBQ Area"],
+        status: "Ready",
     },
     {
         id: "3",
@@ -148,6 +150,7 @@ export const PROPERTY_CARDS: PropertyCardProps[] = [
         bathrooms: 4,
         area: 2000,
         amenities: ["Golf Course View", "Community Pool", "Parks & Lakes", "Kids Play Area", "Tennis Courts", "Retail Center"],
+        status: "Ready",
     },
     {
         id: "4",
@@ -158,6 +161,7 @@ export const PROPERTY_CARDS: PropertyCardProps[] = [
         bathrooms: 5,
         area: 2500,
         amenities: ["Rooftop Terrace", "Jacuzzi", "Panoramic Views", "Valet Parking", "Private Elevator", "Walk-in Closets"],
+        status: "Ready",
     },
     {
         id: "5",
@@ -168,6 +172,7 @@ export const PROPERTY_CARDS: PropertyCardProps[] = [
         bathrooms: 6,
         area: 3000,
         amenities: ["Beach Front", "Private Pool", "Maid's Room", "Landscaped Garden", "Outdoor Kitchen", "Cinema Room"],
+        status: "Off-Plan",
     },
     {
         id: "6",
@@ -178,6 +183,7 @@ export const PROPERTY_CARDS: PropertyCardProps[] = [
         bathrooms: 7,
         area: 3500,
         amenities: ["Canal View", "Fitted Kitchen", "Built-in Wardrobes", "Balcony", "Steam & Sauna", "Residents Lounge"],
+        status: "Off-Plan",
     },
     {
         id: "7",
@@ -188,5 +194,7 @@ export const PROPERTY_CARDS: PropertyCardProps[] = [
         bathrooms: 8,
         area: 4000,
         amenities: ["Golf Course", "Driver's Room", "Home Office", "Wine Cellar", "Gym Room", "Spa & Wellness Center"],
+        status: "Off-Plan",
+
     },
 ]

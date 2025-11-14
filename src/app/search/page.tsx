@@ -18,8 +18,8 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
     return (
         <Tabs defaultValue={tab}>
-            <div className="pb-10 relative flex flex-col gap-0 bg-background">
-                <div className="container grid grid-cols-[300px_1fr] items-start gap-7 relative">
+            <div className="pb-10 relative flex flex-col gap-0 bg-background-light">
+                <div className="container grid grid-cols-[300px_1fr] items-start gap-10 relative">
                     <FiltersSidebar tab={tab} />
                     <div className="">
                         <SearchTabs />
@@ -29,7 +29,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
                                     {AGENTS.map((agent, index) => (
                                         <AgentCard 
                                             key={index}
-                                            isFeatured={index < 3}
+                                            // isFeatured={index < 3}
                                             {...agent}
                                         />
                                     ))}

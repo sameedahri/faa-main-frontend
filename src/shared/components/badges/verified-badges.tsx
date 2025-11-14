@@ -8,7 +8,7 @@ type VerifiedBadgeProps = {
 
 export function VerifiedBadge({ className }: VerifiedBadgeProps) {
     return (
-        <Tooltip>
+        <Tooltip delayDuration={250}>
             <TooltipTrigger>
                 <BadgeCheck className={cn("size-4.5 text-primary stroke-1.5", className)} tabIndex={-1}/>
             </TooltipTrigger>

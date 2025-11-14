@@ -7,6 +7,7 @@ import { NativeSelect, NativeSelectOption } from '@/shared/components/ui/native-
 import { Button } from '@/shared/components/ui/button'
 import { PAGE_ROUTES } from '@/shared/constants/page-routes'
 import Link from 'next/link'
+import { INPUT_HEIGHT } from '@/shared/constants/styles'
 
 function HeroSection() {
     return (
@@ -72,7 +73,7 @@ function HeroFilters() {
                 </NativeSelect>
                 <Button
                     asChild
-                    size={"sm"} className='h-11 w-full text-base font-semibold lg:w-full'>
+                    size={"sm"} className={`${INPUT_HEIGHT.DEFAULT} w-full text-base font-semibold lg:w-full`}>
                     <Link href={PAGE_ROUTES.SEARCH}>
                         <Search className='size-4.5' />
                         Search

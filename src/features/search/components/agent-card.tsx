@@ -43,7 +43,7 @@ function AgentCard({ className, ...props }: AgentCardProps) {
     return (
         <BaseCard
             className={cn({
-                "border-3 border-primary/40 shadow-none hover:shadow-[0px_0px_10px_1px] hover:shadow-primary/60": props.isFeatured
+                "border-3 border-primary/40": props.isFeatured
             }, className)}
             href={PAGE_ROUTES.AGENT_DETAILS(props.id)}
         >

@@ -58,7 +58,7 @@ export function BaseImageContentSection(props: BaseImageContentSectionProps) {
                                 key={card.title}
                                 href={card.href}
                                 className={cn(
-                                    'p-3 shadow-s border border-primary/10 rounded-md justify-between flex gap-5 items-center bg-linear-to-br from-primary/4 via-transparent to-transparent bg-non',
+                                    'p-3 shadow-s border border-border-highlight rounded-md justify-between flex gap-5 items-center bg-linear-to-br from-primary/4 via-transparent to-transparent',
                                     "transition-all hover:scale-105 duration-400 group hover:[&>svg]:text-primary hover:shadow-lg md:p-5",
                                     card.className
                                 )}

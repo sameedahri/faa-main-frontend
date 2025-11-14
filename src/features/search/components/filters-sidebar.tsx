@@ -27,7 +27,7 @@ function FiltersSidebar(props: FiltersSidebarProps) {
 
     return (
         <form 
-            className="overflow-y-auto h-fit max-h-[calc(100vh-3rem)] flex flex-col gap-6 p-5 rounded-md bg-background-light/80 sticky top-6 mt-6"
+            className="overflow-y-auto h-fit max-h-[calc(100vh-3rem)] flex flex-col gap-6 p-5 rounded-lg border border-border/50 sticky top-6 mt-6"
             onSubmit={e => e.preventDefault()}
         >
             <h2 className='flex items-center gap-1.5 font-semibold text-lg'>
