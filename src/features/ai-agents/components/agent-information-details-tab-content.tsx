@@ -82,18 +82,7 @@ function InfoCard(props: {
         </div>
     )
 }
-// function InfoCard(props: {
-//     title: string,
-//     children: React.ReactNode
-//     className?: string
-// }) {
-//     return (
-//         <div className={cn("flex flex-col gap-2 border p-4 rounded-lg", props.className)}>
-//             <h3 className='font-semibold text-lg text-foreground'>{props.title}</h3>
-//             {props.children}
-//         </div>
-//     )
-// }
+
 
 function Separator() {
     return (

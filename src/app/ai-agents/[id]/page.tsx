@@ -15,6 +15,7 @@ import ServiceCard from "@/features/search/components/service-card"
 import { OutlineTabsList, OutlineTabsTrigger } from "@/shared/components/ui/tabs/outline-tabs"
 import AiAgentInfoCard from '@/features/ai-agents/components/ai-agent-info-card'
 import AgentInformationDetailsTabContent from '@/features/ai-agents/components/agent-information-details-tab-content'
+import TechnicalDetailsTabContent from '@/features/ai-agents/components/technical-details-tab-content'
 
 function getAiAgentDetails(id: string) {
     return AI_AGENTS.find((aiAgent) => aiAgent.id === id)
@@ -65,7 +66,7 @@ async function AiAgentDetailsPage(props: PageProps<"/ai-agents/[id]">) {
                             value={AI_AGENT_DETAILS_TAB.TECHNICAL_DETAILS.value}
                             className="grid grid-cols-1 md:grid-cols-1 gap-6"
                         >
-                            
+                            <TechnicalDetailsTabContent />
                         </TabsContent>
                         
                         {/* Pricing Content */}
