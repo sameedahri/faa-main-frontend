@@ -8,6 +8,7 @@ import { BaseCard, BaseCardActionButtons, BaseCardImage, BaseCardTitle } from '.
 import { SubscriptionName } from '@/shared/types/subscription.type'
 import { VerifiedBadge } from '@/shared/components/badges/verified-badges'
 import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
+import { PAGE_ROUTES } from '@/shared/constants/page-routes'
 
 export interface AgencyCardProps {
     id: string
@@ -19,12 +20,13 @@ export interface AgencyCardProps {
     subscription: SubscriptionName
     specialization: string[]
     noOfAgents: number
+    email: string
 }
 
 function AgencyCard(props: AgencyCardProps) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
-        <BaseCard href={"#"}>
+        <BaseCard href={PAGE_ROUTES.AGENCY_DETAILS(props.id)}>
             <BaseCardImage 
                 src={agency.demoAgencyLogoImg}
                 alt="Agency Image"

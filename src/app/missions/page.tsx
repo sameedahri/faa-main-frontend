@@ -3,7 +3,6 @@ import SectionHeading from '@/shared/components/section-heading'
 import { home } from '@/shared/constants/images'
 import { missions } from '@/shared/constants/mission'
 import Image from 'next/image'
-import React from 'react'
 
 function MissionsPage() {
     return (

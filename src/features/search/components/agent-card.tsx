@@ -113,7 +113,7 @@ function CompanyLink(props: PropsWithChildren<{ href: Route }>) {
     const router = useRouter()
     return (
         <button
-            className='aspect-square w-15 overflow-hidden rounded-md border transition cursor-pointer hover:border-primary/50'
+            className='aspect-square w-15 overflow-hidden rounded-lg border transition cursor-pointer hover:border-primary/50'
             onClick={e => {
                 e.stopPropagation()
                 e.preventDefault()

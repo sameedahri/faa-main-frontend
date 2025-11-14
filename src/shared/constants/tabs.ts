@@ -50,3 +50,22 @@ export const AGENT_DETAILS_TAB = {
         value: 'reviews',
     },
 } as const;
+
+export const AGENCY_DETAILS_TABS = {
+    PROPERTIES: {
+        label: 'Properties',
+        value: 'properties',
+    },
+    AGENTS: {
+        label: 'Agents',
+        value: 'agents',
+    },
+    SERVICES: {
+        label: 'Services',
+        value: 'services',
+    },
+    REVIEWS: {
+        label: 'Reviews',
+        value: 'reviews',
+    },
+} as const;

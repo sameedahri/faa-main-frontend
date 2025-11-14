@@ -84,7 +84,7 @@ function MortgageDetails() {
                     </MortgageInputWrapper>
                 </div>
             </div>
-            <div className='shadow-sm border rounded-md p-5 flex flex-col gap-5 justify-start'>
+            <div className='shadow-xl rounded-md p-5 flex flex-col gap-5 justify-start'>
                 <div className='flex flex-col  text-center gap-0.5'>
                     <small className='text-foreground text-sm'>
                         Monthly Payment

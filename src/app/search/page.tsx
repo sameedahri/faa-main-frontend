@@ -20,8 +20,11 @@ export default async function SearchPage(props: PageProps<"/search">) {
         <Tabs defaultValue={tab}>
             <div className="pb-10 relative flex flex-col gap-0 bg-background-light">
                 <div className="container grid grid-cols-[300px_1fr] items-start gap-10 relative">
+                    {/* Filter Sidebar */}
                     <FiltersSidebar tab={tab} />
-                    <div className="">
+
+                    {/* Navigation and Search Results */}
+                    <div>
                         <SearchTabs />
                         <div className="grid grid-cols-1 gap-5">
                             <TabsContent value={SEARCH_TAB.AGENTS.value}>
@@ -37,7 +40,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
                             </TabsContent>
                             <TabsContent value={SEARCH_TAB.AGENCIES.value}>
                                 <div className="grid grid-cols-1 gap-7">
-                                    {agencies.map((agent, index) => (
+                                    {AGENCIES.map((agent, index) => (
                                         <AgencyCard
                                             key={index}
                                             {...agent}
@@ -189,7 +192,7 @@ export const AGENTS: AgentCardProps[] = [
     }
 ];
 
-const agencies: AgencyCardProps[] = [
+export const AGENCIES: AgencyCardProps[] = [
     {
         id: "1",
         name: "Prime Properties Dubai",
@@ -199,7 +202,8 @@ const agencies: AgencyCardProps[] = [
         reviews: 234,
         subscription: "Elite",
         specialization: ["Luxury Villas", "Commercial Spaces", "Investment Properties"],
-        noOfAgents: 45
+        noOfAgents: 45,
+        email: "prime.properties.dubai@example.com"
     },
     {
         id: "2",
@@ -210,7 +214,8 @@ const agencies: AgencyCardProps[] = [
         reviews: 412,
         subscription: "Elite",
         specialization: ["Prime Central London", "Corporate Housing", "Expat Services"],
-        noOfAgents: 78
+        noOfAgents: 78,
+        email: "global.realty.group@example.com"
     },
     {
         id: "3",
@@ -221,7 +226,8 @@ const agencies: AgencyCardProps[] = [
         reviews: 189,
         subscription: "Pro",
         specialization: ["Manhattan Apartments", "Brooklyn Properties", "Co-op Sales"],
-        noOfAgents: 32
+        noOfAgents: 32,
+        email: "metro.real.estate@example.com"
     },
     {
         id: "4",
@@ -232,7 +238,8 @@ const agencies: AgencyCardProps[] = [
         reviews: 156,
         subscription: "Pro",
         specialization: ["Commercial Real Estate", "Residential Compounds", "Land Development"],
-        noOfAgents: 28
+        noOfAgents: 28,
+        email: "al.sahara.properties@example.com"
     },
     {
         id: "5",
@@ -243,7 +250,8 @@ const agencies: AgencyCardProps[] = [
         reviews: 327,
         subscription: "Elite",
         specialization: ["Condominiums", "Landed Properties", "Commercial Leasing"],
-        noOfAgents: 52
+        noOfAgents: 52,
+        email: "skyline.property.consultants@example.com"
     },
     {
         id: "6",
@@ -254,7 +262,8 @@ const agencies: AgencyCardProps[] = [
         reviews: 98,
         subscription: "Standard",
         specialization: ["Waterfront Properties", "Luxury Condos", "Vacation Homes"],
-        noOfAgents: 18
+        noOfAgents: 18,
+        email: "coastal.realty.partners@example.com"
     },
     {
         id: "7",
@@ -265,7 +274,8 @@ const agencies: AgencyCardProps[] = [
         reviews: 145,
         subscription: "Standard",
         specialization: ["Residential Properties", "Off-Plan Sales", "Property Management"],
-        noOfAgents: 22
+        noOfAgents: 22,
+        email: "heritage.properties.ltd@example.com"
     },
     {
         id: "8",
@@ -276,7 +286,8 @@ const agencies: AgencyCardProps[] = [
         reviews: 203,
         subscription: "Pro",
         specialization: ["Residential Sales", "New Developments", "Investment Properties"],
-        noOfAgents: 35
+        noOfAgents: 35,
+        email: "maple.leaf.realty@example.com"
     },
     {
         id: "9",
@@ -287,7 +298,8 @@ const agencies: AgencyCardProps[] = [
         reviews: 87,
         subscription: "Basic",
         specialization: ["Apartments", "Villas", "Commercial Spaces"],
-        noOfAgents: 12
+        noOfAgents: 12,
+        email: "pearl.real.estate@example.com"
     },
     {
         id: "10",
@@ -298,7 +310,8 @@ const agencies: AgencyCardProps[] = [
         reviews: 178,
         subscription: "Elite",
         specialization: ["Ultra-Luxury Properties", "Penthouses", "International Investments"],
-        noOfAgents: 24
+        noOfAgents: 24,
+        email: "prestige.international.realty@example.com"
     }
 ];
 
