@@ -1,14 +1,11 @@
-import React from 'react'
-import { Button } from "@/shared/components/ui/button"
 import { VerifiedBadge } from "@/shared/components/badges/verified-badges"
-import { Award, BriefcaseBusiness, Filter, LanguagesIcon, Mail, MapPin, Phone, Star } from "lucide-react"
-import { IconBrandWhatsapp, IconLicense } from "@tabler/icons-react"
+import { Award, BriefcaseBusiness, LanguagesIcon, MapPin, Star } from "lucide-react"
+import { IconLicense } from "@tabler/icons-react"
 import { Badge } from "@/shared/components/ui/badge"
 import Image from 'next/image'
 import { AgentCardProps } from '@/features/search/components/agent-card'
 import { getSubscriptionBadge } from '@/shared/lib/helpers'
 import { agent } from '@/shared/constants/images'
-import Link from 'next/link'
 import { SurfaceCard } from '@/shared/components/ui/surface-card'
 import { cn } from '@/shared/lib/utils'
 import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'

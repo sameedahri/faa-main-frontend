@@ -1,4 +1,4 @@
-import { BaseCard, BaseCardActionButtons, BaseCardTitle } from './base-card'
+import { BaseCard, BaseCardActionButtons, BaseCardImage, BaseCardTitle } from './base-card'
 import { SubscriptionName } from '@/shared/types/subscription.type'
 import { getSubscriptionBadge } from '@/shared/lib/helpers'
 import { Badge } from '@/shared/components/ui/badge'
@@ -6,23 +6,31 @@ import { BotIcon, Mail, Phone, Star } from 'lucide-react'
 import { Button } from '@/shared/components/ui/button'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
 import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
+import { PAGE_ROUTES } from '@/shared/constants/page-routes'
+import { aiAgent } from '@/shared/constants/images'
 
 export type AiAgentCardProps = {
+    id: string
     name: string
     industries: string[]
     rating: number
     reviews: number
     description: string
     subscription: SubscriptionName
+    companyName: string
+    email: string
+    phone: string
+    whatsapp: string
 }
 
 function AiAgentCard(props: AiAgentCardProps) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
-        <BaseCard className='grid-cols-[160px_1fr_auto]' href='#'>
-            <div className='rounded-md aspect-square self-center flex items-center justify-center bg-primary/2'>
-                <BotIcon className='text-primary size-10' />
-            </div>
+        <BaseCard className='grid-cols-[160px_1fr_auto]' href={PAGE_ROUTES.AI_AGENT_DETAILS(props.id)}>
+            <BaseCardImage 
+                src={aiAgent.aiAgentImage1}
+                alt="AI Agent Image"
+            />
             <div className='flex flex-col gap-3.5 justify-between'>
                 <div className="flex flex-col gap-1">
                     <div className='flex items-start gap-2'>

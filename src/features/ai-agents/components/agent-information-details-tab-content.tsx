@@ -1,0 +1,138 @@
+import React, { PropsWithChildren } from 'react'
+import { cn } from '@/shared/lib/utils'
+import { AiAgentCardProps } from '@/features/search/components/ai-agent-card'
+import { Badge as BaseBade } from '@/shared/components/ui/badge'
+import { Separator as BaseSeparator } from '@/shared/components/ui/separator'
+
+function AgentInformationDetailsTabContent(props: AiAgentCardProps) {
+    return (
+        <div>
+            <div className="flex flex-col gap-0">
+                <InfoCard title="About">
+                    <p className='text-muted-foreground text-base leading-loose'>
+                        LeadBot Pro is an advanced AI-powered agent designed specifically for the Dubai real estate market. It automates lead qualification, schedules property viewings, and provides instant responses to potential buyers 24/7. With seamless integration into popular CRM systems and WhatsApp Business API, it helps real estate professionals convert more leads into customers.
+                    </p>
+                </InfoCard>
+
+                <Separator />
+
+                <InfoCard 
+                    title="Industries"
+                >
+                    <BadgeWrapper>
+                        {props.industries.map((industry) => (
+                            <Badge
+                                key={industry}
+                            >
+                                {industry}
+                            </Badge>
+                        ))}
+                    </BadgeWrapper>
+                </InfoCard>
+
+                <Separator />
+
+                <InfoCard 
+                    title="Use Cases"
+                >
+                    <BadgeWrapper>
+                        {USE_CASES.map((useCase) => (
+                            <Badge
+                                key={useCase}
+                            >
+                                {useCase}
+                            </Badge>
+                        ))}
+                    </BadgeWrapper>
+                </InfoCard>
+
+                <Separator />
+
+                <InfoCard
+                    title="Key Capabilities"
+                >
+                    <BadgeWrapper>
+                        {KEY_CAPABILITIES.map((keyCapability) => (
+                            <Badge
+                                key={keyCapability}
+                            >
+                                {keyCapability}
+                            </Badge>
+                        ))}
+                    </BadgeWrapper>
+                </InfoCard>
+            </div>
+        </div>
+    )
+}
+
+function InfoCard(props: {
+    title: string,
+    children: React.ReactNode
+    className?: string
+}) {
+    return (
+        <div className={cn("flex flex-col overflow-hidden shadow rounded-lg", props.className)}>
+            <div className="p-4 bg-background">    
+                <h3 className='leading-tight font-semibold text-lg text-foreground/90'>{props.title}</h3>
+            </div>
+            <div className='p-4'>
+                {props.children}
+            </div>
+        </div>
+    )
+}
+// function InfoCard(props: {
+//     title: string,
+//     children: React.ReactNode
+//     className?: string
+// }) {
+//     return (
+//         <div className={cn("flex flex-col gap-2 border p-4 rounded-lg", props.className)}>
+//             <h3 className='font-semibold text-lg text-foreground'>{props.title}</h3>
+//             {props.children}
+//         </div>
+//     )
+// }
+
+function Separator() {
+    return (
+        <BaseSeparator className='my-4 bg-border/0' />
+    )
+}
+
+function Badge(props: PropsWithChildren) {
+    return (
+        <BaseBade
+            variant={'muted'}
+            type={'outline'}
+            size={"md"}
+            className='border border-border/70 text-muted-foreground shadow-none text-base'
+        >
+            {props.children}
+        </BaseBade>
+    )
+}
+
+function BadgeWrapper(props: PropsWithChildren) {
+    return (
+        <div className="flex flex-wrap gap-3">
+            {props.children}
+        </div>
+    )
+}
+
+const USE_CASES = [
+    "Lead Generation",
+    "Custom Support",
+    "Appointment Scheduling",
+]
+
+const KEY_CAPABILITIES = [
+    "Whatsapp Integration",
+    "Voice Support",
+    "Multi - language",
+    "24 / 7 Availability",
+]
+
+export default AgentInformationDetailsTabContent

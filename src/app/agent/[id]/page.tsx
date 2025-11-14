@@ -1,4 +1,4 @@
-import { AGENTS, services } from "@/app/search/page"
+import { AGENTS, SERVICES } from "@/app/search/page"
 import { Filter } from "lucide-react"
 import { notFound } from "next/navigation"
 import { Tabs, TabsContent } from "@/shared/components/ui/tabs"
@@ -135,7 +135,7 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                             value={AGENT_DETAILS_TAB.SERVICES.value}
                             className="grid grid-cols-1 md:grid-cols-1 gap-6"
                         >
-                            {services.map((service, index) => (
+                            {SERVICES.map((service, index) => (
                                 <ServiceCard key={index} {...service} />
                             ))}
                         </TabsContent>

@@ -49,9 +49,11 @@ export default function RootLayout({
             <body
                 className={` ${merriweatherSans.variable} ${notoSans.variable} ${plusJakartaSans.variable} antialiased relative`}
             >
-                <Navbar />
-                {children}
-                <Footer />
+                <div className="min-h-svh grid grid-rows-[auto_1fr_auto]">
+                    <Navbar />
+                    {children}
+                    <Footer />
+                </div>
             </body>
         </html>
     );

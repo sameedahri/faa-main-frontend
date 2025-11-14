@@ -113,7 +113,7 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
 
                         {/* Features and Amenities */}
                         <PropertyInfoCard title="Features and Amenities">
-                            <div className="grid grid-cols-3 gap-2">
+                            <div className="grid grid-cols-3 gap-2 pt-1">
                                 {propertyDetails.amenities.map((amenity, index) => (
                                     <div
                                         className='grid grid-cols-[auto_1fr] items-center gap-1.5 text-muted-foreground'
@@ -211,7 +211,7 @@ function PropertyFeatureCard(props: PropsWithChildren) {
 function PropertyInfoCard(props: PropsWithChildren<{ title: string, className?: string }>) {
     return (
         <div className={cn('flex flex-col gap-2', props.className)}>
-            <h3 className='text-xl font-bold '>{props.title}</h3>
+            <h3 className='text-xl font-semibold '>{props.title}</h3>
             {props.children}
         </div>
     )

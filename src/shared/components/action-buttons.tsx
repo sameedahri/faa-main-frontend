@@ -2,7 +2,7 @@
 
 import { IconBrandWhatsapp } from "@tabler/icons-react"
 import { Button, ButtonProps } from "@/ui/button"
-import { Mail, Phone } from "lucide-react"
+import { Globe, Mail, Phone } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useRouter } from "next/navigation"
 
@@ -107,6 +107,39 @@ export function PhoneButton({
             {...props}
         >
             <Phone  />
+            {children}
+        </Button>
+    )
+}
+
+/**
+ * Phone Action Button
+ * @param phone - The phone number to open in the browser.
+ * @param className - The className to apply to the button.
+ * @param children - The children to render inside the button.
+ * @param props - The props to apply to the button.
+ */
+export function WebsiteButton({
+    websiteLink,
+    className,
+    children,
+    ...props
+}: ButtonProps & { websiteLink: string }) {
+    return (
+        <Button
+            variant={"muted"}
+            size={"icon"}
+            className={cn(
+                "text-primary border border-primary/20 hover:bg-primary/10 hover:text-primary",
+                className
+            )}
+            onClick={e => {
+                e.stopPropagation()
+                window.open(websiteLink, '_blank')
+            }}
+            {...props}
+        >
+            <Globe />
             {children}
         </Button>
     )

@@ -69,3 +69,18 @@ export const AGENCY_DETAILS_TABS = {
         value: 'reviews',
     },
 } as const;
+
+export const AI_AGENT_DETAILS_TAB = {
+    AGENT_INFORMATION: {
+        label: 'Agent Information',
+        value: 'agent-information',
+    },
+    TECHNICAL_DETAILS: {
+        label: 'Technical Details',
+        value: 'technical-details',
+    },
+    PRICING: {
+        label: "Pricing",
+        value: 'pricing',
+    }
+} as const;

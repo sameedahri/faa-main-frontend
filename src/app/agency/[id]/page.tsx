@@ -1,4 +1,4 @@
-import { AGENCIES, AGENTS, services } from '@/app/search/page'
+import { AGENCIES, AGENTS, SERVICES } from '@/app/search/page'
 import AgencyInfoSection from '@/features/agencies/components/agency-info-section'
 import AgentReviewCard from '@/features/agent/components/agent-review-card'
 import { AGENT_REVIEWS, PROPERTY_CARDS } from '@/features/agent/components/data'
@@ -134,7 +134,7 @@ async function AgencyDetailsPage(props: PageProps<"/agency/[id]">) {
                             value={AGENCY_DETAILS_TABS.SERVICES.value}
                             className="grid grid-cols-1 md:grid-cols-1 gap-6"
                         >
-                            {services.map((service, index) => (
+                            {SERVICES.map((service, index) => (
                                 <ServiceCard key={index} {...service} />
                             ))}
                         </TabsContent>
