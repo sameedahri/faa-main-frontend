@@ -1,14 +1,11 @@
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { agency, agent } from '@/constants/images'
-import { getSubscriptionBadge, getSubscriptionVariant } from '@/shared/lib/helpers'
-import { IconBrandWhatsapp } from '@tabler/icons-react'
-import { Mail, MapPin, Phone, Star, User } from 'lucide-react'
+import { agency } from '@/constants/images'
+import { getSubscriptionBadge } from '@/shared/lib/helpers'
+import { MapPin, Star, User } from 'lucide-react'
 import { BaseCard, BaseCardActionButtons, BaseCardImage, BaseCardTitle } from './base-card'
 import { SubscriptionName } from '@/shared/types/subscription.type'
 import { VerifiedBadge } from '@/shared/components/badges/verified-badges'
-import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
 import { PAGE_ROUTES } from '@/shared/constants/page-routes'
+import { Badge } from '@/shared/components/ui/badge'
 
 export interface AgencyCardProps {
     id: string
@@ -32,10 +29,10 @@ function AgencyCard(props: AgencyCardProps) {
                 alt="Agency Image"
             />
             <div className='flex flex-col gap-4 justify-between'>
-                <div className="flex flex-col gap-1">
-                    <div className='flex items-center gap-2'>
+                <div className="flex flex-col gap-0.5">
+                    <div className='flex items-center gap-2.5'>
                         <BaseCardTitle>{props.name}</BaseCardTitle>
-                        <div className='flex gap-1.5'>
+                        <div className='flex gap-1'>
                             {props.subscription !== "Basic" && <VerifiedBadge />}
                             {SubscriptionBadge && <SubscriptionBadge />}
                         </div>
@@ -43,7 +40,6 @@ function AgencyCard(props: AgencyCardProps) {
                     <p className='text-muted-foreground text-sm'>
                         {props.profession.join(' | ')}
                     </p>
-
                 </div>
                 <div className="flex flex-wrap gap-4">
                     <div className='flex items-center gap-1 text-xs text-foreground  w-auto'>
@@ -62,7 +58,14 @@ function AgencyCard(props: AgencyCardProps) {
                 </div>
                 <div className='flex flex-wrap gap-2'>
                     {props.specialization.map((profession, index) => (
-                        <Badge key={index} variant={'muted'} type={'outline'} className='rounded-full border h-6'>{profession}</Badge>
+                        <Badge
+                            key={index}
+                            variant={'muted'}
+                            type={'outline'}
+                            className='rounded-full h-6 border-border/70 text-muted-foreground/90'
+                        >
+                            {profession}
+                        </Badge>
                     ))}
                 </div>
             </div>

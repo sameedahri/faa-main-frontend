@@ -32,30 +32,31 @@ function AiAgentCard(props: AiAgentCardProps) {
                 alt="AI Agent Image"
             />
             <div className='flex flex-col gap-3.5 justify-between'>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1.5">
                     <div className='flex items-start gap-2'>
                         <BaseCardTitle>{props.name}</BaseCardTitle>
                         <div className='flex gap-2 pt-1'>
                             {SubscriptionBadge && <SubscriptionBadge />}
                         </div>
                     </div>
-                    <div className='flex flex-wrap gap-2'>
+                    <p className='text-sm text-muted-foreground leading-relaxed'>
+                        {props.description}
+                    </p>
+                    <div className='flex flex-wrap gap-2 pt-1'>
                         {props.industries.map((industry, index) => (
                             <Badge
                                 key={index}
                                 variant={'muted'}
                                 type={'outline'}
-                                className='rounded-full border h-6'
+                                className='rounded-full h-6 border-border/70 text-muted-foreground/90'
                             >
                                 {industry}
                             </Badge>
                         ))}
                     </div>
-
                 </div>
-                <p className='text-sm text-muted-foreground leading-relaxed'>
-                    {props.description}
-                </p>
+                
+                
                 <div className="flex gap-5">
                     {/* Rating */}
                     <div className='flex items-center gap-1 text-base text-foreground'>

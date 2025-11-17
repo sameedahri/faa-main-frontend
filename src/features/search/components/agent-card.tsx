@@ -46,7 +46,7 @@ function AgentCard({ className, ...props }: AgentCardProps) {
                 "relative",
                 {
                     "shadow-md bg-linear-to-b from-background via-transparent": props.isFeatured
-                }, 
+                },
                 className
             )}
             href={PAGE_ROUTES.AGENT_DETAILS(props.id)}
@@ -61,10 +61,10 @@ function AgentCard({ className, ...props }: AgentCardProps) {
             </Badge> */}
             <BaseCardImage src={agent.agentImage1} alt="Agent Image" />
             <div className='flex flex-col gap-4 justify-between'>
-                <div className="flex flex-col gap-1">
-                    <div className='flex items-center gap-2'>
+                <div className="flex flex-col gap-0.5">
+                    <div className='flex items-center gap-2.5'>
                         <BaseCardTitle>{props.name}</BaseCardTitle>
-                        <div className='flex gap-2'>
+                        <div className='flex gap-1'>
                             {props.subscription !== "Basic" && <VerifiedBadge />}
                             {SubscriptionBadge && <SubscriptionBadge />}
                         </div>
@@ -74,24 +74,24 @@ function AgentCard({ className, ...props }: AgentCardProps) {
                     </p>
                 </div>
 
-                <div className="flex gap-5">
+                <div className="flex gap-5 text-sm">
                     {/* Location */}
-                    <div className='flex items-center gap-1 text-xs text-foreground  w-auto'>
+                    <div className='flex items-center gap-1 text-foreground w-auto'>
                         <MapPin className='w-4 h-4' />
                         <span>{props.location}</span>
                     </div>
                     {/* Rating */}
-                    <div className='flex items-center gap-1 text-xs text-foreground'>
+                    <div className='flex items-center gap-1 text-foreground'>
                         <Star stroke={'transparent'} fill='var(--warning)' className='w-4 h-4' />
                         <span>{props.rating} <small>({props.reviews})</small></span>
                     </div>
                     {/* Rent */}
-                    <div className='flex items-center gap-1 text-xs'>
+                    <div className='flex items-center gap-1'>
                         <span className=''>Rent</span>
                         <span>(10)</span>
                     </div>
                     {/* Sale */}
-                    <div className='flex items-center gap-1 text-xs'>
+                    <div className='flex items-center gap-1'>
                         <span className=''>Sale</span>
                         <span>(10)</span>
                     </div>
@@ -99,7 +99,14 @@ function AgentCard({ className, ...props }: AgentCardProps) {
 
                 <div className='flex flex-wrap gap-2'>
                     {props.specialization.map((profession, index) => (
-                        <Badge key={index} variant={'muted'} type={'outline'} className='rounded-full border h-6'>{profession}</Badge>
+                        <Badge
+                            key={index}
+                            variant={'muted'}
+                            type={'outline'}
+                            className='rounded-full h-6 border-border/70 text-muted-foreground/90'
+                        >
+                            {profession}
+                        </Badge>
                     ))}
                 </div>
             </div>

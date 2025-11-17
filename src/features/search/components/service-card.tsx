@@ -28,7 +28,14 @@ function ServiceCard(props: ServiceCardProps) {
                     </div>
                     <div className='flex flex-wrap gap-2'>
                         {props.industries.map((industry, index) => (
-                            <Badge key={index} variant={'muted'} type={'outline'} className='rounded-full border h-6'>{industry}</Badge>
+                            <Badge
+                                key={index}
+                                variant={'muted'}
+                                type={'outline'}
+                                className='rounded-full h-6 border-border/70 text-muted-foreground/90'
+                            >
+                                {industry}
+                            </Badge>
                         ))}
                     </div>
                 </div>

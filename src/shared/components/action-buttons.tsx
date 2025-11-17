@@ -18,6 +18,7 @@ function ActionBaseButton(props: ButtonProps) {
                 "shadow",
                 "bg-linear-to-br from-background-dark via-background-light to-background-light",
                 "hover:shadow-lg hover:from-background",
+                "active:scale-95",
                 className
             )}
             {...rest}
