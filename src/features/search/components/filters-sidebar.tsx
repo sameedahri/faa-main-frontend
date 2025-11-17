@@ -1,14 +1,19 @@
 "use client"
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/components/ui/accordion';
+import { Badge } from '@/shared/components/ui/badge';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/components/ui/select';
 import { SEARCH_TAB } from '@/shared/constants/tabs';
 import { SearchTabType } from '@/shared/types/tabs.type';
-import { Filter } from 'lucide-react';
+import { Check, CheckIcon, Filter, SearchIcon, XIcon } from 'lucide-react';
 import { PropsWithChildren, ReactNode } from 'react'
+import * as Checkbox from "@radix-ui/react-checkbox";
+import { Separator } from '@/shared/components/ui/separator';
+import { InputGroup, InputGroupAddon, InputGroupInput } from '@/shared/components/ui/input-group';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/shared/components/ui/dialog';
 
 type FiltersSidebarProps = {
     tab: SearchTabType
@@ -27,14 +32,26 @@ function FiltersSidebar(props: FiltersSidebarProps) {
     }
 
     return (
-        <form 
-            className="overflow-y-auto h-fit max-h-[calc(100vh-3rem)] flex flex-col gap-6 p-5 rounded-lg border border-border/50 sticky top-6 mt-6"
+        <form
+            className="h-fit max-h-[calc(100vh-3rem)] overflow-y-auto flex flex-col gap-0 rounded-lg border-border/50 sticky top-6 mt-6"
             onSubmit={e => e.preventDefault()}
         >
-            <h2 className='flex items-center gap-1.5 font-semibold text-lg'>
+            {/* <h2 className='flex items-center gap-1.5 font-semibold text-lg p-3 bg-background border-b'>
                 <Filter className='size-4' />
                 Filters
-            </h2>
+            </h2> */}
+            {/* <div className='bg-background p-3 border-b-5 border-background-light'> */}
+            <div className='bg-background-light pb-3 px-1'>
+                <InputGroup className='border-border rounded-full has-[[data-slot=input-group-control]:focus-visible]:ring-[0px] focus-visible:border-primary-200 has-[[data-slot=input-group-control]:focus-visible]:border-primary-400'>
+                    <InputGroupAddon>
+                        <SearchIcon className='size-4' />
+                    </InputGroupAddon>
+                    <InputGroupInput
+                        placeholder='Search by keyword'
+                        className='placeholder:text-muted-foreground'
+                    />
+                </InputGroup>
+            </div>
             {renderFilters()}
         </form>
     )
@@ -42,291 +59,239 @@ function FiltersSidebar(props: FiltersSidebarProps) {
 
 function AiAgentsFilters() {
     return (
-        <>
-            <SearchFilterInputGroup label="Industry">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {INDUSTRIES_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
-            <SearchFilterInputGroup label="Use Case">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {USE_CASE_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
-            <SearchFilterInputGroup label="Base Model">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {BASE_MODEL_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
-            <SearchFilterInputGroup label="Key Capabilities">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {KEY_CAPABILITIES_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
-            <SearchFilterInputGroup label="Integration Options">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {PRICING_MODEL_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
-            <SearchFilterInputGroup label="Pricing Model">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {PRICING_MODEL_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
-            <SearchFilterInputGroup label="Price Range (AED)">
+        <Accordion type='multiple' className='flex flex-col gap-0' defaultValue={["Industry", "Emirate"]}>
+            <InputWrapper label='Industry'>
+                {INDUSTRIES_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
+
+            <InputWrapper label='Use Case'>
+                {USE_CASE_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
+
+            <InputWrapper label='Base Model'>
+                {BASE_MODEL_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
+
+            <InputWrapper label='Key Capabilities'>
+                {KEY_CAPABILITIES_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
+
+            <InputWrapper label='Integration Options'>
+                {INTEGRATION_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
+
+            <InputWrapper label='Pricing Model'>
+                {PRICING_MODEL_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
+
+            <InputWrapper label='Price Range (AED)' hideViewMore>
                 <div className="grid grid-cols-2 gap-2">
                     <Input placeholder="Min" type='number' className='border-border' />
                     <Input placeholder="Max" type='number' className='border-border' />
                 </div>
-            </SearchFilterInputGroup>
-            <SearchFilterInputGroup label="Language Support">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {LANGUAGE_SUPPORT_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
+            </InputWrapper>
 
-            <div className="grid grid-cols-1 gap-3">
-                <Button
-                    size={"sm"}
-                    className='h-9 border w-full'
-                    variant={"outline"}
-                    type='reset'
-                >
-                    Clear
-                </Button>
-            </div>
-        </>
+            <InputWrapper label='Language Support'>
+                {LANGUAGE_SUPPORT_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
+        </Accordion>
     )
 }
 
 function BaseFilters() {
     return (
-        <Accordion type='multiple' className='flex flex-col gap-5'>
-            <SearchFilterInputGroup label="Search">
+        <Accordion type='multiple' className='flex flex-col gap-0' defaultValue={["Industry", "Emirate"]}>
+            {/* <SearchFilterInputGroup label="Search">
                 <Input placeholder="Search by name or email" />
             </SearchFilterInputGroup>
 
             <SearchFilterInputGroup label="Location">
                 <Input placeholder="Search by location" />
-            </SearchFilterInputGroup>
+            </SearchFilterInputGroup> */}
+            <InputWrapper
+                label="Industry"
+            >
+                {INDUSTRIES_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
 
-            {/* <AccordionItem value="industry">
-                <AccordionTrigger>
-                    Industry
-                </AccordionTrigger>
-                <AccordionContent>
-                    <SearchFilterInputGroup label="Industry">
-                        <Select>
-                            <SelectTrigger className='border-border'>
-                                <SelectValue placeholder="All" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {INDUSTRIES_OPTIONS.map((option) => (
-                                    <SelectItem
-                                        key={option.value}
-                                        value={option.value}
-                                    >
-                                        {option.label}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                    </SearchFilterInputGroup>
-                </AccordionContent>
-            </AccordionItem> */}
+            <InputWrapper
+                label="Emirate"
+            >
+                {EMIRATES_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
 
-            <SearchFilterInputGroup label="Industry">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {INDUSTRIES_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
-        
-            <SearchFilterInputGroup label="Emirates">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {EMIRATES_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
+            <InputWrapper
+                label="Languages"
+            >
+                {LANGUAGES_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
 
-            <SearchFilterInputGroup label="Languages">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {LANGUAGES_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
+            <InputWrapper
+                label="Rating"
+            >
+                {RATING_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
 
-            <SearchFilterInputGroup label="Rating">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {RATING_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
+            <InputWrapper
+                label="Availability"
+            >
+                {AVAILABILITY_OPTIONS.map((option) => (
+                    <CheckboxInput
+                        key={option.value}
+                        label={option.label}
+                    />
+                ))}
+            </InputWrapper>
 
-            <SearchFilterInputGroup label="Availability">
-                <Select>
-                    <SelectTrigger className='border-border'>
-                        <SelectValue placeholder="All" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {AVAILABILITY_OPTIONS.map((option) => (
-                            <SelectItem
-                                key={option.value}
-                                value={option.value}
-                            >
-                                {option.label}
-                            </SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
-            </SearchFilterInputGroup>
-
-            <div className="grid grid-cols-1 gap-3">
-                <Button
-                    size={"sm"}
-                    className='h-9 border w-full'
-                    variant={"outline"}
-                    type='reset'
-                >
-                    Clear
-                </Button>
-            </div>
         </Accordion>
     )
 }
 
-function SearchFilterInputGroup(props: PropsWithChildren<{ label: ReactNode }>) {
+function InputWrapper(props: PropsWithChildren<{
+    label: string
+    children: ReactNode
+    hideViewMore?: boolean
+}>) {
+    return (
+        <AccordionItem value={props.label} className='border-b-5 border-background-light'>
+            <AccordionTrigger className='rounded-none px-3 bg-background cursor-pointer py-3'>
+                {props.label}
+            </AccordionTrigger>
+            <AccordionContent className='p-3 flex flex-col gap-2'>
+                {props.children}
+                {!props.hideViewMore && (
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <Button
+                                size={"sm"}
+                                variant={"ghost"}
+                                className='w-fit mt-2 h-auto text-center p-0 text-primary-400 decoration-1 underline-offset-4 decoration-primary-200 hover:bg-transparent  underline hover:text-primary-400'
+                            >
+                                View More
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent className='max-h-[600px] grid grid-rows-[auto_1fr_auto] p-4 gap-4' showCloseButton={false}>
+                            <DialogHeader className='flex items-center justify-between flex-row p-0'>
+                                <DialogTitle>{props.label}</DialogTitle>
+                                <DialogClose asChild>
+                                    <button className='text-foreground/80 cursor-pointer hover:text-foreground'>
+                                        <XIcon className='size-4' />
+                                    </button>
+                                </DialogClose>
+                            </DialogHeader>
+                            <Separator className='bg-border/50'/>
+                            <DialogDescription className='sr-only'>
+                            </DialogDescription>
+                            <div className='grid grid-cols-2 gap-3 overflow-y-auto'>
+                                {props.children}
+                            </div>
+                            <Separator className='bg-border/50'/>
+                            <DialogFooter>
+                                <DialogClose asChild>
+                                    <Button
+                                        variant={"ghost"}
+                                        className='bg-transparent border-border'
+                                    >
+                                        Clear
+                                    </Button>
+                                </DialogClose>
+                                <DialogClose asChild>
+                                    <Button
+                                        variant={"soft-primary"}
+                                    >
+                                        Submit
+                                    </Button>
+                                </DialogClose>
+                            </DialogFooter>
+                        </DialogContent>
+                    </Dialog>
+                )}
+            </AccordionContent>
+        </AccordionItem>
+    )
+}
+
+function CheckboxInput(props: {
+    label: string
+}) {
+    return (
+        <label
+            // key={option.id}
+            className="flex items-center gap-2 cursor-pointer"
+        >
+            <Checkbox.Root
+                // checked={selected.includes(option.id)}
+                // onCheckedChange={() => toggle(option.id)}
+                className="rounded size-4 border border-input data-[state=checked]:bg-primary-400 data-[state=checked]:border-none flex items-center justify-center group"
+            >
+                <Checkbox.Indicator>
+                    <CheckIcon className="size-3 group-data-[state=checked]:text-primary-foreground" />
+                </Checkbox.Indicator>
+            </Checkbox.Root>
+            <span className='text-sm text-muted-foreground'>{props.label}</span>
+        </label>
+    )
+}
+
+function SearchFilterInputGroup(props: PropsWithChildren<{ label?: ReactNode }>) {
     return (
         <div className="flex flex-col gap-2">
-            <Label>{props.label}</Label>
+            {props.label && <Label>{props.label}</Label>}
             {props.children}
         </div>
     )
@@ -374,6 +339,33 @@ const USE_CASE_OPTIONS = [
     { value: "Use Case 1", label: "Use Case 1" },
     { value: "Use Case 2", label: "Use Case 2" },
     { value: "Use Case 3", label: "Use Case 3" },
+    { value: "Use Case 4", label: "Use Case 4" },
+    { value: "Use Case 5", label: "Use Case 5" },
+    { value: "Use Case 6", label: "Use Case 6" },
+    { value: "Use Case 7", label: "Use Case 7" },
+    { value: "Use Case 8", label: "Use Case 8" },
+    { value: "Use Case 9", label: "Use Case 9" },
+    { value: "Use Case 10", label: "Use Case 10" },
+    { value: "Use Case 11", label: "Use Case 11" },
+    { value: "Use Case 12", label: "Use Case 12" },
+    { value: "Use Case 13", label: "Use Case 13" },
+    { value: "Use Case 14", label: "Use Case 14" },
+    { value: "Use Case 15", label: "Use Case 15" },
+    { value: "Use Case 16", label: "Use Case 16" },
+    { value: "Use Case 17", label: "Use Case 17" },
+    { value: "Use Case 18", label: "Use Case 18" },
+    { value: "Use Case 19", label: "Use Case 19" },
+    { value: "Use Case 20", label: "Use Case 20" },
+    { value: "Use Case 21", label: "Use Case 21" },
+    { value: "Use Case 22", label: "Use Case 22" },
+    { value: "Use Case 23", label: "Use Case 23" },
+    { value: "Use Case 24", label: "Use Case 24" },
+    { value: "Use Case 25", label: "Use Case 25" },
+    { value: "Use Case 26", label: "Use Case 26" },
+    { value: "Use Case 27", label: "Use Case 27" },
+    { value: "Use Case 28", label: "Use Case 28" },
+    { value: "Use Case 29", label: "Use Case 29" },
+    { value: "Use Case 30", label: "Use Case 30" },
 ] as const;
 
 const BASE_MODEL_OPTIONS = [

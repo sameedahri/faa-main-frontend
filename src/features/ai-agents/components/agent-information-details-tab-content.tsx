@@ -6,7 +6,7 @@ import { Separator as BaseSeparator } from '@/shared/components/ui/separator'
 
 function AgentInformationDetailsTabContent(props: AiAgentCardProps) {
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6">
             <InfoCard title="About">
                 <p className='text-muted-foreground text-base leading-loose'>
                     LeadBot Pro is an advanced AI-powered agent designed specifically for the Dubai real estate market. It automates lead qualification, schedules property viewings, and provides instant responses to potential buyers 24/7. With seamless integration into popular CRM systems and WhatsApp Business API, it helps real estate professionals convert more leads into customers.
@@ -68,8 +68,8 @@ function InfoCard(props: {
 }) {
     return (
         <div className={cn("flex flex-col overflow-hidden border rounded-lg", props.className)}>
-            <div className="p-4 bg-background">
-                <h3 className='leading-tight font-semibold text-lg text-foreground/90'>{props.title}</h3>
+            <div className="p-4 bg-background border-b">
+                <h3 className='leading-tight font-semibold text-lg text-foreground'>{props.title}</h3>
             </div>
             <div className='p-4'>
                 {props.children}
@@ -91,7 +91,7 @@ function Badge(props: PropsWithChildren) {
             variant={'muted'}
             type={'outline'}
             size={"md"}
-            className='border border-border/70 text-muted-foreground shadow-none text-base'
+            className='border border-border/70 text-muted-foreground shadow-none text-base font-normal'
         >
             {props.children}
         </BaseBade>

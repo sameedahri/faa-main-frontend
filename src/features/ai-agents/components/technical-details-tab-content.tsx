@@ -6,7 +6,7 @@ import { CheckCircle } from 'lucide-react'
 
 function TechnicalDetailsTabContent() {
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-6'>
             <InfoCard title="Model Details">
                 <div className="grid grid-cols-3 gap-4">
                     <ModelInfoCard label='Model' value='GPT 4' />
@@ -25,7 +25,7 @@ function TechnicalDetailsTabContent() {
                             variant={'muted'}
                             type={'outline'}
                             size={"md"}
-                            className='text-muted-foreground shadow-none text-base border-none w-full h-auto p-0 justify-start'
+                            className='text-muted-foreground shadow-none text-base border-none w-full h-auto p-0 justify-start font-normal'
                         >
                             <div className='grid grid-cols-[auto_1fr] items-center gap-2'>
                                 <CheckCircle className='text-primary size-4' />
@@ -65,19 +65,13 @@ function InfoCard(props: {
 }) {
     return (
         <div className={cn("flex flex-col overflow-hidden border rounded-lg", props.className)}>
-            <div className="p-4 bg-background">
-                <h3 className='leading-tight font-semibold text-lg text-foreground/90'>{props.title}</h3>
+            <div className="p-4 bg-background border-b">
+                <h3 className='leading-tight font-semibold text-lg text-foreground'>{props.title}</h3>
             </div>
             <div className='p-4'>
                 {props.children}
             </div>
         </div>
-    )
-}
-
-function Separator() {
-    return (
-        <BaseSeparator className='my-4 bg-border/0' />
     )
 }
 
@@ -87,7 +81,7 @@ function Badge(props: PropsWithChildren) {
             variant={'muted'}
             type={'outline'}
             size={"md"}
-            className='border border-border/70 text-muted-foreground shadow-none text-base'
+            className='border border-border/70 text-muted-foreground shadow-none text-base font-normal'
         >
             {props.children}
         </BaseBade>
