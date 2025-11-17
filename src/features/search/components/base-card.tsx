@@ -26,11 +26,12 @@ export function BaseCard(props: PropsWithChildren<{ className?: string, href: Ro
         <SurfaceCard
             asChild
             className={cn(
-                'p-4 cursor-pointer group',
+                'p-3 cursor-pointer group border border-border/80',
                 "grid grid-cols-[140px_1fr_auto] gap-5",
                 'transition-all duration-300',
-                // "shadow-none    ",
-                "shadow-sm",
+                "shadow-[0px_0px_4px_0px_rgba(0,0,0,0.15)]",
+                "shadow-none    ",
+                // "shadow-sm",
                 props.className
             )}
             style={{

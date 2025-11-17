@@ -144,7 +144,7 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                     </div>
 
                     {/* Agent Info */}
-                    <div className='col-start-3 col-end-4 p-5 rounded-lg flex flex-col gap-5 sticky top-5 bg-linear-to-b from-primary/5 via-transparent shadow to-transparent border border-primary/15'>
+                    <div className='col-start-3 col-end-4 p-5 rounded-lg flex flex-col gap-5 sticky top-5 border'>
                         <Link href={PAGE_ROUTES.AGENT_DETAILS("1")} className='flex items-center gap-2'>
                             <div className='aspect-square w-[60px] rounded-full overflow-hidden'>
                                 <Image
@@ -161,13 +161,13 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                             </div>
                         </Link>
                         <div className='grid grid-cols-2 gap-3'>
-                            <EmailButton email={""} size={"default"}>
+                            <EmailButton email={""} size={"default"} className='rounded-md w-full'>
                                 Email
                             </EmailButton>
-                            <PhoneButton phone={""} size={"default"}>
+                            <PhoneButton phone={""} size={"default"} className='rounded-md w-full'>
                                 Phone
                             </PhoneButton>
-                            <WhatsappButton whatsapp={""} size={"default"} className='col-span-full'>
+                            <WhatsappButton whatsapp={""} size={"default"} className='rounded-md col-span-full w-full'>
                                 WhatsApp
                             </WhatsappButton>
                         </div>
@@ -196,13 +196,13 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
 
 function SectionSeparator(props: { className?: string }) {
     return (
-        <Separator className={cn('my-10 max-w-[99%]', props.className)} />
+        <Separator className={cn('my-10 max-w-[99%] bg-border/70', props.className)} />
     )
 }
 
 function PropertyFeatureCard(props: PropsWithChildren) {
     return (
-        <div className='flex min-w-[150px] flex-col text-center items-center gap-1.5 [&>svg]:size-6 aspect-video shadow p-5 rounded-md'>
+        <div className='flex min-w-[150px] flex-col text-center items-center gap-1.5 [&>svg]:size-6 aspect-video border border-border/50 p-5 rounded-md text-muted-foreground'>
             {props.children}
         </div>
     )

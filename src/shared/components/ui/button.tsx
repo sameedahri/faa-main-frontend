@@ -11,7 +11,7 @@ const buttonVariants = cva(
         variants: {
             variant: {
                 default:
-                    "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+                    "bg-primary-500 text-primary-foreground shadow-xs hover:bg-primary-500/90",
 
                 destructive:
                     "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/40 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
@@ -36,7 +36,7 @@ const buttonVariants = cva(
 
                 none: "",
 
-                "outline-primary": "border border-primary/80 text-primary bg-background-light hover:bg-primary/10 hover:text-primary",
+                "outline-primary": "border border-primary/80 text-primary bg-background-light hover:bg-primary-500/10 hover:text-primary",
 
                 "outline-muted": "border border-muted-foreground/80 text-muted-foreground bg-background-light hover:bg-muted-foreground/10 hover:text-muted-foreground",
 
@@ -46,7 +46,7 @@ const buttonVariants = cva(
 
                 "outline-warning": "border border-warning/80 text-warning bg-background-light hover:bg-warning/10 hover:text-warning",
 
-                "bootstrap-primary": "bg-primary/10 border border-primary/20 text-primary hover:bg-primary/20",
+                "bootstrap-primary": "bg-primary-500/10 border border-primary/20 text-primary hover:bg-primary-500/20",
 
                 "bootstrap-destructive": "bg-destructive/10 border border-destructive/20 text-destructive hover:bg-destructive/20",
 
@@ -56,7 +56,7 @@ const buttonVariants = cva(
 
                 "soft-destructive": "bg-destructive/10 text-destructive [@media(hover:hover)]:hover:bg-destructive/20 active:bg-destructive/20 ",
 
-                "soft-primary": "bg-primary/10 text-primary hover:bg-primary/20 active:bg-primary/20 ",
+                "soft-primary": "bg-primary-500/10 text-primary-600 hover:bg-primary-500/20 active:bg-primary-500/20 ",
 
                 "soft-success": "bg-success/10 text-success hover:bg-success/20 active:bg-success/20 ",
 

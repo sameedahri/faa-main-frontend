@@ -31,13 +31,13 @@ async function AiAgentDetailsPage(props: PageProps<"/ai-agents/[id]">) {
 
     return (
         <div className="bg-background-light pb-16">
-            <div className="container grid grid-cols-[350px_1fr] gap-6 relative">
+            <div className="container grid grid-cols-[350px_1fr] gap-8 relative">
                 {/* Agent Profile Info Side */}
                 <AiAgentInfoCard {...aiAgentDetails} />
 
                 {/* Agent Services Side */}
                 <Tabs defaultValue={AI_AGENT_DETAILS_TAB.AGENT_INFORMATION.value}>
-                    <div className="flex flex-col gap-0">
+                    <div className="flex flex-col gap-2">
                         <div className="py-6 top-0 sticky bg-background-light backdrop-blur-sm overflow-hidden z-30">
                             <OutlineTabsList>
                                 {Object.values(AI_AGENT_DETAILS_TAB).map((tab) => (

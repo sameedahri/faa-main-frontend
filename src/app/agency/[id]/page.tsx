@@ -27,7 +27,7 @@ async function AgencyDetailsPage(props: PageProps<"/agency/[id]">) {
 
     return (
         <div className="bg-background-light relative pb-16">
-            <div className="container grid grid-cols-[350px_1fr] gap-12">
+            <div className="container grid grid-cols-[350px_1fr] gap-10">
                 {/* Agent Profile Info Side */}
                 <AgencyInfoSection {...agencyDetails} />
 
@@ -118,7 +118,7 @@ async function AgencyDetailsPage(props: PageProps<"/agency/[id]">) {
                                 </div>
 
                                 {/* Property Cards */}
-                                <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-1 gap-3">
                                     {PROPERTY_CARDS.map((property, index) => (
                                         <PropertyCard
                                             key={index}

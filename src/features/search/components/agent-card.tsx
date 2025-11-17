@@ -42,11 +42,23 @@ function AgentCard({ className, ...props }: AgentCardProps) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
         <BaseCard
-            className={cn({
-                "border-3 border-primary/40": props.isFeatured
-            }, className)}
+            className={cn(
+                "relative",
+                {
+                    "shadow-md bg-linear-to-b from-background via-transparent": props.isFeatured
+                }, 
+                className
+            )}
             href={PAGE_ROUTES.AGENT_DETAILS(props.id)}
         >
+            {/* <Badge 
+                variant={"default"} 
+                type={"outline"} 
+                // size={"xs"} 
+                className='absolute left-1/2 -top-3 font-semibold border-2 bg-white border-primary/60'
+            >
+                Featured
+            </Badge> */}
             <BaseCardImage src={agent.agentImage1} alt="Agent Image" />
             <div className='flex flex-col gap-4 justify-between'>
                 <div className="flex flex-col gap-1">
@@ -113,7 +125,7 @@ function CompanyLink(props: PropsWithChildren<{ href: Route }>) {
     const router = useRouter()
     return (
         <button
-            className='aspect-square w-15 overflow-hidden rounded-lg border transition cursor-pointer hover:border-primary/50'
+            className='aspect-square w-12 overflow-hidden rounded-lg border border-border/50 transition cursor-pointer hover:border-primary/50'
             onClick={e => {
                 e.stopPropagation()
                 e.preventDefault()

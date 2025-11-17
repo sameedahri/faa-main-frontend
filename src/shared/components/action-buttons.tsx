@@ -7,6 +7,24 @@ import { cn } from "@/lib/utils"
 import { useRouter } from "next/navigation"
 
 
+function ActionBaseButton(props: ButtonProps) {
+    const { className, variant, size, ...rest } = props
+    return (
+        <Button
+            variant={variant || "muted"}
+            size={size || "icon"}
+            className={cn(
+                "[&>svg]:size-4 rounded-full size-9.5 text-primary-500 transition-all duration-250",
+                "shadow",
+                "bg-linear-to-br from-background-dark via-background-light to-background-light",
+                "hover:shadow-lg hover:from-background",
+                className
+            )}
+            {...rest}
+        />
+    )
+}
+
 /**
  * WhatsApp Action Button
  * @param whatsapp - The WhatsApp number to open in the browser.
@@ -18,29 +36,30 @@ export function WhatsappButton({
     whatsapp,
     className,
     children,
+    variant,
     ...props
 }: ButtonProps & { whatsapp: string }) {
     return (
-        <Button
-            variant={"bootstrap-success"}
-            size={"icon"}
-            className={cn(
-                "[&_svg]:size-5",
-                className
-            )}
+
+        <ActionBaseButton
+            variant={variant || "soft-success"}
             onClick={e => {
                 e.stopPropagation()
                 window.open(`https://wa.me/${whatsapp}`, '_blank')
             }}
+            className={cn(
+                "[&>svg]:size-5 text-success",
+                className
+            )}
             {...props}
         >
             {/***** 
-                WARNING: I don't why, but by removing this "size-" className, 
-                the above class "[&_svg]:size-5" not works.
-            *****/}
-            <IconBrandWhatsapp  />
+                        WARNING: I don't why, but by removing this "size-" className, 
+                        the above class "[&_svg]:size-5" not works.
+                    *****/}
+            <IconBrandWhatsapp className="size-" />
             {children}
-        </Button>
+        </ActionBaseButton>
     )
 }
 
@@ -53,28 +72,25 @@ export function WhatsappButton({
  */
 export function EmailButton({
     email,
-    className,
     children,
+    className,
     ...props
 }: ButtonProps & { email: string }) {
     const router = useRouter()
     return (
-        <Button
-            variant={"muted"}
-            size={"icon"}
-            className={cn(
-                "text-primary border border-primary/20 hover:bg-primary/10 hover:text-primary",
-                className
-            )}
+        <ActionBaseButton
             onClick={e => {
                 e.stopPropagation()
                 router.push(`mailto:${email}`)
             }}
+            className={cn(
+                className
+            )}
             {...props}
         >
-            <Mail  />
+            <Mail className="size-" />
             {children}
-        </Button>
+        </ActionBaseButton>
     )
 }
 
@@ -87,28 +103,25 @@ export function EmailButton({
  */
 export function PhoneButton({
     phone,
-    className,
     children,
+    className,
     ...props
 }: ButtonProps & { phone: string }) {
     const router = useRouter()
     return (
-        <Button
-            variant={"muted"}
-            size={"icon"}
-            className={cn(
-                "text-primary border border-primary/20 hover:bg-primary/10 hover:text-primary",
-                className
-            )}
+        <ActionBaseButton
             onClick={e => {
                 e.stopPropagation()
                 router.push(`tel:${phone}`)
             }}
+            className={cn(
+                className
+            )}
             {...props}
         >
-            <Phone  />
+            <Phone className="size-" />
             {children}
-        </Button>
+        </ActionBaseButton>
     )
 }
 
@@ -126,21 +139,18 @@ export function WebsiteButton({
     ...props
 }: ButtonProps & { websiteLink: string }) {
     return (
-        <Button
-            variant={"muted"}
-            size={"icon"}
-            className={cn(
-                "text-primary border border-primary/20 hover:bg-primary/10 hover:text-primary",
-                className
-            )}
+        <ActionBaseButton
             onClick={e => {
                 e.stopPropagation()
                 window.open(websiteLink, '_blank')
             }}
+            className={cn(
+                className
+            )}
             {...props}
         >
             <Globe />
             {children}
-        </Button>
+        </ActionBaseButton>
     )
 }

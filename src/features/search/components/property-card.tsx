@@ -14,14 +14,14 @@ import Image from "next/image"
 import Link from "next/link"
 
 export const propertyCardVariants = cva(
-    "h-full group shadow-sm grid transition-all duration-200",
+    "h-full group grid transition-all duration-200",
     {
         variants: {
             variant: {
                 default: "bg-background-light",
             },
             orientation: {
-                horizontal: "grid-cols-[auto_1fr_auto] gap-3 p-4 rounded-lg",
+                horizontal: "grid-cols-[auto_1fr_auto] gap-3 p-3 rounded-lg",
                 vertical: "grid-rows-[auto_1fr] gap-3 p-4 rounded-lg",
             }
         },
@@ -129,16 +129,16 @@ function PropertyCard({
                 </div>
                 <div 
                     className={cn(
-                        "grid grid-cols-3 gap-3",
+                        "grid grid-cols-3 gap-3.5",
                         {
                             "self-end": orientation === "horizontal",
                             "*:w-full": orientation === "vertical",
                         }
                     )}
                 >
-                    <EmailButton email={""} className="shadow-none" />
-                    <PhoneButton phone={""} className="shadow-none" />
-                    <WhatsappButton whatsapp={""} className="" />
+                    <EmailButton email={""} className="bg-linear-to-b from-background-dark via-background-light to-background-light" />
+                    <PhoneButton phone={""} className="bg-linear-to-b from-background-dark via-background-light to-background-light" />
+                    <WhatsappButton whatsapp={""} className="bg-linear-to-b from-background-dark via-background-light to-background-light" />
                 </div>
             </Link>
         </SurfaceCard>

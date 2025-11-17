@@ -2,14 +2,17 @@ import { PropsWithChildren } from "react";
 import { TabsList, TabsTrigger } from ".";
 import { TabsListProps, TabsTriggerProps } from "@radix-ui/react-tabs";
 import { cn } from "@/shared/lib/utils";
+import { SurfaceCard } from "../surface-card";
 
 function OutlineTabsList(props: TabsListProps) {
+    const { className, ...rest } = props
     return (
         <TabsList
             className={cn(
-                "bg-background-dark w-full h-9 rounded-md p-0",
-                props.className
-            )} {...props}
+                "bg-background-light w-full h-11 rounded-md p-1 border",
+                className
+            )} 
+            {...rest}
         >
             {props.children}
         </TabsList>
@@ -21,7 +24,7 @@ function OutlineTabsTrigger(props: TabsTriggerProps) {
         <TabsTrigger
             {...props}
             className={cn(
-                "rounded-md hover:text-foreground h-full data-[state=active]:bg-background-light data-[state=active]:text-primary data-[state=active]:shadow-none data-[state=active]:border-primary/60 data-[state=active]:border-2 data-[state=active]:font-semibold text-muted-foreground",
+                "rounded-sm hover:text-primary-600 h-full border border-transparent data-[state=active]:bg-primary-50 data-[state=active]:text-primary-600/90 data-[state=active]:border-none data-[state=active]:font-medium data-[state=active]:shadow-none text-muted-foreground",
                 props.className
             )}
         />

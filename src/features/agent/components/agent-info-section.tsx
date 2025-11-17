@@ -10,6 +10,7 @@ import { SurfaceCard } from '@/shared/components/ui/surface-card'
 import { cn } from '@/shared/lib/utils'
 import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/components/ui/accordion'
+import { Separator } from "@/shared/components/ui/separator"
 
 
 function AgentInfoSection(props: AgentCardProps) {
@@ -23,12 +24,14 @@ function AgentInfoSection(props: AgentCardProps) {
                 "overflow-y-auto overflow-x-hidden h-fit max-h-[calc(100vh-3rem)] sticky top-6 mt-6",
             )}
         >
-            <div className="bg-background-light/80 backdrop-blur-sm">
+            <div className="backdrop-blur-sm">
                 <SurfaceCard
-                    variant={"highlighted"}
+                    // variant={"highlighted"}
                     className={cn(
-                        " bg-linear-to-b from-primary/10 to-background-light backdrop-blur-3xl shadow shadow-primary/20",
-                        "flex flex-col gap-4 items-center p-6 border-primary/10"
+                        // "bg-linear-to-b from-background-dark via-background-light to-background-light backdrop-blur-3xl shadow-sm",
+                        "",
+                        "flex flex-col gap-4 items-center p-6",
+                        // "border-none"
                     )}
                 >
                     <Image
@@ -75,15 +78,19 @@ function AgentInfoSection(props: AgentCardProps) {
                             <span className="" >{agentDetails.location}</span>
                         </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-2 w-full *:w-full">
+                    <Separator className="my-1.5 bg-border/50" />
+                    <div className="grid grid-cols-3 gap-3 w-full *:w-full">
                         <EmailButton 
                             email={agentDetails.email}
+                            className="rounded-md h-11 [&>svg]:size-4.5 shadow-sm from-background-dark bg-linear-to-br"
                         />
                         <PhoneButton
                             phone={"213123123"}
+                            className="rounded-md h-11 [&>svg]:size-4.5 shadow-sm from-background-dark bg-linear-to-br"
                         />
                         <WhatsappButton
                             whatsapp={"213123123"}
+                            className="rounded-md h-11  [&>svg]:size-5.5 shadow-sm from-background-dark bg-linear-to-br"
                         />
                     </div>
                 </SurfaceCard>
@@ -94,7 +101,7 @@ function AgentInfoSection(props: AgentCardProps) {
                 collapsible
                 className='w-full'
             >
-                <AccordionItem value='about'>
+                <AccordionItem value='about' className="border-border/50">
                     <AccordionTrigger className='cursor-pointer'>
                         <h3 className="font-bold font-heading text-base">About</h3>
                     </AccordionTrigger>
@@ -104,7 +111,7 @@ function AgentInfoSection(props: AgentCardProps) {
                         </p>
                     </AccordionContent>
                 </AccordionItem>
-                <AccordionItem value='professional-information'>
+                <AccordionItem value='professional-information' className="border-border/50">
                     <AccordionTrigger className='cursor-pointer'>
                         <h3 className="font-bold font-heading text-base">
                             Professional Information

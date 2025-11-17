@@ -6,62 +6,57 @@ import { Separator as BaseSeparator } from '@/shared/components/ui/separator'
 
 function AgentInformationDetailsTabContent(props: AiAgentCardProps) {
     return (
-        <div>
-            <div className="flex flex-col gap-0">
-                <InfoCard title="About">
-                    <p className='text-muted-foreground text-base leading-loose'>
-                        LeadBot Pro is an advanced AI-powered agent designed specifically for the Dubai real estate market. It automates lead qualification, schedules property viewings, and provides instant responses to potential buyers 24/7. With seamless integration into popular CRM systems and WhatsApp Business API, it helps real estate professionals convert more leads into customers.
-                    </p>
-                </InfoCard>
+        <div className="flex flex-col gap-4">
+            <InfoCard title="About">
+                <p className='text-muted-foreground text-base leading-loose'>
+                    LeadBot Pro is an advanced AI-powered agent designed specifically for the Dubai real estate market. It automates lead qualification, schedules property viewings, and provides instant responses to potential buyers 24/7. With seamless integration into popular CRM systems and WhatsApp Business API, it helps real estate professionals convert more leads into customers.
+                </p>
+            </InfoCard>
 
-                <Separator />
 
-                <InfoCard 
-                    title="Industries"
-                >
-                    <BadgeWrapper>
-                        {props.industries.map((industry) => (
-                            <Badge
-                                key={industry}
-                            >
-                                {industry}
-                            </Badge>
-                        ))}
-                    </BadgeWrapper>
-                </InfoCard>
+            <InfoCard
+                title="Industries"
+            >
+                <BadgeWrapper>
+                    {props.industries.map((industry) => (
+                        <Badge
+                            key={industry}
+                        >
+                            {industry}
+                        </Badge>
+                    ))}
+                </BadgeWrapper>
+            </InfoCard>
 
-                <Separator />
 
-                <InfoCard 
-                    title="Use Cases"
-                >
-                    <BadgeWrapper>
-                        {USE_CASES.map((useCase) => (
-                            <Badge
-                                key={useCase}
-                            >
-                                {useCase}
-                            </Badge>
-                        ))}
-                    </BadgeWrapper>
-                </InfoCard>
+            <InfoCard
+                title="Use Cases"
+            >
+                <BadgeWrapper>
+                    {USE_CASES.map((useCase) => (
+                        <Badge
+                            key={useCase}
+                        >
+                            {useCase}
+                        </Badge>
+                    ))}
+                </BadgeWrapper>
+            </InfoCard>
 
-                <Separator />
 
-                <InfoCard
-                    title="Key Capabilities"
-                >
-                    <BadgeWrapper>
-                        {KEY_CAPABILITIES.map((keyCapability) => (
-                            <Badge
-                                key={keyCapability}
-                            >
-                                {keyCapability}
-                            </Badge>
-                        ))}
-                    </BadgeWrapper>
-                </InfoCard>
-            </div>
+            <InfoCard
+                title="Key Capabilities"
+            >
+                <BadgeWrapper>
+                    {KEY_CAPABILITIES.map((keyCapability) => (
+                        <Badge
+                            key={keyCapability}
+                        >
+                            {keyCapability}
+                        </Badge>
+                    ))}
+                </BadgeWrapper>
+            </InfoCard>
         </div>
     )
 }
@@ -72,8 +67,8 @@ function InfoCard(props: {
     className?: string
 }) {
     return (
-        <div className={cn("flex flex-col overflow-hidden shadow rounded-lg", props.className)}>
-            <div className="p-4 bg-background">    
+        <div className={cn("flex flex-col overflow-hidden border rounded-lg", props.className)}>
+            <div className="p-4 bg-background">
                 <h3 className='leading-tight font-semibold text-lg text-foreground/90'>{props.title}</h3>
             </div>
             <div className='p-4'>
@@ -86,7 +81,7 @@ function InfoCard(props: {
 
 function Separator() {
     return (
-        <BaseSeparator className='my-4 bg-border/0' />
+        <BaseSeparator className='my-3 bg-border/0' />
     )
 }
 

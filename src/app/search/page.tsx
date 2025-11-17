@@ -17,19 +17,19 @@ export default async function SearchPage(props: PageProps<"/search">) {
     return (
         <Tabs defaultValue={tab}>
             <div className="pb-10 relative flex flex-col gap-0 bg-background-light">
-                <div className="container grid grid-cols-[300px_1fr] items-start gap-10 relative">
+                <div className="container grid grid-cols-[300px_1fr] items-start gap-8 relative">
                     {/* Filter Sidebar */}
                     <FiltersSidebar tab={tab} />
 
                     {/* Navigation and Search Results */}
                     <div>
                         <SearchTabs />
-                        <div className="grid grid-cols-1 gap-5">
+                        <div className="grid grid-cols-1 gap-5 pt-2">
                             {/* Agent Results */}
                             <TabsContent value={SEARCH_TAB.AGENTS.value}>
-                                <div className="grid grid-cols-1 gap-7">
+                                <div className="grid grid-cols-1 gap-4">
                                     {AGENTS.map((agent, index) => (
-                                        <AgentCard 
+                                        <AgentCard
                                             key={index}
                                             // isFeatured={index < 3}
                                             {...agent}
@@ -40,7 +40,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
                             {/* Agency Results */}
                             <TabsContent value={SEARCH_TAB.AGENCIES.value}>
-                                <div className="grid grid-cols-1 gap-7">
+                                <div className="grid grid-cols-1 gap-4">
                                     {AGENCIES.map((agent, index) => (
                                         <AgencyCard
                                             key={index}
@@ -52,7 +52,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
                             {/* Service Results */}
                             <TabsContent value={SEARCH_TAB.SERVICES.value}>
-                                <div className="grid grid-cols-1 gap-7">
+                                <div className="grid grid-cols-1 gap-4">
                                     {SERVICES.map((service, index) => (
                                         <ServiceCard
                                             key={index}
@@ -64,7 +64,7 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
                             {/* AI Agent Results */}
                             <TabsContent value={SEARCH_TAB.AI_AGENTS.value}>
-                                <div className="grid grid-cols-1 gap-7">
+                                <div className="grid grid-cols-1 gap-4">
                                     {AI_AGENTS.map((aiAgent, index) => (
                                         <AiAgentCard
                                             key={index}

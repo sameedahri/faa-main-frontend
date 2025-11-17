@@ -27,13 +27,13 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
 
     return (
         <div className="bg-background-light pb-16">
-            <div className="container grid grid-cols-[350px_1fr] gap-12 relative">
+            <div className="container grid grid-cols-[350px_1fr] gap-8 relative">
                 {/* Agent Profile Info Side */}
                 <AgentInfoSection {...agentDetails} />
 
                 {/* Agent Services Side */}
                 <Tabs defaultValue={AGENT_DETAILS_TAB.PROPERTIES.value}>
-                    <div className="flex flex-col gap-0">
+                    <div className="flex flex-col gap-2">
                         <div className="py-6 top-0 sticky bg-background-light backdrop-blur-sm overflow-hidden z-30">
                             <OutlineTabsList>
                                 {Object.values(AGENT_DETAILS_TAB).map((tab) => (
@@ -52,9 +52,9 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                         <TabsContent
                             value={AGENT_DETAILS_TAB.PROPERTIES.value}
                         >
-                            <>
+                            <div className="flex flex-col gap-8">
                                 {/* Filter Card */}
-                                <div className="bg-background- border-t w-full py-5 flex flex-col gap-4 mb-2">
+                                <div className="w-full flex flex-col gap-4  rounded-lg border-border/50 p-3 bg-background">
                                     <h3 className="text-base font-medium font-heading flex items-center gap-1.5">
                                         <Filter className="size-4.5" />
                                         Filters Properties
@@ -118,22 +118,21 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                                 </div>
 
                                 {/* Property Cards */}
-                                <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                                <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                                     {PROPERTY_CARDS.map((property, index) => (
                                         <PropertyCard
                                             key={index}
                                             property={{ ...property }}
-                                            className="from-background-light bg-background-light"
                                             orientation="horizontal"
                                         />
                                     ))}
                                 </div>
-                            </>
+                            </div>
                         </TabsContent>
 
                         <TabsContent
                             value={AGENT_DETAILS_TAB.SERVICES.value}
-                            className="grid grid-cols-1 md:grid-cols-1 gap-6"
+                            className="grid grid-cols-1 md:grid-cols-1 gap-4"
                         >
                             {SERVICES.map((service, index) => (
                                 <ServiceCard key={index} {...service} />
@@ -142,7 +141,7 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                         
                         <TabsContent
                             value={AGENT_DETAILS_TAB.REVIEWS.value}
-                            className="grid grid-cols-1 md:grid-cols-1 gap-6"
+                            className="grid grid-cols-1 md:grid-cols-1 gap-4"
                         >
                             {AGENT_REVIEWS.map((review, index) => (
                                 <AgentReviewCard key={index} {...review} />
@@ -158,8 +157,8 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
 function FilterSelectTrigger(props: SelectTriggerProps) {
     return (
         <SelectTrigger
-            size={"default"}
-            className="bg-background-light border-border"
+            size={"sm"}
+            className="rounded-sm border-border border shadow-none bg-background-light"
             {...props}
         />
     )

@@ -17,7 +17,7 @@ function SearchTabs() {
         router.push(`${PAGE_ROUTES.SEARCH}?tab=${value}` as Route);
     }
     return (
-        <div className="py-6 top-0 sticky bg-background-light backdrop-blur-sm overflow-hidden">
+        <div className="py-6 top-0 sticky bg-background-light backdrop-blur-sm overflow-hidden z-10">
             <OutlineTabsList>
                 {Object.values(SEARCH_TAB).map((tab) => (
                     <OutlineTabsTrigger

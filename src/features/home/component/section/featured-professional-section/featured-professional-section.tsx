@@ -11,6 +11,7 @@ import FeatureServicesCarousel from './featured-services-carousel'
 import FeaturedEventsCarousel from './featured-properties-carousel'
 import FeaturedAgentsCarousel from './featured-agents-carousel'
 import FeaturedAgenciesCarousel from './featured-agencies-carousel'
+import { OutlineTabsList, OutlineTabsTrigger } from '@/shared/components/ui/tabs/outline-tabs'
 
 
 function FeaturedProfessional() {
@@ -37,25 +38,25 @@ function FeaturedProfessional() {
                     onValueChange={(value) => handleTabChange(value as FeaturedTabType)}
                     className="gap-6"
                 >
-                    <TabsList className={cn(
-                        'items-center justify-center self-center',
-                        'bg-background-dark',
+                    <OutlineTabsList className={cn(
+                        'items-center justify-center self-center w-auto',
+                        'bg-background-light border',
                     )}>
                         {Object.values(FEATURED_PROFESSIONALS_TAB).map((tab) => (
-                            <TabsTrigger
+                            <OutlineTabsTrigger
                                 key={tab.value}
                                 value={tab.value}
                                 className={cn(
-                                    'data-[state=active]:text-foreground text-foreground/100',
+                                    // 'data-[state=active]:text-foreground text-foreground/100',
                                     {
                                         "hidden md:block": tab.value === FEATURED_PROFESSIONALS_TAB.PROPERTIES.value,
                                     }
                                 )}
                             >
                                 {tab.label}
-                            </TabsTrigger>
+                            </OutlineTabsTrigger>
                         ))}
-                    </TabsList>
+                    </OutlineTabsList>
                     <TabsContent
                         value={FEATURED_PROFESSIONALS_TAB.AGENTS.value}
                     >

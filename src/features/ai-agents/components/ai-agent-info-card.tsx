@@ -11,6 +11,7 @@ import { cn } from '@/shared/lib/utils'
 import { EmailButton, PhoneButton, WebsiteButton, WhatsappButton } from '@/shared/components/action-buttons'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/components/ui/accordion'
 import { aiAgentImage1 } from "@/shared/constants/images/ai-agent"
+import { Separator } from "@/shared/components/ui/separator"
 
 
 function AiAgentInfoCard(props: AiAgentCardProps) {
@@ -24,12 +25,12 @@ function AiAgentInfoCard(props: AiAgentCardProps) {
                 "overflow-y-auto overflow-x-hidden h-fit max-h-[calc(100vh-3rem)] sticky top-6 mt-6",
             )}
         >
-            <div className="bg-background-light/80 backdrop-blur-sm">
+            <div className="">
                 <SurfaceCard
                     variant={"highlighted"}
                     className={cn(
-                        " bg-linear-to-b from-primary/10 to-background-light backdrop-blur-3xl shadow shadow-primary/20",
-                        "flex flex-col gap-4 items-center p-6 border-primary/10"
+                        // " bg-linear-to-b from-primary/10 to-background-light backdrop-blur-3xl shadow",
+                        "flex flex-col gap-4 items-center p-6 border-border from-transparent"
                     )}
                 >
                     <Image
@@ -68,23 +69,23 @@ function AiAgentInfoCard(props: AiAgentCardProps) {
                             <span className="">{aiAgentDetails.rating} <small className="text-muted-foreground font-normal">({aiAgentDetails.reviews})</small></span>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-3 w-full *:w-full">
+                    <Separator className="my-1.5 bg-border/50" />
+                    <div className="grid grid-cols-3 gap-3 w-full *:w-full">
                         <EmailButton
                             email={aiAgentDetails.email}
+                            className="rounded-md h-11 [&>svg]:size-4.5 shadow-sm from-background"
                         >
-                            Email
                         </EmailButton>
                         <WebsiteButton
                             websiteLink={"#"}
+                            className=" rounded-md h-11 [&>svg]:size-8 shadow-sm from-background"
                         >
-                            Website
                         </WebsiteButton>
 
                         <WhatsappButton
                             whatsapp={aiAgentDetails.whatsapp}
-                            className="col-span-full"
+                            className="rounded-md h-11  [&>svg]:size-5.5 shadow-sm"
                         >
-                            Whatsapp
                         </WhatsappButton>
                     </div>
                 </SurfaceCard>

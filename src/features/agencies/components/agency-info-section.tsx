@@ -15,6 +15,7 @@ import { cn } from '@/shared/lib/utils'
 import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
 import { AgencyCardProps } from '@/features/search/components/agency-card'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/components/ui/accordion'
+import { Separator } from "@/shared/components/ui/separator"
 
 
 
@@ -29,12 +30,12 @@ function AgencyInfoSection(props: AgencyCardProps) {
                 "overflow-y-auto overflow-x-hidden h-fit max-h-[calc(100vh-3rem)] sticky top-6 mt-6",
             )}
         >
-            <div className="bg-background-light/80 backdrop-blur-sm">
+            <div className="">
                 <SurfaceCard
-                    variant={"highlighted"}
+                    // variant={"highlighted"}
                     className={cn(
-                        " bg-linear-to-b from-primary/10 to-background-light backdrop-blur-3xl shadow shadow-primary/20",
-                        "flex flex-col gap-4 items-center p-6 border-primary/10"
+                        "border-border",
+                        "flex flex-col gap-4 items-center p-6"
                     )}
                 >
                     <Image
@@ -45,7 +46,7 @@ function AgencyInfoSection(props: AgencyCardProps) {
                     <div className="flex flex-col gap-2">
                         <div className="flex flex-col gap-1 text-center pt-0">
                             <div className="relative w-fit mx-auto">
-                                <h2 className="text-xl font-bold font-heading">{agencyDetails?.name}</h2>
+                                <h2 className="text-2xl font-bold font-heading w-full max-w-[15ch]">{agencyDetails?.name}</h2>
                                 <div className="absolute -top-2 -right-4">
                                     {agencyDetails.subscription !== "Basic" && <VerifiedBadge className="size-4" />}
                                 </div>
@@ -75,15 +76,19 @@ function AgencyInfoSection(props: AgencyCardProps) {
                             <span className="" >{agencyDetails.location}</span>
                         </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-2 w-full *:w-full">
+                    <Separator className="my-1.5 bg-border/50" />
+                    <div className="grid grid-cols-3 gap-3 w-full *:w-full">
                         <EmailButton
                             email={agencyDetails.email}
+                            className="rounded-md h-11 [&>svg]:size-4.5 shadow-sm from-background"
                         />
                         <PhoneButton
                             phone={"213123123"}
+                            className="rounded-md h-11 [&>svg]:size-4.5 shadow-sm from-background"
                         />
                         <WhatsappButton
                             whatsapp={"213123123"}
+                            className="rounded-md h-11  [&>svg]:size-5.5 shadow-sm from-background"
                         />
                     </div>
                 </SurfaceCard>
