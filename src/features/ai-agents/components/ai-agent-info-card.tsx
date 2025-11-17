@@ -73,18 +73,18 @@ function AiAgentInfoCard(props: AiAgentCardProps) {
                     <div className="grid grid-cols-3 gap-3 w-full *:w-full">
                         <EmailButton
                             email={aiAgentDetails.email}
-                            className="rounded-md h-11 [&>svg]:size-4.5 shadow-sm from-background"
+                            className="rounded-md h-11 [&>svg]:size-4.5"
                         >
                         </EmailButton>
                         <WebsiteButton
                             websiteLink={"#"}
-                            className=" rounded-md h-11 [&>svg]:size-8 shadow-sm from-background"
+                            className=" rounded-md h-11 [&>svg]:size-4.5"
                         >
                         </WebsiteButton>
 
                         <WhatsappButton
                             whatsapp={aiAgentDetails.whatsapp}
-                            className="rounded-md h-11  [&>svg]:size-5.5 shadow-sm"
+                            className="rounded-md h-11  [&>svg]:size-5.5"
                         >
                         </WhatsappButton>
                     </div>

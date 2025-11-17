@@ -80,15 +80,15 @@ function AgencyInfoSection(props: AgencyCardProps) {
                     <div className="grid grid-cols-3 gap-3 w-full *:w-full">
                         <EmailButton
                             email={agencyDetails.email}
-                            className="rounded-md h-11 [&>svg]:size-4.5 shadow-sm from-background"
+                            className="rounded-md h-11 [&>svg]:size-4.5"
                         />
                         <PhoneButton
                             phone={"213123123"}
-                            className="rounded-md h-11 [&>svg]:size-4.5 shadow-sm from-background"
+                            className="rounded-md h-11 [&>svg]:size-4.5"
                         />
                         <WhatsappButton
                             whatsapp={"213123123"}
-                            className="rounded-md h-11  [&>svg]:size-5.5 shadow-sm from-background"
+                            className="rounded-md h-11  [&>svg]:size-5.5"
                         />
                     </div>
                 </SurfaceCard>
@@ -138,7 +138,7 @@ function AgencyInfoSection(props: AgencyCardProps) {
                                     <LanguagesIcon className="size-3" />
                                     Languages
                                 </h4>
-                                <p className="text-sm font-medium text-base">English, Arabic</p>
+                                <p className="font-medium text-base">English, Arabic</p>
                             </div>
                         </div>
                     </AccordionContent>

@@ -150,7 +150,7 @@ export function WebsiteButton({
             )}
             {...props}
         >
-            <Globe />
+            <Globe className="size-" />
             {children}
         </ActionBaseButton>
     )

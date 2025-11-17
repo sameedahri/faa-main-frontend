@@ -136,9 +136,30 @@ function PropertyCard({
                         }
                     )}
                 >
-                    <EmailButton email={""} className="bg-linear-to-b from-background-dark via-background-light to-background-light" />
-                    <PhoneButton phone={""} className="bg-linear-to-b from-background-dark via-background-light to-background-light" />
-                    <WhatsappButton whatsapp={""} className="bg-linear-to-b from-background-dark via-background-light to-background-light" />
+                    <PhoneButton
+                        phone={""}
+                        className={cn(
+                            {
+                                "rounded-md": orientation === "vertical",
+                            }
+                        )}
+                    />
+                    <EmailButton 
+                        email={""} 
+                        className={cn(
+                            {
+                                "rounded-md": orientation === "vertical",
+                            }
+                        )} 
+                    />
+                    <WhatsappButton 
+                        whatsapp={""} 
+                        className={cn(
+                            {
+                                "rounded-md": orientation === "vertical",
+                            }
+                        )} 
+                    />
                 </div>
             </Link>
         </SurfaceCard>

@@ -1,5 +1,6 @@
 "use client"
 
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/components/ui/accordion';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label'
@@ -184,13 +185,40 @@ function AiAgentsFilters() {
 
 function BaseFilters() {
     return (
-        <>
+        <Accordion type='multiple' className='flex flex-col gap-5'>
             <SearchFilterInputGroup label="Search">
                 <Input placeholder="Search by name or email" />
             </SearchFilterInputGroup>
+
             <SearchFilterInputGroup label="Location">
                 <Input placeholder="Search by location" />
             </SearchFilterInputGroup>
+
+            {/* <AccordionItem value="industry">
+                <AccordionTrigger>
+                    Industry
+                </AccordionTrigger>
+                <AccordionContent>
+                    <SearchFilterInputGroup label="Industry">
+                        <Select>
+                            <SelectTrigger className='border-border'>
+                                <SelectValue placeholder="All" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {INDUSTRIES_OPTIONS.map((option) => (
+                                    <SelectItem
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </SearchFilterInputGroup>
+                </AccordionContent>
+            </AccordionItem> */}
+
             <SearchFilterInputGroup label="Industry">
                 <Select>
                     <SelectTrigger className='border-border'>
@@ -208,6 +236,7 @@ function BaseFilters() {
                     </SelectContent>
                 </Select>
             </SearchFilterInputGroup>
+        
             <SearchFilterInputGroup label="Emirates">
                 <Select>
                     <SelectTrigger className='border-border'>
@@ -225,6 +254,7 @@ function BaseFilters() {
                     </SelectContent>
                 </Select>
             </SearchFilterInputGroup>
+
             <SearchFilterInputGroup label="Languages">
                 <Select>
                     <SelectTrigger className='border-border'>
@@ -242,6 +272,7 @@ function BaseFilters() {
                     </SelectContent>
                 </Select>
             </SearchFilterInputGroup>
+
             <SearchFilterInputGroup label="Rating">
                 <Select>
                     <SelectTrigger className='border-border'>
@@ -259,6 +290,7 @@ function BaseFilters() {
                     </SelectContent>
                 </Select>
             </SearchFilterInputGroup>
+
             <SearchFilterInputGroup label="Availability">
                 <Select>
                     <SelectTrigger className='border-border'>
@@ -276,6 +308,7 @@ function BaseFilters() {
                     </SelectContent>
                 </Select>
             </SearchFilterInputGroup>
+
             <div className="grid grid-cols-1 gap-3">
                 <Button
                     size={"sm"}
@@ -286,7 +319,7 @@ function BaseFilters() {
                     Clear
                 </Button>
             </div>
-        </>
+        </Accordion>
     )
 }
 
