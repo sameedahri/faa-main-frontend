@@ -30,7 +30,7 @@ function AiAgentInfoCard(props: AiAgentCardProps) {
                     variant={"highlighted"}
                     className={cn(
                         // " bg-linear-to-b from-primary/10 to-background-light backdrop-blur-3xl shadow",
-                        "flex flex-col gap-4 items-center p-6 border-border from-transparent"
+                        "flex flex-col gap-4 items-center p-6 border-border from-transparent bg-background-light"
                     )}
                 >
                     <Image

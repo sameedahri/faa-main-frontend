@@ -80,7 +80,7 @@ function PropertyCard({
                 <div className="flex flex-col gap-4.5">
                     {/* Title And Location */}
                     <div className="flex flex-col gap-1">
-                        <h2 className="text-lg font-semibold font-base transition-all duration-200 group-hover:underline underline-offset-4 decoration-1">{property.title}</h2>
+                        <h2 className="text-base font-semibold font-base transition-all duration-200 group-hover:underline underline-offset-4 decoration-1">{property.title}</h2>
                         <div className="flex items-center gap-1 text-sm text-muted-foreground">
                             <MapPin className='size-4' />
                             <span>{property.location}</span>
@@ -119,13 +119,6 @@ function PropertyCard({
                             "hidden": orientation === "horizontal",
                         }
                     )} />
-
-                    {/* Action Buttons */}
-                    {/* <div className="grid grid-cols-3 gap-3 *:w-full">
-                        <EmailButton email={""} className="shadow-none" />
-                        <PhoneButton phone={""} className="shadow-none" />
-                        <WhatsappButton whatsapp={""} className="" />
-                    </div> */}
                 </div>
                 <div 
                     className={cn(

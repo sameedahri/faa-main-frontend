@@ -6,7 +6,7 @@ import { CheckCircle } from 'lucide-react'
 
 function TechnicalDetailsTabContent() {
     return (
-        <div className='flex flex-col gap-6'>
+        <div className='flex flex-col gap-2'>
             <InfoCard title="Model Details">
                 <div className="grid grid-cols-3 gap-4">
                     <ModelInfoCard label='Model' value='GPT 4' />
@@ -53,7 +53,7 @@ function ModelInfoCard(props: { label: string, value: string }) {
     return (
         <div className='border-border/70 rounded-md gap-0.5 flex flex-col justify-center'>
             <h2 className='text-sm text-muted-foreground'>{props.label}</h2>
-            <h3 className='text-lg font-semibold text-foreground/80'>{props.value}</h3>
+            <h3 className='text-lg text-foreground'>{props.value}</h3>
         </div>
     )
 }
@@ -65,10 +65,10 @@ function InfoCard(props: {
 }) {
     return (
         <div className={cn("flex flex-col overflow-hidden border rounded-lg", props.className)}>
-            <div className="p-4 bg-background border-b">
-                <h3 className='leading-tight font-semibold text-lg text-foreground'>{props.title}</h3>
+            <div className="p-4 bg-background-light border-b">
+                <h3 className='leading-tight font-semibold text-base text-foreground'>{props.title}</h3>
             </div>
-            <div className='p-4'>
+            <div className='p-4 bg-background-light'>
                 {props.children}
             </div>
         </div>

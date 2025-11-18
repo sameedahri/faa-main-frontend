@@ -16,6 +16,7 @@ import { OutlineTabsList, OutlineTabsTrigger } from "@/shared/components/ui/tabs
 import AiAgentInfoCard from '@/features/ai-agents/components/ai-agent-info-card'
 import AgentInformationDetailsTabContent from '@/features/ai-agents/components/agent-information-details-tab-content'
 import TechnicalDetailsTabContent from '@/features/ai-agents/components/technical-details-tab-content'
+import { Separator } from '@/shared/components/ui/separator'
 
 function getAiAgentDetails(id: string) {
     return AI_AGENTS.find((aiAgent) => aiAgent.id === id)
@@ -30,15 +31,15 @@ async function AiAgentDetailsPage(props: PageProps<"/ai-agents/[id]">) {
     }
 
     return (
-        <div className="bg-background-light pb-16">
-            <div className="container grid grid-cols-[350px_1fr] gap-8 relative">
+        <div className="bg-background-dark pb-16">
+            <div className="container grid grid-cols-[350px_1fr] gap-6 relative">
                 {/* Agent Profile Info Side */}
                 <AiAgentInfoCard {...aiAgentDetails} />
 
                 {/* Agent Services Side */}
                 <Tabs defaultValue={AI_AGENT_DETAILS_TAB.AGENT_INFORMATION.value}>
-                    <div className="flex flex-col gap-2">
-                        <div className="py-6 top-0 sticky bg-background-light backdrop-blur-sm overflow-hidden z-30">
+                    <div className="flex flex-col gap-0">
+                        <div className="pt-6 pb-2 top-0 sticky bg-background-dark backdrop-blur-sm overflow-hidden z-30">
                             <OutlineTabsList>
                                 {Object.values(AI_AGENT_DETAILS_TAB).map((tab) => (
                                     <OutlineTabsTrigger
@@ -50,7 +51,6 @@ async function AiAgentDetailsPage(props: PageProps<"/ai-agents/[id]">) {
                                 ))}
                             </OutlineTabsList>
                         </div>
-
 
                         {/* Agent Information Content */}
                         <TabsContent

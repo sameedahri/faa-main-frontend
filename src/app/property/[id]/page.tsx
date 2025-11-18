@@ -29,14 +29,14 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
     }
 
     return (
-        <div className="bg-background-light pb-10">
+        <div className="bg-background-dark pb-10">
             <div className="container py-3">
                 <BackButton />
             </div>
-            <div className="container flex flex-col gap-5">
+            <div className="container flex flex-col gap-2">
                 {/* Property Images */}
                 <div className={cn(
-                    'grid grid-rows-2 grid-cols-3 gap-5',
+                    'grid grid-rows-2 grid-cols-3 gap-2',
                     "[&_img]:object-cover [&_img]:w-full [&_img]:h-full [&_img]:rounded-md",
                 )}>
                     <div className='row-span-full col-start-1 col-end-3 relative'>
@@ -62,9 +62,9 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                 </div>
 
                 {/* Content */}
-                <div className="grid grid-cols-3 items-start gap-5 pb-7">
+                <div className="grid grid-cols-3 items-start gap-2 pb-7">
                     {/* Property Info */}
-                    <div className="flex flex-col gap-0 col-start-1 col-end-3">
+                    <div className="flex flex-col gap-0 col-start-1 col-end-3 bg-background-light px-4 pt-5 pb-10 rounded-md">
                         {/* Property Title, Price and Features */}
                         <div className="space-y-5">
                             {/* Property Title and Price */}
@@ -144,7 +144,7 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                     </div>
 
                     {/* Agent Info */}
-                    <div className='col-start-3 col-end-4 p-5 rounded-lg flex flex-col gap-5 sticky top-5 border'>
+                    <div className='col-start-3 col-end-4 flex flex-col gap-5 sticky top-5 bg-background-light p-4 rounded-md'>
                         <Link href={PAGE_ROUTES.AGENT_DETAILS("1")} className='flex items-center gap-2'>
                             <div className='aspect-square w-[60px] rounded-full overflow-hidden'>
                                 <Image
@@ -174,11 +174,11 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                     </div>
                 </div>
                 
-                <SectionSeparator className='max-w-full' />
+                <SectionSeparator className='max-w-full my-5' />
 
                 {/* Recommendation For You */}
                 <PropertyInfoCard title="Recommendation For You" className='mt-0 gap-0'>
-                    <div className='grid grid-cols-3 gap-7 pt-4'>
+                    <div className='grid grid-cols-3 gap-2 pt-4'>
                         {PROPERTY_CARDS
                             .slice(0, 3)
                             .map((property) => (

@@ -33,23 +33,24 @@ function FiltersSidebar(props: FiltersSidebarProps) {
 
     return (
         <form
-            className="h-fit max-h-[calc(100vh-3rem)] overflow-y-auto flex flex-col gap-0 rounded-lg border-border/50 sticky top-6 mt-6"
+            className="h-fit max-h-[calc(100vh-var(--height-nav)-3rem)] overflow-y-auto flex flex-col gap-0 rounded-lg p-5 bg-background-light sticky top-6 mt-6"
             onSubmit={e => e.preventDefault()}
         >
-            {/* <h2 className='flex items-center gap-1.5 font-semibold text-lg p-3 bg-background border-b'>
+            {/* <h2 className='flex items-center gap-1.5 font-medium text-lg pb-3'>
                 <Filter className='size-4' />
                 Filters
             </h2> */}
-            {/* <div className='bg-background p-3 border-b-5 border-background-light'> */}
-            <div className='bg-background-light pb-3 px-1'>
-                <InputGroup className='border-border rounded-full has-[[data-slot=input-group-control]:focus-visible]:ring-[0px] focus-visible:border-primary-200 has-[[data-slot=input-group-control]:focus-visible]:border-primary-400'>
-                    <InputGroupAddon>
-                        <SearchIcon className='size-4' />
-                    </InputGroupAddon>
+            {/* <div className='bg-background-light p-3 border-b-5 border-background-dark'> */}
+            <div className='bg-background-light pb-4'>
+                <InputGroup className='shadow-none bg-background-light h-10  has-[[data-slot=input-group-control]:focus-visible]:ring-[0px] focus-visible:border-primary-200 has-[[data-slot=input-group-control]:focus-visible]:border-primary-400 rounded-full'>
+
                     <InputGroupInput
                         placeholder='Search by keyword'
                         className='placeholder:text-muted-foreground'
                     />
+                    <InputGroupAddon align={"inline-end"} className='hover:text-primary cursor-pointer'>
+                        <SearchIcon className='size-4' />
+                    </InputGroupAddon>
                 </InputGroup>
             </div>
             {renderFilters()}
@@ -59,8 +60,8 @@ function FiltersSidebar(props: FiltersSidebarProps) {
 
 function AiAgentsFilters() {
     return (
-        <Accordion type='multiple' className='flex flex-col gap-0' defaultValue={["Industry", "Emirate"]}>
-            <InputWrapper label='Industry'>
+        <Accordion type='multiple' className='flex flex-col gap-0' defaultValue={["Industries", "Emirates"]}>
+            <InputWrapper label='Industries'>
                 {INDUSTRIES_OPTIONS.map((option) => (
                     <CheckboxInput
                         key={option.value}
@@ -69,7 +70,7 @@ function AiAgentsFilters() {
                 ))}
             </InputWrapper>
 
-            <InputWrapper label='Use Case'>
+            <InputWrapper label='Use Cases'>
                 {USE_CASE_OPTIONS.map((option) => (
                     <CheckboxInput
                         key={option.value}
@@ -78,7 +79,7 @@ function AiAgentsFilters() {
                 ))}
             </InputWrapper>
 
-            <InputWrapper label='Base Model'>
+            <InputWrapper label='Base Models'>
                 {BASE_MODEL_OPTIONS.map((option) => (
                     <CheckboxInput
                         key={option.value}
@@ -105,7 +106,7 @@ function AiAgentsFilters() {
                 ))}
             </InputWrapper>
 
-            <InputWrapper label='Pricing Model'>
+            <InputWrapper label='Pricing Models'>
                 {PRICING_MODEL_OPTIONS.map((option) => (
                     <CheckboxInput
                         key={option.value}
@@ -135,7 +136,7 @@ function AiAgentsFilters() {
 
 function BaseFilters() {
     return (
-        <Accordion type='multiple' className='flex flex-col gap-0' defaultValue={["Industry", "Emirate"]}>
+        <Accordion type='multiple' className='flex flex-col gap-0' defaultValue={["Industries", "Emirates"]}>
             {/* <SearchFilterInputGroup label="Search">
                 <Input placeholder="Search by name or email" />
             </SearchFilterInputGroup>
@@ -144,7 +145,7 @@ function BaseFilters() {
                 <Input placeholder="Search by location" />
             </SearchFilterInputGroup> */}
             <InputWrapper
-                label="Industry"
+                label="Industries"
             >
                 {INDUSTRIES_OPTIONS.map((option) => (
                     <CheckboxInput
@@ -155,7 +156,7 @@ function BaseFilters() {
             </InputWrapper>
 
             <InputWrapper
-                label="Emirate"
+                label="Emirates"
             >
                 {EMIRATES_OPTIONS.map((option) => (
                     <CheckboxInput
@@ -177,7 +178,7 @@ function BaseFilters() {
             </InputWrapper>
 
             <InputWrapper
-                label="Rating"
+                label="Ratings"
             >
                 {RATING_OPTIONS.map((option) => (
                     <CheckboxInput
@@ -208,11 +209,11 @@ function InputWrapper(props: PropsWithChildren<{
     hideViewMore?: boolean
 }>) {
     return (
-        <AccordionItem value={props.label} className='border-b-5 border-background-light'>
-            <AccordionTrigger className='rounded-none px-3 bg-background cursor-pointer py-3'>
+        <AccordionItem value={props.label} className='border-b-1 border-background-dark'>
+            <AccordionTrigger className='rounded-none bg-background-light cursor-pointer py-3 text-foreground font-medium underline-offset-4 decoration-muted-foreground'>
                 {props.label}
             </AccordionTrigger>
-            <AccordionContent className='p-3 flex flex-col gap-2'>
+            <AccordionContent className='px-3 pt-0 flex flex-col gap-2 bg-background-light'>
                 {props.children}
                 {!props.hideViewMore && (
                     <Dialog>
@@ -220,7 +221,7 @@ function InputWrapper(props: PropsWithChildren<{
                             <Button
                                 size={"sm"}
                                 variant={"ghost"}
-                                className='w-fit mt-2 h-auto text-center p-0 text-primary-400 decoration-1 underline-offset-4 decoration-primary-200 hover:bg-transparent  underline hover:text-primary-400'
+                                className='w-fit mt-2 h-auto text-center p-0 text-primary-400 decoration-1 underline-offset-4 decoration-primary-100 hover:bg-transparent  underline hover:text-primary-500 hover:decoration-primary-300'
                             >
                                 View More
                             </Button>
@@ -234,13 +235,13 @@ function InputWrapper(props: PropsWithChildren<{
                                     </button>
                                 </DialogClose>
                             </DialogHeader>
-                            <Separator className='bg-border/50'/>
+                            <Separator className='bg-border/50' />
                             <DialogDescription className='sr-only'>
                             </DialogDescription>
                             <div className='grid grid-cols-2 gap-3 overflow-y-auto'>
                                 {props.children}
                             </div>
-                            <Separator className='bg-border/50'/>
+                            <Separator className='bg-border/50' />
                             <DialogFooter>
                                 <DialogClose asChild>
                                     <Button

@@ -8,7 +8,7 @@ import React, { HTMLProps } from 'react'
 
 function MortgageDetails() {
     return (
-        <div className='grid grid-cols-[1fr_300px] gap-10 rounded-lg mt-3.5'>
+        <div className='grid grid-cols-[1fr_300px] gap-5 rounded-lg mt-3.5'>
             <div className="grid gap-5">
                 <div className=''>
                     <MortgageInputWrapper
@@ -84,7 +84,7 @@ function MortgageDetails() {
                     </MortgageInputWrapper>
                 </div>
             </div>
-            <div className='shadow-md rounded-md p-5 flex flex-col gap-5 justify-start'>
+            <div className='shadow-md rounded-md p-5 flex flex-col gap-5 justify-start bg-background-light'>
                 <div className='flex flex-col  text-center gap-0.5'>
                     <small className='text-foreground text-sm'>
                         Monthly Payment
