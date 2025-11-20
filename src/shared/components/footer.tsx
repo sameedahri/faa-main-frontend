@@ -10,7 +10,7 @@ import { InputGroup, InputGroupAddon, InputGroupInput } from './ui/input-group'
 
 function Footer() {
     return (
-        <footer className='bg-sky-950 text-primary-foreground py-10'>
+        <footer className='bg-primary-800 text-primary-foreground py-10'>
             <div className="container grid grid-cols-1 gap-5 lg:grid-cols-[15%_1fr_25%] lg:gap-10 xl:gap-20">
                 <div className="flex flex-col gap-5 justify-between">
                     <div>

@@ -2,19 +2,19 @@ import { Property } from "@/features/properties/types/properties.type"
 import { EmailButton, PhoneButton, WhatsappButton } from "@/shared/components/action-buttons"
 import { PropertyStatusBade } from "@/shared/components/badges/property-badges"
 import { Badge } from "@/shared/components/ui/badge"
-import { Button } from "@/shared/components/ui/button"
 import { Separator } from "@/shared/components/ui/separator"
-import { SurfaceCard, SurfaceCardProps } from "@/shared/components/ui/surface-card"
+import { SurfaceCard,  } from "@/shared/components/ui/surface-card"
 import { home } from "@/shared/constants/images"
 import { PAGE_ROUTES } from "@/shared/constants/page-routes"
 import { cn } from "@/shared/lib/utils"
 import { cva, VariantProps } from "class-variance-authority"
-import { Bath, BedDouble, Grid3x2, MapPin } from "lucide-react"
+import { Bath, BedDouble, Grid3x2 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { BaseCardLocationItem } from "./base-card"
 
 export const propertyCardVariants = cva(
-    "h-full group grid transition-all duration-200",
+    "h-full group grid transition-all duration-200 border-none",
     {
         variants: {
             variant: {
@@ -81,15 +81,19 @@ function PropertyCard({
                     {/* Title And Location */}
                     <div className="flex flex-col gap-1">
                         <h2 className="text-base font-semibold font-base transition-all duration-200 group-hover:underline underline-offset-4 decoration-1">{property.title}</h2>
-                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                            <MapPin className='size-4' />
-                            <span>{property.location}</span>
-                        </div>
+                        <BaseCardLocationItem 
+                            location={property.location} 
+                            wrapperClassName='text-muted-foreground'
+                        />
                     </div>
 
                     {/* Bedrooms, Bathrooms, Area */}
                     <div className="flex flex-wrap gap-2">
-                        <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>
+                        <Badge 
+                            variant={'muted'} 
+                            type={'outline'} 
+                            className='rounded-full border h-6'
+                        >
                             <BedDouble />
                             <span>{property.bedrooms}</span>
                         </Badge>
@@ -101,11 +105,6 @@ function PropertyCard({
                             <Grid3x2 />
                             <span>{property.area} sqft</span>
                         </Badge>
-                        {/* <br />
-                        <Badge variant={'muted'} type={'outline'} className='rounded-full border h-6'>
-                            <MapPin />
-                            <span>{props.location}</span>
-                        </Badge> */}
                     </div>
                     
                     {/* Price */}

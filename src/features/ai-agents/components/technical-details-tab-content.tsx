@@ -64,11 +64,11 @@ function InfoCard(props: {
     className?: string
 }) {
     return (
-        <div className={cn("flex flex-col overflow-hidden border rounded-lg", props.className)}>
-            <div className="p-4 bg-background-light border-b">
+        <div className={cn("flex flex-col overflow-hidden rounded-lg", props.className)}>
+            <div className="p-3 bg-background-light border-b border-border-light">
                 <h3 className='leading-tight font-semibold text-base text-foreground'>{props.title}</h3>
             </div>
-            <div className='p-4 bg-background-light'>
+            <div className='p-3 bg-background-light'>
                 {props.children}
             </div>
         </div>

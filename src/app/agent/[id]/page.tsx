@@ -1,20 +1,14 @@
-import { AGENTS, SERVICES } from "@/app/search/page"
-import { Filter, Search } from "lucide-react"
+import { Filter } from "lucide-react"
 import { notFound } from "next/navigation"
 import { Tabs, TabsContent } from "@/shared/components/ui/tabs"
-import { TabsList, TabsTrigger } from "@/ui/tabs"
 import { AGENT_DETAILS_TAB } from "@/shared/constants/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectTriggerProps, SelectValue } from "@/shared/components/ui/select"
 import PropertyCard from "@/features/search/components/property-card"
 import AgentReviewCard from "@/features/agent/components/agent-review-card"
 import AgentInfoSection from "@/features/agent/components/agent-info-section"
-import { AGENT_REVIEWS, PROPERTY_CARDS } from "@/features/agent/components/data"
-import BackButton from "@/shared/components/back-button"
+import { AGENT_REVIEWS, AGENTS, PROPERTY_CARDS, SERVICES } from "@/features/agent/components/data"
 import ServiceCard from "@/features/search/components/service-card"
 import { OutlineTabsList, OutlineTabsTrigger } from "@/shared/components/ui/tabs/outline-tabs"
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@/shared/components/ui/input-group"
-import { Button } from "@/shared/components/ui/button"
-import { Separator } from "@/shared/components/ui/separator"
 
 function getAgentDetails(id: string) {
     return AGENTS.find((agent) => agent.id === id)
@@ -30,15 +24,15 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
 
     return (
         <div className="bg-background-dark pb-16">
-            <div className="container grid grid-cols-[350px_1fr] gap-6  relative">
+            <div className="container grid grid-cols-[350px_1fr] gap-section-space  relative">
                 {/* Agent Profile Info Side */}
                 <AgentInfoSection {...agentDetails} />
 
                 {/* Agent Services Side */}
                 <Tabs defaultValue={AGENT_DETAILS_TAB.PROPERTIES.value}>
                     <div className="flex flex-col gap-0">
-                        <div className="pt-6 pb-2 top-0 sticky bg-background-dark backdrop-blur-sm overflow-hidden z-30">
-                            <OutlineTabsList>
+                        <div className="py-section-space top-0 sticky bg-background-dark backdrop-blur-sm overflow-hidden z-30">
+                            <OutlineTabsList className="border-none">
                                 {Object.values(AGENT_DETAILS_TAB).map((tab) => (
                                     <OutlineTabsTrigger
                                         key={tab.value}
@@ -55,7 +49,7 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                         <TabsContent
                             value={AGENT_DETAILS_TAB.PROPERTIES.value}
                         >
-                            <div className="flex flex-col gap-2">
+                            <div className="flex flex-col gap-card-list-space">
                                 {/* Filter Card */}
                                 <div className="w-full flex flex-col gap-3 border-none p-3 rounded-md bg-background-light">
                                     <h3 className="text-base font-medium font-heading flex items-center gap-1.5">
@@ -122,7 +116,7 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
                                 </div>
 
                                 {/* Property Cards */}
-                                <div className="grid grid-cols-1 md:grid-cols-1 gap-2">
+                                <div className="grid grid-cols-1 md:grid-cols-1 gap-card-list-space">
                                     {PROPERTY_CARDS.map((property, index) => (
                                         <PropertyCard
                                             key={index}
@@ -137,16 +131,16 @@ async function AgentDetailsPage(props: PageProps<"/agent/[id]">) {
 
                         <TabsContent
                             value={AGENT_DETAILS_TAB.SERVICES.value}
-                            className="grid grid-cols-1 md:grid-cols-1 gap-2"
+                            className="grid grid-cols-1 md:grid-cols-1 gap-card-list-space"
                         >
                             {SERVICES.map((service, index) => (
-                                <ServiceCard key={index} {...service} />
+                                <ServiceCard key={index} service={service} />
                             ))}
                         </TabsContent>
 
                         <TabsContent
                             value={AGENT_DETAILS_TAB.REVIEWS.value}
-                            className="grid grid-cols-1 md:grid-cols-1 gap-2"
+                            className="grid grid-cols-1 md:grid-cols-1 gap-card-list-space"
                         >
                             {AGENT_REVIEWS.map((review, index) => (
                                 <AgentReviewCard key={index} {...review} />

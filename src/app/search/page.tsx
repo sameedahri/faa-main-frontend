@@ -1,12 +1,14 @@
-import AgencyCard, { AgencyCardProps } from "@/features/search/components/agency-card"
-import AgentCard, { AgentCardProps } from "@/features/search/components/agent-card"
-import AiAgentCard, { AiAgentCardProps } from "@/features/search/components/ai-agent-card"
+import AgencyCard from "@/features/search/components/agency-card"
+import AgentCard from "@/features/search/components/agent-card"
+import AiAgentCard from "@/features/search/components/ai-agent-card"
 import FiltersSidebar from "@/features/search/components/filters-sidebar"
-import ServiceCard, { ServiceCardProps } from "@/features/search/components/service-card"
+import ServiceCard from "@/features/search/components/service-card"
 import { Tabs, TabsContent } from "@/shared/components/ui/tabs"
 import { SearchTabType } from "@/shared/types/tabs.type"
 import { SEARCH_TAB } from "@/shared/constants/tabs"
 import SearchTabs from "@/features/search/components/search-tabs"
+import { AiAgent } from "@/features/ai-agents/types/ai-agent.type"
+import { AGENCIES, AGENTS, SERVICES } from "@/features/agent/components/data"
 
 
 
@@ -17,22 +19,21 @@ export default async function SearchPage(props: PageProps<"/search">) {
     return (
         <Tabs defaultValue={tab}>
             <div className="pb-10 relative flex flex-col gap-0 bg-background-dark">
-                <div className="container grid grid-cols-[300px_1fr] items-start gap-6 relative">
+                <div className="container grid grid-cols-[300px_1fr] items-start gap-section-space relative">
                     {/* Filter Sidebar */}
                     <FiltersSidebar tab={tab} />
 
                     {/* Navigation and Search Results */}
                     <div>
                         <SearchTabs />
-                        <div className="grid grid-cols-1 gap-5 pt-0">
+                        <div className="grid grid-cols-1 gap-0 pt-0">
                             {/* Agent Results */}
                             <TabsContent value={SEARCH_TAB.AGENTS.value}>
-                                <div className="grid grid-cols-1 gap-2">
+                                <div className="grid grid-cols-1 gap-card-list-space">
                                     {AGENTS.map((agent, index) => (
                                         <AgentCard
                                             key={index}
-                                            // isFeatured={index < 3}
-                                            {...agent}
+                                            agent={agent}
                                         />
                                     ))}
                                 </div>
@@ -40,11 +41,11 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
                             {/* Agency Results */}
                             <TabsContent value={SEARCH_TAB.AGENCIES.value}>
-                                <div className="grid grid-cols-1 gap-2">
-                                    {AGENCIES.map((agent, index) => (
+                                <div className="grid grid-cols-1 gap-card-list-space">
+                                    {AGENCIES.map((agency, index) => (
                                         <AgencyCard
                                             key={index}
-                                            {...agent}
+                                            agency={agency}
                                         />
                                     ))}
                                 </div>
@@ -52,11 +53,11 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
                             {/* Service Results */}
                             <TabsContent value={SEARCH_TAB.SERVICES.value}>
-                                <div className="grid grid-cols-1 gap-2">
+                                <div className="grid grid-cols-1 gap-card-list-space">
                                     {SERVICES.map((service, index) => (
                                         <ServiceCard
                                             key={index}
-                                            {...service}
+                                            service={service}
                                         />
                                     ))}
                                 </div>
@@ -64,11 +65,11 @@ export default async function SearchPage(props: PageProps<"/search">) {
 
                             {/* AI Agent Results */}
                             <TabsContent value={SEARCH_TAB.AI_AGENTS.value}>
-                                <div className="grid grid-cols-1 gap-2">
+                                <div className="grid grid-cols-1 gap-card-list-space">
                                     {AI_AGENTS.map((aiAgent, index) => (
                                         <AiAgentCard
                                             key={index}
-                                            {...aiAgent}
+                                            agent={aiAgent}
                                         />
                                     ))}
                                 </div>
@@ -81,329 +82,11 @@ export default async function SearchPage(props: PageProps<"/search">) {
     )
 }
 
-export const AGENTS: AgentCardProps[] = [
-    {
-        id: "1",
-        name: "John Smith",
-        email: "john.smith@example.com",
-        profession: ["Estate Agent", "Real Estate Broker"],
-        location: "Dubai UAE",
-        rating: 4.5,
-        reviews: 100,
-        subscription: "Pro",
-        specialization: ["Residential Properties", "Luxury Villas", "Downtown Apartments"],
-        isTeamMember: true,
-    },
-    {
-        id: "2",
-        name: "Sarah Johnson",
-        email: "sarah.johnson@example.com",
-        profession: ["Property Consultant", "Investment Advisor"],
-        location: "Abu Dhabi UAE",
-        rating: 4.8,
-        reviews: 156,
-        subscription: "Elite",
-        specialization: ["Commercial Real Estate", "Investment Properties", "Portfolio Management"]
-    },
-    {
-        id: "3",
-        name: "Mohammed Al-Rashid",
-        email: "mohammed.al-rashid@example.com",
-        profession: ["Commercial Real Estate Agent"],
-        location: "Riyadh Saudi Arabia",
-        rating: 4.6,
-        reviews: 89,
-        subscription: "Pro",
-        specialization: ["Office Spaces", "Retail Properties", "Industrial Buildings"],
-        isTeamMember: true,
-    },
-    {
-        id: "4",
-        name: "Emily Chen",
-        email: "emily.chen@example.com",
-        profession: ["Residential Property Specialist"],
-        location: "Singapore",
-        rating: 4.9,
-        reviews: 203,
-        subscription: "Elite",
-        specialization: ["Condominiums", "HDB Flats", "Landed Properties"]
-    },
-    {
-        id: "5",
-        name: "David Martinez",
-        email: "david.martinez@example.com",
-        profession: ["Luxury Real Estate Advisor"],
-        location: "London UK",
-        rating: 4.7,
-        reviews: 142,
-        subscription: "Pro",
-        specialization: ["Penthouses", "Prime Central London", "Historic Properties"]
-    },
-    {
-        id: "6",
-        name: "Fatima Hassan",
-        email: "fatima.hassan@example.com",
-        profession: ["Real Estate Broker", "Legal Consultant"],
-        location: "Doha Qatar",
-        rating: 4.3,
-        reviews: 67,
-        subscription: "Basic",
-        specialization: ["Residential Sales", "Property Law", "Contract Negotiation"]
-    },
-    {
-        id: "7",
-        name: "James Wilson",
-        email: "james.wilson@example.com",
-        profession: ["Property Investment Manager"],
-        location: "Toronto Canada",
-        rating: 4.5,
-        reviews: 98,
-        subscription: "Standard",
-        specialization: ["Multi-Family Properties", "REITs", "Property Development"],
-        isTeamMember: true,
-    },
-    {
-        id: "8",
-        name: "Aisha Abdullah",
-        email: "aisha.abdullah@example.com",
-        profession: ["Real Estate Agent", "Mortgage Advisor"],
-        location: "Kuwait City Kuwait",
-        rating: 4.8,
-        reviews: 178,
-        subscription: "Elite",
-        specialization: ["First-Time Buyers", "Mortgage Solutions", "Waterfront Properties"]
-    },
-    {
-        id: "9",
-        name: "Robert Thompson",
-        email: "robert.thompson@example.com",
-        profession: ["Commercial Property Specialist"],
-        location: "New York USA",
-        rating: 4.4,
-        reviews: 124,
-        subscription: "Pro",
-        specialization: ["Manhattan Office Buildings", "Co-working Spaces", "Mixed-Use Developments"]
-    },
-    {
-        id: "10",
-        name: "Layla Ahmed",
-        email: "layla.ahmed@example.com",
-        profession: ["Estate Agent", "Property Developer"],
-        location: "Sharjah UAE",
-        rating: 4.6,
-        reviews: 91,
-        subscription: "Basic",
-        specialization: ["New Developments", "Off-Plan Properties", "Family Homes"]
-    }
-];
 
-export const AGENCIES: AgencyCardProps[] = [
-    {
-        id: "1",
-        name: "Prime Properties Dubai",
-        profession: ["Real Estate Agency", "Property Management"],
-        location: "Dubai UAE",
-        rating: 4.7,
-        reviews: 234,
-        subscription: "Elite",
-        specialization: ["Luxury Villas", "Commercial Spaces", "Investment Properties"],
-        noOfAgents: 45,
-        email: "prime.properties.dubai@example.com"
-    },
-    {
-        id: "2",
-        name: "Global Realty Group",
-        profession: ["International Real Estate", "Relocation Services"],
-        location: "London UK",
-        rating: 4.8,
-        reviews: 412,
-        subscription: "Elite",
-        specialization: ["Prime Central London", "Corporate Housing", "Expat Services"],
-        noOfAgents: 78,
-        email: "global.realty.group@example.com"
-    },
-    {
-        id: "3",
-        name: "Metro Real Estate Solutions",
-        profession: ["Residential Sales", "Rental Services"],
-        location: "New York USA",
-        rating: 4.5,
-        reviews: 189,
-        subscription: "Pro",
-        specialization: ["Manhattan Apartments", "Brooklyn Properties", "Co-op Sales"],
-        noOfAgents: 32,
-        email: "metro.real.estate@example.com"
-    },
-    {
-        id: "4",
-        name: "Al Sahara Properties",
-        profession: ["Real Estate Brokerage", "Investment Advisory"],
-        location: "Riyadh Saudi Arabia",
-        rating: 4.6,
-        reviews: 156,
-        subscription: "Pro",
-        specialization: ["Commercial Real Estate", "Residential Compounds", "Land Development"],
-        noOfAgents: 28,
-        email: "al.sahara.properties@example.com"
-    },
-    {
-        id: "5",
-        name: "Skyline Property Consultants",
-        profession: ["Property Consultancy", "Valuation Services"],
-        location: "Singapore",
-        rating: 4.9,
-        reviews: 327,
-        subscription: "Elite",
-        specialization: ["Condominiums", "Landed Properties", "Commercial Leasing"],
-        noOfAgents: 52,
-        email: "skyline.property.consultants@example.com"
-    },
-    {
-        id: "6",
-        name: "Coastal Realty Partners",
-        profession: ["Real Estate Agency"],
-        location: "Miami USA",
-        rating: 4.4,
-        reviews: 98,
-        subscription: "Standard",
-        specialization: ["Waterfront Properties", "Luxury Condos", "Vacation Homes"],
-        noOfAgents: 18,
-        email: "coastal.realty.partners@example.com"
-    },
-    {
-        id: "7",
-        name: "Heritage Properties Ltd",
-        profession: ["Estate Agency", "Property Sales"],
-        location: "Abu Dhabi UAE",
-        rating: 4.3,
-        reviews: 145,
-        subscription: "Standard",
-        specialization: ["Residential Properties", "Off-Plan Sales", "Property Management"],
-        noOfAgents: 22,
-        email: "heritage.properties.ltd@example.com"
-    },
-    {
-        id: "8",
-        name: "Maple Leaf Realty",
-        profession: ["Real Estate Brokerage", "Mortgage Services"],
-        location: "Toronto Canada",
-        rating: 4.5,
-        reviews: 203,
-        subscription: "Pro",
-        specialization: ["Residential Sales", "New Developments", "Investment Properties"],
-        noOfAgents: 35,
-        email: "maple.leaf.realty@example.com"
-    },
-    {
-        id: "9",
-        name: "Pearl Real Estate",
-        profession: ["Property Agency"],
-        location: "Doha Qatar",
-        rating: 4.2,
-        reviews: 87,
-        subscription: "Basic",
-        specialization: ["Apartments", "Villas", "Commercial Spaces"],
-        noOfAgents: 12,
-        email: "pearl.real.estate@example.com"
-    },
-    {
-        id: "10",
-        name: "Prestige International Realty",
-        profession: ["Luxury Real Estate", "Portfolio Management", "Concierge Services"],
-        location: "Monaco",
-        rating: 4.9,
-        reviews: 178,
-        subscription: "Elite",
-        specialization: ["Ultra-Luxury Properties", "Penthouses", "International Investments"],
-        noOfAgents: 24,
-        email: "prestige.international.realty@example.com"
-    }
-];
 
-export const SERVICES: ServiceCardProps[] = [
-    {
-        name: "Professional Property Valuation",
-        industries: ["Real Estate", "Valuation", "Consulting"],
-        location: "Dubai UAE",
-        rating: 4.8,
-        reviews: 156,
-        price: 2500
-    },
-    {
-        name: "Home Staging & Interior Design",
-        industries: ["Interior Design", "Home Staging", "Real Estate"],
-        location: "London UK",
-        rating: 4.9,
-        reviews: 203,
-        price: 3500
-    },
-    {
-        name: "Mortgage Advisory Services",
-        industries: ["Finance", "Mortgage", "Consulting"],
-        location: "New York USA",
-        rating: 4.6,
-        reviews: 142,
-        price: 1500
-    },
-    {
-        name: "Property Legal Documentation",
-        industries: ["Legal", "Real Estate", "Documentation"],
-        location: "Riyadh Saudi Arabia",
-        rating: 4.7,
-        reviews: 98,
-        price: 2000
-    },
-    {
-        name: "Real Estate Photography & Videography",
-        industries: ["Photography", "Videography", "Marketing"],
-        location: "Singapore",
-        rating: 4.9,
-        reviews: 287,
-        price: 800
-    },
-    {
-        name: "Property Management Solutions",
-        industries: ["Property Management", "Maintenance", "Real Estate"],
-        location: "Abu Dhabi UAE",
-        rating: 4.5,
-        reviews: 124,
-        price: 5000
-    },
-    {
-        name: "Investment Portfolio Analysis",
-        industries: ["Investment", "Finance", "Consulting"],
-        location: "Toronto Canada",
-        rating: 4.8,
-        reviews: 167,
-        price: 3000
-    },
-    {
-        name: "Architectural Consultation",
-        industries: ["Architecture", "Design", "Construction"],
-        location: "Doha Qatar",
-        rating: 4.4,
-        reviews: 89,
-        price: 4500
-    },
-    {
-        name: "Property Inspection & Survey",
-        industries: ["Inspection", "Surveying", "Real Estate"],
-        location: "Miami USA",
-        rating: 4.7,
-        reviews: 178,
-        price: 1200
-    },
-    {
-        name: "Real Estate Marketing & PR",
-        industries: ["Marketing", "PR", "Digital Marketing"],
-        location: "Monaco",
-        rating: 4.9,
-        reviews: 234,
-        price: 6000
-    }
-];
 
-export const AI_AGENTS: AiAgentCardProps[] = [
+
+export const AI_AGENTS: AiAgent[] = [
     {
         id: "1",
         name: "Property Valuation",

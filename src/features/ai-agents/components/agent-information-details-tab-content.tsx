@@ -3,10 +3,11 @@ import { cn } from '@/shared/lib/utils'
 import { AiAgentCardProps } from '@/features/search/components/ai-agent-card'
 import { Badge as BaseBade } from '@/shared/components/ui/badge'
 import { Separator as BaseSeparator } from '@/shared/components/ui/separator'
+import { AiAgent } from '../types/ai-agent.type'
 
-function AgentInformationDetailsTabContent(props: AiAgentCardProps) {
+function AgentInformationDetailsTabContent(props: AiAgent) {
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-card-list-space">
             <InfoCard title="About">
                 <p className='text-muted-foreground text-base leading-loose'>
                     LeadBot Pro is an advanced AI-powered agent designed specifically for the Dubai real estate market. It automates lead qualification, schedules property viewings, and provides instant responses to potential buyers 24/7. With seamless integration into popular CRM systems and WhatsApp Business API, it helps real estate professionals convert more leads into customers.
@@ -67,11 +68,11 @@ function InfoCard(props: {
     className?: string
 }) {
     return (
-        <div className={cn("flex flex-col overflow-hidden border rounded-lg", props.className)}>
-            <div className="p-4 bg-background-light border-b">
+        <div className={cn("flex flex-col overflow-hidden rounded-lg", props.className)}>
+            <div className="p-3 bg-background-light border-b border-border-light">
                 <h3 className='leading-tight font-semibold text-base text-foreground'>{props.title}</h3>
             </div>
-            <div className='p-4 bg-background-light'>
+            <div className='p-3 bg-background-light'>
                 {props.children}
             </div>
         </div>

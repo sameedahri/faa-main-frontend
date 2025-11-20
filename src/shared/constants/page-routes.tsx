@@ -8,4 +8,5 @@ export const PAGE_ROUTES = {
     PROPERTY_DETAILS: (propertyId: string) => `/property/${propertyId}` as Route,
     AGENCY_DETAILS: (agencyId: string) => `/agency/${agencyId}` as Route,
     AI_AGENT_DETAILS: (aiAgentId: string) => `/ai-agents/${aiAgentId}` as Route,
+    SERVICE_DETAILS: (serviceId: string) => `/services/${serviceId}` as Route,
 } as const

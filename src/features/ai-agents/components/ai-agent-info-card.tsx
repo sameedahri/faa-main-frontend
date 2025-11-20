@@ -12,11 +12,12 @@ import { EmailButton, PhoneButton, WebsiteButton, WhatsappButton } from '@/share
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/components/ui/accordion'
 import { aiAgentImage1 } from "@/shared/constants/images/ai-agent"
 import { Separator } from "@/shared/components/ui/separator"
+import { BaseCardRatingItem } from "@/features/search/components/base-card"
 
 
 function AiAgentInfoCard(props: AiAgentCardProps) {
-    const SubscriptionBadge = getSubscriptionBadge(props.subscription)
-    const aiAgentDetails = props
+    const { agent } = props
+    const SubscriptionBadge = getSubscriptionBadge(agent.subscription)
 
     return (
         <div
@@ -29,8 +30,7 @@ function AiAgentInfoCard(props: AiAgentCardProps) {
                 <SurfaceCard
                     variant={"highlighted"}
                     className={cn(
-                        // " bg-linear-to-b from-primary/10 to-background-light backdrop-blur-3xl shadow",
-                        "flex flex-col gap-4 items-center p-6 border-border from-transparent bg-background-light"
+                        "flex flex-col gap-4 items-center p-6 border-none bg-background-light"
                     )}
                 >
                     <Image
@@ -43,19 +43,18 @@ function AiAgentInfoCard(props: AiAgentCardProps) {
                             <div className="relative w-fit mx-auto">
                                 <div className="space-y-1">
                                     <h2 className="text-2xl font-bold font-heading">
-                                        {aiAgentDetails?.name}
+                                        {agent.name}
                                     </h2>
                                     <p className="text-base text-muted-foreground">
-                                        {aiAgentDetails?.companyName}
+                                        {agent.companyName}
                                     </p>
                                 </div>
                                 <div className="absolute -top-2 -right-4">
-                                    {aiAgentDetails.subscription !== "Basic" && <VerifiedBadge className="size-4" />}
+                                    {agent.subscription !== "Basic" && <VerifiedBadge className="size-4" />}
                                 </div>
                             </div>
                             <div className="flex items-center justify-center gap-1 pb-1">
                                 {SubscriptionBadge && <SubscriptionBadge />}
-                                {/* {agentDetails.subscription !== "Basic" && <VerifiedBadge />} */}
                             </div>
 
                         </div>
@@ -64,15 +63,16 @@ function AiAgentInfoCard(props: AiAgentCardProps) {
 
 
                     <div className="flex flex-wrap gap-5 text-sm">
-                        <div className='flex items-center gap-0.5 text-foreground'>
-                            <Star className='size-4 text-muted-foreground fill-warning stroke-transparent' />
-                            <span className="">{aiAgentDetails.rating} <small className="text-muted-foreground font-normal">({aiAgentDetails.reviews})</small></span>
-                        </div>
+                        <BaseCardRatingItem 
+                            rating={agent.rating}
+                            reviews={agent.reviews}
+                            wrapperClassName='text-base [&_svg]:size-4 mb-1'
+                        />
                     </div>
                     <Separator className="my-1.5 bg-border/50" />
                     <div className="grid grid-cols-3 gap-3 w-full *:w-full">
                         <EmailButton
-                            email={aiAgentDetails.email}
+                            email={agent.email}
                             className="rounded-md h-11 [&>svg]:size-4.5"
                         >
                         </EmailButton>
@@ -83,7 +83,7 @@ function AiAgentInfoCard(props: AiAgentCardProps) {
                         </WebsiteButton>
 
                         <WhatsappButton
-                            whatsapp={aiAgentDetails.whatsapp}
+                            whatsapp={agent.whatsapp}
                             className="rounded-md h-11  [&>svg]:size-5.5"
                         >
                         </WhatsappButton>

@@ -1,77 +1,135 @@
-import { BaseCard, BaseCardActionButtons, BaseCardImage, BaseCardTitle } from './base-card'
-import { SubscriptionName } from '@/shared/types/subscription.type'
+import { BaseCard, BaseCardActionButtonsWrapper, BaseCardContentWrapper, BaseCardDescription, BaseCardImage, BaseCardPoster, BaseCardRatingItem, BaseCardSpecialization, BaseCardSpecializationWrapper, BaseCardTitle, ORIENTATION, Orientation } from './base-card'
 import { getSubscriptionBadge } from '@/shared/lib/helpers'
-import { Badge } from '@/shared/components/ui/badge'
-import { BotIcon, Mail, Phone, Star } from 'lucide-react'
-import { Button } from '@/shared/components/ui/button'
-import { IconBrandWhatsapp } from '@tabler/icons-react'
-import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
+import { EmailButton, PhoneButton, WebsiteButton, WhatsappButton } from '@/shared/components/action-buttons'
 import { PAGE_ROUTES } from '@/shared/constants/page-routes'
-import { aiAgent } from '@/shared/constants/images'
+import { agency, aiAgent } from '@/shared/constants/images'
+import { VerifiedBadge } from '@/shared/components/badges/verified-badges'
+import { cn } from '@/shared/lib/utils'
+import { AiAgent } from '@/features/ai-agents/types/ai-agent.type'
 
 export type AiAgentCardProps = {
-    id: string
-    name: string
-    industries: string[]
-    rating: number
-    reviews: number
-    description: string
-    subscription: SubscriptionName
-    companyName: string
-    email: string
-    phone: string
-    whatsapp: string
+    agent: AiAgent
+    orientation?: Orientation
 }
 
 function AiAgentCard(props: AiAgentCardProps) {
-    const SubscriptionBadge = getSubscriptionBadge(props.subscription)
+    const { agent, orientation = "horizontal" } = props
+    const SubscriptionBadge = getSubscriptionBadge(agent.subscription)
     return (
-        <BaseCard className='grid-cols-[160px_1fr_auto]' href={PAGE_ROUTES.AI_AGENT_DETAILS(props.id)}>
+        <BaseCard 
+            className="data-[orientation='horizontal']:grid-cols-[160px_1fr_auto]" 
+            href={PAGE_ROUTES.AI_AGENT_DETAILS(agent.id)}
+            orientation={orientation}
+        >
+
+            {/* Image */}
             <BaseCardImage 
                 src={aiAgent.aiAgentImage1}
                 alt="AI Agent Image"
+                className='h-full w-full'
             />
-            <div className='flex flex-col gap-3.5 justify-between'>
+            
+            {/* Content */}
+            <BaseCardContentWrapper>
                 <div className="flex flex-col gap-1.5">
-                    <div className='flex items-start gap-2'>
-                        <BaseCardTitle>{props.name}</BaseCardTitle>
-                        <div className='flex gap-2 pt-1'>
-                            {SubscriptionBadge && <SubscriptionBadge />}
-                        </div>
-                    </div>
-                    <p className='text-sm text-muted-foreground leading-relaxed'>
-                        {props.description}
-                    </p>
-                    <div className='flex flex-wrap gap-2 pt-1'>
-                        {props.industries.map((industry, index) => (
-                            <Badge
+                    {/* Title */}
+                    <BaseCardTitle
+                        badges={
+                            <>
+                                {agent.subscription !== "Basic" && <VerifiedBadge />}
+                                {SubscriptionBadge && <SubscriptionBadge />}
+                            </>
+                        }
+                    >
+                        {agent.name}
+                    </BaseCardTitle>
+
+                    {/* Description */}
+                    <BaseCardDescription>
+                        {agent.description}
+                    </BaseCardDescription>
+
+                    {/* Industries */}
+                    <BaseCardSpecializationWrapper className='pt-1'>
+                        {agent.industries.map((industry, index) => (
+                            <BaseCardSpecialization
                                 key={index}
-                                variant={'muted'}
-                                type={'outline'}
-                                className='rounded-full h-6 border-border/70 text-muted-foreground/90'
                             >
                                 {industry}
-                            </Badge>
+                            </BaseCardSpecialization>
                         ))}
-                    </div>
+                    </BaseCardSpecializationWrapper>
                 </div>
                 
-                
-                <div className="flex gap-5">
+                <div
+                    className={cn({
+                        "flex justify-between items-end": orientation === "vertical",
+                    })}
+                >
                     {/* Rating */}
-                    <div className='flex items-center gap-1 text-base text-foreground'>
-                        <Star stroke={'transparent'} fill='var(--warning)' className='size-4.5' />
-                        <span className='font-medium text-foreground'>{props.rating} <small className='text-muted-foreground'>({props.reviews})</small></span>
-                    </div>
-
+                    <BaseCardRatingItem 
+                        rating={agent.rating}
+                        reviews={agent.reviews}
+                        wrapperClassName='text-base [&_svg]:size-4 mb-1'
+                    />
+                    {/* Company Link */}
+                    <BaseCardPoster
+                        href={PAGE_ROUTES.AGENCY_DETAILS("1")}
+                        image={agency.demoAgencyLogoImg}
+                        className={cn({
+                            "rounded-full": orientation === "vertical",
+                            "hidden": orientation === "horizontal",
+                        })}
+                    />
                 </div>
+            </BaseCardContentWrapper>
+            
+            <div
+                className={cn(
+                    {
+                        "flex flex-col gap-2 justify-between items-end": orientation === "horizontal",
+                    }
+                )}
+            >
+                {/* Company Link */}
+                <BaseCardPoster
+                    href={PAGE_ROUTES.AGENCY_DETAILS("1")}
+                    image={agency.demoAgencyLogoImg}
+                    className={cn({
+                        "hidden": orientation === "vertical",
+                    })}
+                />
+
+                {/* Action Buttons */}
+                <BaseCardActionButtonsWrapper>
+                    <EmailButton
+                        email={agent.email}
+                        className={cn(
+                            {
+                                "rounded-md": orientation === "vertical",
+                            }
+                        )}
+                    />
+                    <WebsiteButton
+                        websiteLink={"#"}
+                        className={cn(
+                            {
+                                "rounded-md": orientation === "vertical",
+                            }
+                        )}
+                    >
+                    </WebsiteButton>
+                    <WhatsappButton
+                        whatsapp={agent.whatsapp}
+                        className={cn(
+                            {
+                                "rounded-md": orientation === "vertical",
+                            }
+                        )}
+                    />
+                </BaseCardActionButtonsWrapper>
             </div>
-            <BaseCardActionButtons 
-                phone={""}
-                email={""}
-                whatsapp={""}
-                className="items-end"
-            />
+            
         </BaseCard>
     )
 }

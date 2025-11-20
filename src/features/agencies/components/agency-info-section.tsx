@@ -13,13 +13,13 @@ import { agent } from '@/shared/constants/images'
 import { SurfaceCard } from '@/shared/components/ui/surface-card'
 import { cn } from '@/shared/lib/utils'
 import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
-import { AgencyCardProps } from '@/features/search/components/agency-card'
+import { Agency } from '@/features/search/components/agency-card'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/components/ui/accordion'
 import { Separator } from "@/shared/components/ui/separator"
 
 
 
-function AgencyInfoSection(props: AgencyCardProps) {
+function AgencyInfoSection(props: Agency) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     const agencyDetails = props
 
@@ -34,8 +34,9 @@ function AgencyInfoSection(props: AgencyCardProps) {
                 <SurfaceCard
                     // variant={"highlighted"}
                     className={cn(
-                        "border-border",
-                        "flex flex-col gap-4 items-center p-6"
+                        "border-none",
+                        "flex flex-col gap-4 items-center p-6",
+                        // "bg-linear-to-t from-background via-background/40 to-background-light shadow-sm"
                     )}
                 >
                     <Image

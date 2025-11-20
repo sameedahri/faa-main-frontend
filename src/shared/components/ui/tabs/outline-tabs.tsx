@@ -9,7 +9,7 @@ function OutlineTabsList(props: TabsListProps) {
     return (
         <TabsList
             className={cn(
-                "bg-background-light w-full h-11 rounded-md p-1 border",
+                "bg-background-light w-full h-11 rounded-lg p-1",
                 className
             )} 
             {...rest}
@@ -24,7 +24,7 @@ function OutlineTabsTrigger(props: TabsTriggerProps) {
         <TabsTrigger
             {...props}
             className={cn(
-                "rounded-sm hover:text-primary-600 h-full border border-transparent data-[state=active]:bg-primary-50 data-[state=active]:text-primary-600/90 data-[state=active]:border-none data-[state=active]:font-medium data-[state=active]:shadow-none text-muted-foreground",
+                "rounded-sm hover:text-primary-500 h-full border border-transparent data-[state=active]:bg-primary-50 data-[state=active]:text-primary-600/90 data-[state=active]:border-none data-[state=active]:font-medium data-[state=active]:shadow-none text-muted-foreground",
                 props.className
             )}
         />

@@ -1,128 +1,128 @@
 "use client"
 
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { agency, agent } from '@/constants/images'
-import { IconBrandWhatsapp } from '@tabler/icons-react'
-import { Mail, MapPin, Phone, Star } from 'lucide-react'
-import { BaseCard, BaseCardActionButtons, BaseCardImage, BaseCardTitle } from './base-card'
+import { agency, agent as agentImage } from '@/constants/images'
+import { BaseCard, BaseCardActionButtonsWrapper, BaseCardContentWrapper, BaseCardImage, BaseCardLocationItem, BaseCardMetaItem, BaseCardMetaWrapper, BaseCardRatingItem, BaseCardRoles, BaseCardSpecialization, BaseCardSpecializationWrapper, BaseCardTitle, BaseCardTitleWrapper, Orientation } from './base-card'
 import { getSubscriptionBadge } from '@/shared/lib/helpers'
 import { VerifiedBadge } from '@/shared/components/badges/verified-badges'
-import { SubscriptionName } from '@/shared/types/subscription.type'
 import Image from 'next/image'
-import Link from 'next/link'
-import { INDUSTRY_NAMES } from '@/shared/constants/industry'
-import { Separator } from '@/shared/components/ui/separator'
 import { PAGE_ROUTES } from '@/shared/constants/page-routes'
 import { Route } from 'next'
 import { useRouter } from 'next/navigation'
-import { cn } from '@/shared/lib/utils'
-import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
 import { PropsWithChildren } from 'react'
+import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
+import { cn } from '@/shared/lib/utils'
+import { Agent } from '@/features/agent/types/agent.type'
 
 export interface AgentCardProps {
-    name: string
-    profession: string[]
-    location: string
-    rating: number
-    reviews: number
-    subscription: SubscriptionName
-    specialization: string[]
-    className?: string
-    isTeamMember?: boolean
-    id: string
-    email: string
-    isFeatured?: boolean
+   agent: Agent
+   orientation?: Orientation
+   className?: string
 }
 
-function AgentCard({ className, ...props }: AgentCardProps) {
-    const router = useRouter()
-    const isRealEstateBroker = props.profession.includes(INDUSTRY_NAMES.REAL_ESTATE_BROKER) || props.profession.includes(INDUSTRY_NAMES.REAL_ESTATE)
+function AgentCard(props: AgentCardProps) {
+    const { agent, orientation = "horizontal", className } = props
+    const SubscriptionBadge = getSubscriptionBadge(agent.subscription)
 
-    const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     return (
         <BaseCard
-            className={cn(
-                "relative",
-                {
-                    "shadow-md bg-linear-to-b from-background via-transparent": props.isFeatured
-                },
-                className
-            )}
-            href={PAGE_ROUTES.AGENT_DETAILS(props.id)}
+            className={className}
+            href={PAGE_ROUTES.AGENT_DETAILS(agent.id)}
         >
-            {/* <Badge 
-                variant={"default"} 
-                type={"outline"} 
-                // size={"xs"} 
-                className='absolute left-1/2 -top-3 font-semibold border-2 bg-white border-primary/60'
-            >
-                Featured
-            </Badge> */}
-            <BaseCardImage src={agent.agentImage1} alt="Agent Image" />
-            <div className='flex flex-col gap-4 justify-between'>
-                <div className="flex flex-col gap-0.5">
-                    <div className='flex items-center gap-2.5'>
-                        <BaseCardTitle>{props.name}</BaseCardTitle>
-                        <div className='flex gap-1'>
-                            {props.subscription !== "Basic" && <VerifiedBadge />}
-                            {SubscriptionBadge && <SubscriptionBadge />}
-                        </div>
-                    </div>
-                    <p className='text-muted-foreground text-sm'>
-                        {props.profession.join(' | ')}
-                    </p>
-                </div>
+            {/* Image */}
+            <BaseCardImage 
+                src={agent.image} 
+                alt="Agent Image"
+            />
 
-                <div className="flex gap-5 text-sm">
+            {/* Content */}
+            <BaseCardContentWrapper>
+                {/* Title And Profession */}
+                <BaseCardTitleWrapper>
+                    <BaseCardTitle
+                        badges={
+                            <>
+                                {agent.subscription !== "Basic" && <VerifiedBadge />}
+                                {SubscriptionBadge && <SubscriptionBadge />}
+                            </>
+                        }
+                    >
+                        {agent.name}
+                    </BaseCardTitle>
+                    <BaseCardRoles roles={agent.profession} />
+                </BaseCardTitleWrapper>
+
+                {/* Location And Rating */}
+                <BaseCardMetaWrapper>
                     {/* Location */}
-                    <div className='flex items-center gap-1 text-foreground w-auto'>
-                        <MapPin className='w-4 h-4' />
-                        <span>{props.location}</span>
-                    </div>
+                    <BaseCardLocationItem 
+                        location={agent.location}
+                    />
+
                     {/* Rating */}
-                    <div className='flex items-center gap-1 text-foreground'>
-                        <Star stroke={'transparent'} fill='var(--warning)' className='w-4 h-4' />
-                        <span>{props.rating} <small>({props.reviews})</small></span>
-                    </div>
+                    <BaseCardRatingItem 
+                        rating={agent.rating}
+                        reviews={agent.reviews}
+                    />
+
                     {/* Rent */}
-                    <div className='flex items-center gap-1'>
+                    <BaseCardMetaItem>
                         <span className=''>Rent</span>
                         <span>(10)</span>
-                    </div>
+                    </BaseCardMetaItem>
+
                     {/* Sale */}
-                    <div className='flex items-center gap-1'>
+                    <BaseCardMetaItem>
                         <span className=''>Sale</span>
                         <span>(10)</span>
-                    </div>
-                </div>
+                    </BaseCardMetaItem>
+                </BaseCardMetaWrapper>
 
-                <div className='flex flex-wrap gap-2'>
-                    {props.specialization.map((profession, index) => (
-                        <Badge
-                            key={index}
-                            variant={'muted'}
-                            type={'outline'}
-                            className='rounded-full h-6 border-border/70 text-muted-foreground/90'
-                        >
+                {/* Specialization */}
+                <BaseCardSpecializationWrapper>
+                    {agent.specialization.map((profession, index) => (
+                        <BaseCardSpecialization key={`agent-card-specialization-${profession}-${index}`}>
                             {profession}
-                        </Badge>
+                        </BaseCardSpecialization>
                     ))}
-                </div>
-            </div>
+                </BaseCardSpecializationWrapper>
+            </BaseCardContentWrapper>
+
+            {/* Action Buttons and Company Link */}
             <div className="flex flex-col gap-2 justify-between items-end">
-                {props.isTeamMember ? (
+                {agent.isTeamMember ? (
                     <CompanyLink href={"#"} />
                 ) : (
                     <div>
                     </div>
                 )}
 
-                <BaseCardActionButtons
-                    phone={""}
-                    email={""}
-                    whatsapp={""}
-                />
+                {/* Action Buttons */}
+                <BaseCardActionButtonsWrapper>
+                    <PhoneButton
+                        phone={""}
+                        className={cn(
+                            {
+                                "rounded-md": orientation === "vertical",
+                            }
+                        )}
+                    />
+                    <EmailButton
+                        email={""}
+                        className={cn(
+                            {
+                                "rounded-md": orientation === "vertical",
+                            }
+                        )}
+                    />
+                    <WhatsappButton
+                        whatsapp={""}
+                        className={cn(
+                            {
+                                "rounded-md": orientation === "vertical",
+                            }
+                        )}
+                    />
+                </BaseCardActionButtonsWrapper>
             </div>
         </BaseCard>
     )

@@ -64,7 +64,7 @@ async function PropertyDetailsPage(props: PageProps<"/property/[id]">) {
                 {/* Content */}
                 <div className="grid grid-cols-3 items-start gap-2 pb-7">
                     {/* Property Info */}
-                    <div className="flex flex-col gap-0 col-start-1 col-end-3 bg-background-light px-4 pt-5 pb-10 rounded-md">
+                    <div className="flex flex-col gap-0 col-start-1 col-end-3 bg-background-light px-5 pt-5 pb-10 rounded-md">
                         {/* Property Title, Price and Features */}
                         <div className="space-y-5">
                             {/* Property Title and Price */}

@@ -41,8 +41,8 @@ function FiltersSidebar(props: FiltersSidebarProps) {
                 Filters
             </h2> */}
             {/* <div className='bg-background-light p-3 border-b-5 border-background-dark'> */}
-            <div className='bg-background-light pb-4'>
-                <InputGroup className='shadow-none bg-background-light h-10  has-[[data-slot=input-group-control]:focus-visible]:ring-[0px] focus-visible:border-primary-200 has-[[data-slot=input-group-control]:focus-visible]:border-primary-400 rounded-full'>
+            <div className='pb-4'>
+                <InputGroup className='shadow-none bg-background-light h-10  has-[[data-slot=input-group-control]:focus-visible]:ring-[0px] focus-visible:border-primary-200 has-[[data-slot=input-group-control]:focus-visible]:border-primary-400 rounded-md'>
 
                     <InputGroupInput
                         placeholder='Search by keyword'

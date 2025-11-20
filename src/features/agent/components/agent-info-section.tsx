@@ -11,33 +11,32 @@ import { cn } from '@/shared/lib/utils'
 import { EmailButton, PhoneButton, WhatsappButton } from '@/shared/components/action-buttons'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shared/components/ui/accordion'
 import { Separator } from "@/shared/components/ui/separator"
+import { BaseCardLocationItem, BaseCardRatingItem } from "@/features/search/components/base-card"
+import { Agent } from "../types/agent.type"
 
 
-function AgentInfoSection(props: AgentCardProps) {
+function AgentInfoSection(props: Agent) {
     const SubscriptionBadge = getSubscriptionBadge(props.subscription)
     const agentDetails = props
 
     return (
         <div 
             className={cn(
-                "flex flex-col gap-2",
-                "overflow-y-auto overflow-x-hidden h-fit max-h-[calc(100vh-3rem)] sticky top-6 mt-6",
+                "flex flex-col gap-5",
+                "overflow-y-auto overflow-x-hidden h-fit max-h-[calc(100vh-3rem)] sticky top-6 mt-section-space",
             )}
         >
             <div className="backdrop-blur-sm">
                 <SurfaceCard
-                    // variant={"highlighted"}
                     className={cn(
-                        // "bg-linear-to-b from-background-dark via-background-light to-background-light backdrop-blur-3xl shadow-sm",
                         "",
-                        "flex flex-col gap-4 items-center px-4 py-5 rounded-lg border-none shadow-none",
-                        // "border-none"
+                        "flex flex-col gap-4 items-center px-4 py-5 rounded-lg border-none",
                     )}
                 >
                     <Image
-                        src={agent.agentImage1}
+                        src={agentDetails.image}
                         alt="Agent Image"
-                        className="w-24 aspect-square rounded-full shadow-sm"
+                        className="w-24 aspect-square rounded-full shadow-sm object-cover"
                     />
                     <div className="flex flex-col gap-2">
                         <div className="flex flex-col gap-2 text-center pt-0">
@@ -49,7 +48,6 @@ function AgentInfoSection(props: AgentCardProps) {
                             </div>
                             <div className="flex items-center justify-center gap-1 pb-1">
                                 {SubscriptionBadge && <SubscriptionBadge />}
-                                {/* {agentDetails.subscription !== "Basic" && <VerifiedBadge />} */}
                             </div>
 
                         </div>
@@ -69,16 +67,14 @@ function AgentInfoSection(props: AgentCardProps) {
 
 
                     <div className="flex flex-wrap gap-5 text-sm">
-                        <div className='flex items-center gap-0.5 text-foreground'>
-                            <Star className='size-4 text-muted-foreground fill-warning stroke-transparent' />
-                            <span className="">{agentDetails.rating} <small className="text-muted-foreground font-normal">({agentDetails.reviews})</small></span>
-                        </div>
-                        <div className='flex items-center gap-0.5 text-foreground'>
-                            <MapPin className='size-4 text-muted-foreground fill-primary stroke-white' />
-                            <span className="" >{agentDetails.location}</span>
-                        </div>
+                        <BaseCardRatingItem 
+                            rating={agentDetails.rating} 
+                            reviews={agentDetails.reviews} 
+                        />
+                        <BaseCardLocationItem 
+                            location={agentDetails.location} 
+                        />
                     </div>
-                    {/* <Separator className="my-1.5 bg-border/50" /> */}
                     <div className="grid grid-cols-3 gap-3 w-full pt-2 *:w-full">
                         <EmailButton 
                             email={agentDetails.email}
@@ -99,14 +95,15 @@ function AgentInfoSection(props: AgentCardProps) {
             <Accordion 
                 type='single' 
                 collapsible
-                className='w-full px-2'
+                className='w-full px-3'
+                defaultValue="about"
             >
                 <AccordionItem value='about' className="border-border/50">
                     <AccordionTrigger className='cursor-pointer'>
                         <h3 className="font-bold font-heading text-base">About</h3>
                     </AccordionTrigger>
                     <AccordionContent>
-                        <p className="text-foreground text-base leading-loose">
+                        <p className="text-muted-foreground text-base leading-loose">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. In enim consequuntur aliquid praesentium iste autem! Voluptate temporibus aliquid illum dolorem.
                         </p>
                     </AccordionContent>
